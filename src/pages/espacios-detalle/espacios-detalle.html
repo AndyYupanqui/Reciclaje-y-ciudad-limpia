@@ -1,0 +1,58 @@
+
+<ion-header>
+
+  <ion-navbar  color="dark">
+
+      <ion-buttons start>
+          <button ion-button icon-only
+                  *ngIf="_us.inactivo()"
+                  (click)="_cs.ver_login()">
+            <ion-icon name="contact"></ion-icon>
+          </button>
+        </ion-buttons>
+    
+    
+        <ion-buttons start>
+          <button ion-button icon-only
+                  *ngIf="_us.activo()">
+            {{ _us.usuario }} <ion-icon name="contact"></ion-icon>
+          </button>
+          <button ion-button icon-only
+                  *ngIf="_us.activo()"
+                  (click)="_us.cerrar_sesion()">
+            <ion-icon name="log-out"></ion-icon>
+          </button>
+        </ion-buttons>
+
+    <ion-title>Reservar Espacio</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <div *ngIf="_cs.espacio">
+    <h5 padding style="text-align: center; font-weight: bold">{{_cs.espacio.id}}</h5>
+
+    <!-- <div style="text-align: center">
+        <img [src]="estacionamiento.imagen" style="max-width: 100%">
+      </div> -->
+
+      <h6 *ngIf="_cs.espacio.estado_ocupacion == '0'" style="font-size: 14px; padding: 0px">Estado de ocupación:                 <span style="color: blue">Libre</span></h6>
+      <h6 *ngIf="_cs.espacio.estado_ocupacion == '1'" style="font-size: 14px; padding: 0px">Estado de ocupación:        <span style="color: red">Ocupado</span></h6>
+      <h6 *ngIf="_cs.espacio.estado_reservacion == '0'" style="font-size: 14px; padding: 0px">Estado de reservación:        <span style="color: blue">No reservado</span></h6>
+      <h6 *ngIf="_cs.espacio.estado_reservacion == '1'" style="font-size: 14px; padding: 0px">Estado de reservación:        <span style="color: red">En reserva</span></h6>
+      <h6 *ngIf="descuento == 0" style="font-size: 14px; padding: 0px">Costo por hora:                          S/. {{costo}}</h6>
+      <h6 *ngIf="descuento" style="font-size: 14px; padding: 0px">Costo por hora:     <span style="text-decoration: line-through">S/. {{estacionamiento.costo}}</span>  <span style="color: red">(-20%)</span>  ->  <span style="color: blue">S/.{{descuento}}</span></h6>
+
+      <ion-item *ngIf="_cs.espacio.estado_ocupacion == '0' && _cs.espacio.estado_reservacion == '0'">
+        <ion-label floating>Ingrese cantidad de horas a reservar</ion-label>
+          <ion-input type="number" [(ngModel)]="horas"></ion-input>
+      </ion-item>
+    
+      <button *ngIf="_cs.espacio.estado_ocupacion == '0' && _cs.espacio.estado_reservacion == '0'" id="reserva" ion-button block [disabled]=" horas.length < 1" (click)="reservar()">Reservar ahora</button>
+      <button *ngIf="_cs.espacio.estado_ocupacion != '0' || _cs.espacio.estado_reservacion != '0'" id="reserva" disabled ion-button block>Reservar ahora</button>
+    
+    </div>
+
+</ion-content>

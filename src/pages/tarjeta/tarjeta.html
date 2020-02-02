@@ -1,0 +1,52 @@
+
+<ion-header>
+
+  <ion-navbar color="dark">
+
+    <ion-buttons left>
+      <button icon-only ion-button
+              (click)="viewCtrl.dismiss()">
+        <ion-icon name="arrow-round-back"></ion-icon>
+      </button>
+    </ion-buttons>
+
+    <ion-title>Confirmación de Compra</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <h3>Total: {{ _cs.total  | currency:'S/. ':symbol }}</h3>
+  <br>
+  <br>
+  <ion-list>
+      <ion-label><ion-icon name="ios-card"></ion-icon>  Pagar con tarjeta            <img src="../../assets/imgs/visa.png" height="20" width="32"> <img src="../../assets/imgs/mastercard.png" height="28" width="28"></ion-label>
+  <ion-item>
+    <ion-label floating>Número de tarjeta (16 Dígitos)</ion-label>
+    <ion-input type="tel" maxlength="16" [(ngModel)]="numero"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label floating>Fecha de expiración (DD/MM/YYYY)</ion-label>
+    <ion-datetime displayFormat="DD/MM/YYYY" [(ngModel)]="myDate"></ion-datetime>
+  </ion-item>
+
+  <ion-item>
+    <ion-label floating>CVV (3 o 4 Dígitos)</ion-label>
+    <ion-input type="tel" maxlength="4" [(ngModel)]="cvv"></ion-input>
+  </ion-item>
+
+  </ion-list>
+
+  <br>
+
+  <div style="text-align: center">
+    <button ion-button
+            [disabled]=" numero.length < 16 || myDate.length == 0 || cvv.length < 3 "
+            (click)="realizar_compra()">
+      Completar Compra
+    </button>
+  </div>
+
+</ion-content>

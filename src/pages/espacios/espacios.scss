@@ -1,0 +1,65 @@
+page-espacios {
+  #tablero {
+    background: #808080;
+    box-shadow:0 10px 10px -6px rgba(0,0,0,.6);
+    border-radius: 3px;
+    border-collapse: collapse;
+    height: 300px;
+    width: 300px;
+    
+    position: absolute;
+    top: 30px;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+  }
+  
+  #tablero td {
+    width: 50px;
+    height: 50px;
+    padding:0px;
+  } 
+  #tablero .espacio{
+    width: 50px;
+    height: 80px;
+  }
+  
+  #tablero .espacio2{
+    width: 100%;
+    height: 100%;
+    background: #454545;
+    border: 1.5px solid white;
+    color: #eee;
+    font-family: sans-serif;
+    text-align: center;
+  }
+  
+  #tablero .ruta{
+    width: 50px;
+    height: 1px;
+    background: yellow;
+    border: 1px solid yellow;
+  }
+  
+  #tablero #caseta2{
+    width: 80px;
+    height: 40px;
+    background: green;
+    border: 2px solid black;
+    border-right: 3px solid white;
+    position:absolute;
+    margin-top:0px;
+    top:0px;
+  }
+
+  .circulo {
+    width: 20px;
+    height: 20px;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
+    background: #5cb85c;
+    margin-left: 20px;
+  }
+}

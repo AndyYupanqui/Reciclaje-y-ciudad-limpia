@@ -1,0 +1,62 @@
+<ion-header>
+
+  <ion-navbar color="dark">
+
+        <ion-buttons start>
+            <button ion-button icon-only
+                    *ngIf="_us.inactivo()"
+                    (click)="_cs.ver_login()">
+              <ion-icon name="contact"></ion-icon>
+            </button>
+          </ion-buttons>
+      
+      
+          <ion-buttons start>
+            <button ion-button icon-only
+                    *ngIf="_us.activo()">
+              {{ _us.usuario }} <ion-icon name="contact"></ion-icon>
+            </button>
+            <button ion-button icon-only
+                    *ngIf="_us.activo()"
+                    (click)="_us.cerrar_sesion()">
+              <ion-icon name="log-out"></ion-icon>
+            </button>
+          </ion-buttons>
+
+    <ion-title>Incidencias</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+  <h6 padding>Escoja la incidencia más cercano a usted:</h6>
+    <ion-list>
+        <!-- <button ion-item
+                *ngFor="let estacionamiento of _cs.estacionamientos"
+                [navPush]="estacionamientoDetalle"
+                [navParams]="{ estacionamiento: estacionamiento }"
+                >
+    
+          <ion-icon name="ios-arrow-forward"></ion-icon>
+            {{ estacionamiento.nombre }}
+        </button> -->
+        <button ion-item>
+          <ion-icon name="ios-arrow-forward"></ion-icon>
+              Puerta 1 UNMSM
+          </button>
+        <button ion-item>
+        <ion-icon name="ios-arrow-forward"></ion-icon>
+            Puerta 2 UNMSM
+        </button>
+        <button ion-item>
+          <ion-icon name="ios-arrow-forward"></ion-icon>
+              Puerta 3 UNMSM
+          </button>
+          <button ion-item>
+            <ion-icon name="ios-arrow-forward"></ion-icon>
+                Puerta 7 UNMSM
+            </button>
+      </ion-list>
+
+</ion-content>

@@ -1,0 +1,27 @@
+page-home{
+
+    ion-content{
+      background-color:#A0E966;
+        //background-color: rgb(177, 180, 180);
+        //background: #00b2b2 ;
+    }
+    .fondo-home{
+        //background-color: #272627;
+        background: url('../../assets/imgs/reciclaje.jpg') no-repeat fixed center;
+        margin-bottom: 50px;
+        margin-top: 15px;
+        // -webkit-background-size: cover;
+        // -moz-background-size: cover;
+        // background-size: cover;
+    }
+
+    .texto{
+        color: #ffffff;
+        text-align: center;
+        font-weight: bold;
+        margin-top: 250px;
+        font-size: 22px;
+        //text-align: center;
+
+    }
+}

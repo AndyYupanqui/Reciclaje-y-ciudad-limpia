@@ -1,0 +1,57 @@
+<ion-header>
+
+    <ion-navbar color="dark">
+
+        <ion-buttons start>
+            <button ion-button icon-only *ngIf="_us.inactivo()" (click)="_cs.ver_login()">
+            <ion-icon name="contact"></ion-icon>
+          </button>
+        </ion-buttons>
+
+
+        <ion-buttons start>
+            <button ion-button icon-only *ngIf="_us.activo()">
+            {{ _us.usuario }} <ion-icon name="contact"></ion-icon>
+          </button>
+            <button ion-button icon-only *ngIf="_us.activo()" (click)="_us.cerrar_sesion()">
+            <ion-icon name="log-out"></ion-icon>
+          </button>
+        </ion-buttons>
+
+        <ion-title>Mi Reserva</ion-title>
+    </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+    <br>
+    <ion-card *ngIf="_us.id_usuario != null" color="blanco">
+        <ion-item color="primary">
+            <ion-icon name="pin" slot="start"></ion-icon>
+            <ion-label style="font-weight: bold;">Reserva 1</ion-label>
+            <ion-label *ngIf="_cs.cronometro2" style="font-weight: bold">Tiempo Restante: {{_cs.cronometro2}}</ion-label>
+        </ion-item>
+        <ion-card-content color="primary">
+            <span style="line-height: 50px"><span style="font-weight: bold">Usuario:</span><span>   {{usuario.usuario.stringValue}}</span></span><br>
+            <span style="line-height: 50px"><span style="font-weight: bold">Placa:</span><span>   {{usuario.placa.stringValue}}</span></span><br>
+            <span style="line-height: 50px"><span style="font-weight: bold">Fecha y hora de reserva:</span><span>   {{reserva.fecha}}</span></span><br>
+            <span style="line-height: 50px"><span style="font-weight: bold">Horas de reserva:</span><span>   {{reserva.horas}}</span></span><br>
+            <span style="line-height: 50px"><span style="font-weight: bold">Precio:</span><span>   S/. {{reserva.total}}</span></span><br>
+            <span style="line-height: 50px"><span style="font-weight: bold">Estado de la reserva:</span><span *ngIf="estado">   {{estado}}</span></span><br>
+            <span style="line-height: 50px"><span style="font-weight: bold">Estado de pago:</span><span *ngIf="reserva_pago">   {{reserva_pago}}</span></span><br>
+            <span style="line-height: 50px"><span style="font-weight: bold">Estado de ocupación:</span ><span *ngIf="espacio_actual && espacio_actual.estado_ocupacion == '0'" style="color:#f53d3d; font-weight: bold">   POR LLEGAR</span>
+            <span *ngIf="espacio_actual && espacio_actual.estado_ocupacion == '1'" style="color: #32db64; font-weight: bold">   LLEGÓ</span></span><br>
+            <div style="text-align: center; margin-top: 50px">
+                <button *ngIf="(espacio_actual && espacio_actual.estado_ocupacion == '0') || reserva_pago == 'Pago Realizado'" ion-button disabled>Pagar</button>
+            </div>
+
+            <div style="text-align: center; margin-top: 50px">
+                <button *ngIf="espacio_actual && espacio_actual.estado_ocupacion == '1' && reserva_pago == 'Por pagar'" ion-button (click)="pagar()">Pagar</button>
+            </div>
+
+        </ion-card-content>
+    </ion-card>
+
+
+</ion-content>

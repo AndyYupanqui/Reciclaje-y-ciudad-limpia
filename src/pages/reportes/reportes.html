@@ -1,0 +1,71 @@
+<ion-header>
+
+  <ion-navbar color="dark">
+      <ion-buttons start>
+          <button ion-button icon-only *ngIf="_us.inactivo()" [navPush]="login">
+          <ion-icon name="contact"></ion-icon>
+        </button>
+      </ion-buttons>
+
+
+      <ion-buttons start>
+          <button ion-button icon-only *ngIf="_us.activo()">
+          {{ _us.usuario }} <ion-icon name="contact"></ion-icon>
+        </button>
+          <button ion-button icon-only *ngIf="_us.activo()" (click)="_us.cerrar_sesion()">
+          <ion-icon name="log-out"></ion-icon>
+        </button>
+      </ion-buttons>
+    <ion-title>Reportes</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+  <ion-card>
+    <ion-card-header style="background-color: whitesmoke">
+      Costos totales diarios
+    </ion-card-header>
+    <ion-card-content>
+      <br>
+      <canvas #barCanvas></canvas>
+    </ion-card-content>
+  </ion-card>
+  <ion-card>
+    <ion-card-header style="background-color: whitesmoke">
+      Cantidad de reservaciones diarias
+    </ion-card-header>
+    <ion-card-content>
+      <br>
+      <canvas #barCanvas2></canvas>
+    </ion-card-content>
+  </ion-card>
+  <ion-card>
+    <ion-card-header style="background-color: whitesmoke">
+        Promedio de tiempos de reservas
+    </ion-card-header>
+    <ion-card-content>
+      <br>
+      <canvas #lineCanvas></canvas>
+    </ion-card-content>
+  </ion-card>
+  <ion-card>
+    <ion-card-header style="background-color: whitesmoke">
+      Reservaciones por estacionamiento
+    </ion-card-header>
+    <ion-card-content>
+      <br>
+      <canvas #pieCanvas></canvas>
+    </ion-card-content>
+  </ion-card>
+  <ion-card>
+    <ion-card-header style="background-color: whitesmoke">
+      Reservaciones por estacionamiento
+    </ion-card-header>
+    <ion-card-content>
+      <br>
+      <canvas #doughnutCanvas></canvas>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

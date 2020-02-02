@@ -1,0 +1,39 @@
+
+<ion-header>
+
+  <ion-navbar color="dark">
+
+      <ion-buttons start>
+          <button ion-button icon-only
+                  *ngIf="_us.inactivo()"
+                  (click)="_cs.ver_login()">
+            <ion-icon name="contact"></ion-icon>
+          </button>
+        </ion-buttons>
+    
+    
+        <ion-buttons start>
+          <button ion-button icon-only
+                  *ngIf="_us.activo()">
+            {{ _us.usuario }} <ion-icon name="contact"></ion-icon>
+          </button>
+          <button ion-button icon-only
+                  *ngIf="_us.activo()"
+                  (click)="_us.cerrar_sesion()">
+            <ion-icon name="log-out"></ion-icon>
+          </button>
+        </ion-buttons>
+
+    <ion-title>Historial</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <br>
+  <h5 style="color: blue; text-align: center">Nro |      Fecha y Hora     | Horas |  Pago</h5>
+  <hr>
+  <h6 *ngFor="let reserva of reservas">      {{reservas.indexOf(reserva)+1}}      {{reserva.fecha}}        {{reserva.horas}}          S/. {{reserva.total}}</h6>
+
+</ion-content>

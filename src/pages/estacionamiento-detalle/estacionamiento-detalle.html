@@ -1,0 +1,54 @@
+<ion-header>
+
+  <ion-navbar color="dark">
+    
+      <ion-buttons start>
+          <button ion-button icon-only
+                  *ngIf="_us.inactivo()"
+                  (click)="_cs.ver_login()">
+            <ion-icon name="contact"></ion-icon>
+          </button>
+        </ion-buttons>
+    
+    
+        <ion-buttons start>
+          <button ion-button icon-only
+                  *ngIf="_us.activo()">
+            {{ _us.usuario }} <ion-icon name="contact"></ion-icon>
+          </button>
+          <button ion-button icon-only
+                  *ngIf="_us.activo()"
+                  (click)="_us.cerrar_sesion()">
+            <ion-icon name="log-out"></ion-icon>
+          </button>
+        </ion-buttons>
+
+    <ion-title>Parking FENIX</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+    <h5 padding style="text-align: center; font-weight: bold">{{estacionamiento.nombre}}</h5>
+
+    <div style="text-align: center">
+        <img [src]="estacionamiento.imagen" style="max-width: 100%">
+      </div>
+
+      <h6 style="font-size: 14px; padding: 0px">Dirección:     {{estacionamiento.direccion}}</h6>
+      <h6 style="font-size: 14px; padding: 0px">Vacantes:                   {{estacionamiento.vacantes}}</h6>
+      <h6 style="font-size: 14px; padding: 0px">Disponibles:               {{disponible}}</h6>
+      <h6 *ngIf="!descuento" style="font-size: 14px; padding: 0px">Costo por hora:     S/. {{estacionamiento.costo}}</h6>
+      <h6 *ngIf="descuento" style="font-size: 14px; padding: 0px">Costo por hora:     <span style="text-decoration: line-through">S/. {{estacionamiento.costo}}</span>  <span style="color: red">(-20%)</span>  ->  <span style="color: blue">S/.{{descuento}}</span></h6>
+
+      <button id="reserva" ion-button block
+              [navPush]="espacios"
+              [navParams]="{ estacionamiento: estacionamiento }"
+        >
+    Reservar ahora
+  </button>
+  <br><br>
+
+</ion-content>

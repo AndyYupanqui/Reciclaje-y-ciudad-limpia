@@ -1,0 +1,47 @@
+
+<ion-header>
+
+  <ion-navbar color="dark">
+
+      <ion-buttons start>
+          <button ion-button icon-only
+                  *ngIf="_us.inactivo()"
+                  (click)="_cs.ver_login()">
+            <ion-icon name="contact"></ion-icon>
+          </button>
+        </ion-buttons>
+    
+    
+        <ion-buttons start>
+          <button ion-button icon-only
+                  *ngIf="_us.activo()">
+            {{ _us.usuario }} <ion-icon name="contact"></ion-icon>
+          </button>
+          <button ion-button icon-only
+                  *ngIf="_us.activo()"
+                  (click)="_us.cerrar_sesion()">
+            <ion-icon name="log-out"></ion-icon>
+          </button>
+        </ion-buttons>
+
+    <ion-title>Incidencias</ion-title>
+    <ion-buttons end>
+
+        <button ion-button icon-only
+                (click)="_cs.ver_estacionamiento()"
+                [navPush]="estacionamiento">
+          <ion-icon name="md-list-box"></ion-icon>
+        </button>
+  
+        &nbsp;
+        &nbsp;
+  
+      </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content [attr.noScroll]="shouldScroll">
+  <div id="map"></div>
+</ion-content>

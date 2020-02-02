@@ -1,0 +1,40 @@
+
+<ion-header>
+
+  <ion-navbar color="dark">
+      <ion-buttons start>
+          <button ion-button icon-only *ngIf="_us.inactivo()" [navPush]="login">
+          <ion-icon name="contact"></ion-icon>
+        </button>
+      </ion-buttons>
+
+
+      <ion-buttons start>
+          <button ion-button icon-only *ngIf="_us.activo()">
+          {{ _us.usuario }} <ion-icon name="contact"></ion-icon>
+        </button>
+          <button ion-button icon-only *ngIf="_us.activo()" (click)="_us.cerrar_sesion()">
+          <ion-icon name="log-out"></ion-icon>
+        </button>
+      </ion-buttons>
+    <ion-title>Mantenimiento</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+  <br>
+    <ion-card> 
+        <ion-card-header style="background-color: #488aff; color: white; font-weight: bold">
+          Uso del Sensor Ultrasonido
+        </ion-card-header>
+        <ion-card-content color="primary">
+          <br>
+          E.Javier Prado (JP1) :              {{contador1}}/5 <br>
+          E.Metro Alf. Ugarte (JP2) :      {{contador2}}/5 <br>
+          E.Mega Plaza <br>
+          E.Plaza San Miguel 
+        </ion-card-content>
+      </ion-card>
+</ion-content>

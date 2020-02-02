@@ -1,0 +1,57 @@
+
+<ion-header>
+
+  <ion-navbar color="dark">
+
+    <ion-buttons left>
+      <button icon-only ion-button
+              (click)="viewCtrl.dismiss()">
+        <ion-icon name="arrow-round-back"></ion-icon>
+      </button>
+    </ion-buttons>
+
+    <ion-title>Iniciar sesión</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <br>
+  <div style="text-align: center">
+    <img src="../../assets/imgs/login.png" style="max-width: 40%">
+  </div>
+
+  <ion-list>
+
+  <ion-item>
+    <ion-label floating>Usuario</ion-label>
+    <ion-input type="email" [(ngModel)]="usuario"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label floating>Contraseña</ion-label>
+    <ion-input type="password" [(ngModel)]="contrasena"></ion-input>
+  </ion-item>
+
+  </ion-list>
+
+  <br>
+  <br>
+
+  <button ion-button block
+          [disabled]=" usuario.length < 5 || contrasena.length < 5 "
+          (click)="loguearse()">
+    Ingresar
+  </button>
+  <br>
+
+  <h6 text-center style="font-size: 14px">¿No tiene una cuenta?</h6>
+
+  <br>
+  <button id="registrarse" ion-button block
+          (click)="_cs.ver_registrarse()">
+    Registrarse
+  </button>
+  <br><br>
+</ion-content>

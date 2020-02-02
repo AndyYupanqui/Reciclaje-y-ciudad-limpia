@@ -1,0 +1,40 @@
+<!--
+  Generated template for the CompraPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar  color="dark">
+
+    <ion-buttons left>
+      <button icon-only ion-button
+              (click)="viewCtrl.dismiss()">
+        <ion-icon name="arrow-round-back"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title>Confirmación de Compra</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <br>
+  <br>
+  <h6 text-center>Ya puedes confirmar tu compra</h6>
+  <h5 text-center style="font-weight: bold"> {{ _us.usuario }} </h5>
+  <br>
+  <br>
+
+  <ion-list>
+    <button ion-item (click)="_cs.pago_tarjeta()"><ion-icon name="ios-card"></ion-icon>  Pagar con tarjeta            <img src="../../assets/imgs/visa.png" height="20" width="32"> <img src="../../assets/imgs/mastercard.png" height="28" width="28"></button>
+    <button ion-item (click)="_cs.pago_paypal()"><ion-icon name="ios-card"></ion-icon>  Pagar con paypal              <img src="../../assets/imgs/paypal.png" height="32" width="32"></button>
+  </ion-list>
+
+  <br>
+  <br>
+  <h5 text-center>Total: {{ _cs.total | currency:'S/. ':symbol }}</h5>
+
+</ion-content>

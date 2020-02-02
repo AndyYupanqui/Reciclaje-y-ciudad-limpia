@@ -1,0 +1,108 @@
+<ion-header>
+
+  <ion-navbar color="dark">
+
+      <ion-buttons start>
+          <button ion-button icon-only
+                  *ngIf="_us.inactivo()"
+                  (click)="_cs.ver_login()">
+            <ion-icon name="contact"></ion-icon>
+          </button>
+        </ion-buttons>
+    
+    
+        <ion-buttons start>
+          <button ion-button icon-only
+                  *ngIf="_us.activo()">
+            {{ _us.usuario }} <ion-icon name="contact"></ion-icon>
+          </button>
+          <button ion-button icon-only
+                  *ngIf="_us.activo()"
+                  (click)="_us.cerrar_sesion()">
+            <ion-icon name="log-out"></ion-icon>
+          </button>
+        </ion-buttons>
+
+    <ion-title>Espacios</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+  <h6 padding>Escoja el espacio que va a reservar en el estacionamiento:</h6>
+  <br>
+  <!-- <ion-list>
+      <button id="reserva" ion-item
+              *ngFor="let espacio of espacios"
+              (click)="_cs.ver_espacio(espacio.id.stringValue)"
+              [navPush]="espaciosdetalle"
+              [navParams]="{ estacionamiento: estacionamiento }"
+      >
+      <ion-icon name="ios-arrow-forward"></ion-icon>
+          Espacio {{espacio.id.stringValue}}
+    </button>
+  </ion-list> -->
+
+  <table id="tablero">
+  
+    <tr>
+      <td><div id="caseta2"></div></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td class="ruta"></td>
+      <td class="ruta"></td>
+      <td class="ruta"></td>
+      <td class="ruta"></td>
+      
+    </tr>
+    <tr>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+     
+    </tr>
+    <tr>
+      <td class="espacio" *ngFor="let espacio of espacios"
+      (click)="_cs.ver_espacio(espacio.id.stringValue)"
+      [navPush]="espaciosdetalle"
+      [navParams]="{ estacionamiento: estacionamiento }">
+        <button *ngIf="espacio.estado_reservacion.stringValue == '1' && espacio.estado_ocupacion.stringValue == '0'" class="espacio2" id="1" style="background-color: #F77917">{{espacio.id.stringValue}}</button>
+        <button *ngIf="espacio.estado_reservacion.stringValue == '0' && espacio.estado_ocupacion.stringValue == '0'" class="espacio2" id="1">{{espacio.id.stringValue}}</button>
+        <button *ngIf="espacio.estado_ocupacion.stringValue == '1'" class="espacio2" id="1" style="background-color: red">{{espacio.id.stringValue}}</button>
+      </td>
+      
+    </tr>
+  </table>
+  <br><br>
+  <ion-card style="margin-top: 100%">
+    <ion-card-content  color="black">
+        <br>
+        <div>
+          <h5 padding style="font-weight: bold">Leyenda:</h5>
+          <div style="display: -webkit-box">
+            <div class="circulo" style="background: green"></div>
+            <span style="margin-left: 5px">Caseta</span>
+            <div class="circulo" style="background: #808080"></div>
+            <span style="margin-left: 5px">Pista</span>
+            <div class="circulo" style="background: #454545"></div>
+            <span style="margin-left: 5px">Espacio Libre</span>
+          </div>
+          <br>
+          <div style="display: -webkit-box">
+            <div class="circulo" style="background: #F77917"></div>
+            <span style="margin-left: 5px">Reservado</span>
+            <div class="circulo" style="background: red"></div>
+            <span style="margin-left: 5px">Ocupado</span>
+          </div>
+          <br><br>
+        </div>
+    </ion-card-content>
+</ion-card>
+
+</ion-content>

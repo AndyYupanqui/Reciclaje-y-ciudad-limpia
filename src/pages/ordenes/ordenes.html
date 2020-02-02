@@ -1,0 +1,61 @@
+<ion-header>
+
+    <ion-navbar color="dark">
+
+        <ion-buttons start>
+            <button ion-button icon-only *ngIf="_us.inactivo()" [navPush]="login">
+            <ion-icon name="contact"></ion-icon>
+          </button>
+        </ion-buttons>
+
+
+        <ion-buttons start>
+            <button ion-button icon-only *ngIf="_us.activo()">
+            {{ _us.usuario }} <ion-icon name="contact"></ion-icon>
+          </button>
+            <button ion-button icon-only *ngIf="_us.activo()" (click)="_us.cerrar_sesion()">
+            <ion-icon name="log-out"></ion-icon>
+          </button>
+        </ion-buttons>
+
+        <ion-title>Reciclaje</ion-title>
+    </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+    <br>
+    <ion-card *ngIf="reservas && estacionamiento != null && _us.id_usuario != null && _cs.estado_reserva == true && reservas.estado != 'Finalizado'">
+        <ion-item color="primary">
+            <ion-icon name="pin" slot="start"></ion-icon>
+            <ion-label style="font-weight: bold">Reserva 1</ion-label>
+            <ion-label *ngIf="_cs.cronometro" style="font-weight: bold">Tiempo Restante: {{_cs.cronometro}}</ion-label>
+        </ion-item>
+
+        <ion-card-content color="primary">
+            <br>
+            <div style="text-align: right">
+                <button ion-button [navPush]="ordenesDetalle" [navParams]="{usuario : usuario, reserva : reservas, espacio : espacio}">Ver</button>
+                <button ion-button color="danger" (click)="eliminarReserva()">Eliminar</button>
+                <!-- <button *ngIf="espacio && espacio.estado_ocupacion.stringValue == '0'" ion-button color="danger" (click)="eliminarReserva()">Eliminar</button>
+                <button *ngIf="espacio && espacio.estado_ocupacion.stringValue == '1'" ion-button disabled color="danger" (click)="eliminarReserva()">Eliminar</button> -->
+            </div>
+            <br>
+            <span *ngIf="estacionamiento">{{estacionamiento.nombre.stringValue}} - </span>
+            <span *ngIf="espacio">{{espacio.id.stringValue}}</span>
+        </ion-card-content>
+    </ion-card>
+
+
+</ion-content>
+
+<ion-content *ngIf="estacionamiento == null || _us.id_usuario == null || _cs.estado_reserva == false || reservas.estado == 'Finalizado'">
+
+    <div text-center class="carrito_vacio">
+        <ion-icon name="ios-list-box-outline" class="icon-5x">
+        </ion-icon>
+        <br> No tienes reciclajes
+    </div>
+
+</ion-content>
