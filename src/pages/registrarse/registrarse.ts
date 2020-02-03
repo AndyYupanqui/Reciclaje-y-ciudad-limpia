@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams, ViewController, AlertController } from 'ionic-angular';
-import { Todo, RegistroProvider } from '../../providers/registro/registro';
+import { Usuario, RegistroProvider } from '../../providers/registro/registro';
 
 import { CarritoProvider } from "../../providers/carrito/carrito";
 import { UsuarioProvider } from "../../providers/usuario/usuario";
@@ -12,16 +12,15 @@ import { UsuarioProvider } from "../../providers/usuario/usuario";
 })
 export class RegistrarsePage {
 
-  todos: Todo[];
-  conductor: Todo = {id: "75159634", nombres:"Kevin Gustavo", apellidos:"Rojas Orihuela", celular:"987456123",
-                    correo:"kevin.rojas@gmial.com", placa:"FS5-741", usuario:"kevin.rojas", contraseña:"987123", clave:"kevin.rojas987123"};
+  usuarios: Usuario[];
+  // conductor: Usuario = {id: "75159634", nombres:"Kevin Gustavo", apellidos:"Rojas Orihuela", celular:"987456123",
+  //                   correo:"kevin.rojas@gmial.com", placa:"FS5-741", usuario:"kevin.rojas", contraseña:"987123", clave:"kevin.rojas987123"};
 
   dni: string="";
   nombres: string="";
   apellidos: string="";
   celular: string="";
   correo:  string ="";
-  placa: string="";
   usuario: string="";
   contrasena: string="";
   clave: string="";
@@ -52,9 +51,9 @@ export class RegistrarsePage {
 
   guardarUsuario(){
     this.clave = this.usuario+this.contrasena;
-    var conductor: Todo = {id: this.dni, nombres: this.nombres, apellidos: this.apellidos, celular: this.celular,
-                    correo: this.correo, placa: this.placa, usuario: this.usuario, contraseña: this.contrasena, clave: this.clave};
-    this.registroProvider.addTodo(conductor, conductor.id);
+    var conductor: Usuario = {id: this.dni, nombres: this.nombres, apellidos: this.apellidos, celular: this.celular,
+                    correo: this.correo, usuario: this.usuario, contraseña: this.contrasena, clave: this.clave};
+    this.registroProvider.addUsuario(conductor, conductor.id);
     this.alertCtrl.create({
       title: "Felicidades",
       subTitle: "Registro de cuenta con éxito",
@@ -64,6 +63,6 @@ export class RegistrarsePage {
   }
 
   remove(item){
-    this.registroProvider.removeTodo(item.id);
+    this.registroProvider.removeUsuario(item.id);
   }
 }

@@ -5,17 +5,61 @@ import { Observable } from 'rxjs-compat';
 import { map } from 'rxjs/operators';
 import 'rxjs-compat/add/operator/map';
 
-export interface Todo{
+export interface Usuario{
   id?: string;
   nombres: string;
   apellidos: string;
   celular: string;
   correo: string;
-  placa: string;
   usuario: string;
   contraseña: string;
   clave: string;
 }
+
+export interface Comentario{
+  id?: string;
+  id_usuario: DocumentReference;
+  id_incidencia: DocumentReference;
+  descripcion: string;
+  fecha: string;
+  hora: string;
+}
+
+export interface Reciclaje{
+  id?: string;
+  id_usuario: DocumentReference;
+  tipo_reciclaje: string;
+  cantidad: number;
+}
+
+export interface Incidencia{
+  id?: string;
+  id_usuario: DocumentReference; 
+  id_residuo: DocumentReference;
+  titulo: string,
+  descripcion: string;
+  ubicacion: string;
+  latitud: number;
+  longitud: number;
+  volumen: number;
+  imagen: string;
+  fecha: string;
+  hora: string;
+}
+
+export interface Recomendacion{
+  id?: string;
+  imagen: string;
+}
+
+export interface Residuo{
+  id?: string;
+  tipo_residuo: string;
+  descripcion: string;
+}
+
+
+//============================================================================
 
 export interface Estacionamiento{
   id?: string;
@@ -48,8 +92,23 @@ export interface Reserva{
 
 @Injectable()
 export class RegistroProvider {
-  todoCollection: AngularFirestoreCollection<Todo>;
-  todos: Observable<Todo[]>;
+  usuarioCollection: AngularFirestoreCollection<Usuario>;
+  usuarios: Observable<Usuario[]>;
+  comentarioCollection: AngularFirestoreCollection<Comentario>;
+  comentarios: Observable<Comentario[]>;
+  reciclajeCollection: AngularFirestoreCollection<Reciclaje>;
+  reciclajes: Observable<Reciclaje[]>;
+  incidenciaCollection: AngularFirestoreCollection<Incidencia>;
+  incidencias: Observable<Incidencia[]>;
+  recomendacionCollection: AngularFirestoreCollection<Recomendacion>;
+  recomendaciones: Observable<Recomendacion[]>;
+  residuoCollection: AngularFirestoreCollection<Residuo>;
+  residuos: Observable<Residuo[]>;
+
+
+
+
+
   estacionamientos: Observable<Estacionamiento[]>;
   espacios: Observable<Espacio[]>;
   reservas: Observable<Reserva[]>;
@@ -60,16 +119,28 @@ export class RegistroProvider {
   espacio: any;
   reserva: any;
 
+
   constructor(db: AngularFirestore) {
-    this.todoCollection = db.collection('Usuario');
+    this.usuarioCollection = db.collection('Usuario');
+    this.comentarioCollection = db.collection('Comentario');
+    this.reciclajeCollection = db.collection('Reciclaje');
+    this.incidenciaCollection = db.collection('Incidencia');
+    this.recomendacionCollection = db.collection('Recomendacion');
+    this.residuoCollection = db.collection('Residuo');
+
+
+//============================================================================================
+
     this.estacionamientoCollection = db.collection('Estacionamiento');
     this.espacioCollection = db.collection('Espacio');
     this.reservaCollection = db.collection('Reserva');
     this.user = db;
     this.espacio = db;
     this.reserva = db;
+
+   
     
-    this.todos = this.todoCollection.snapshotChanges().pipe(
+    this.usuarios = this.usuarioCollection.snapshotChanges().pipe(
       map(actions => {
         return actions.map(a => {
           const data = a.payload.doc.data();
@@ -78,6 +149,60 @@ export class RegistroProvider {
         });
       })
     );
+
+    this.comentarios = this.comentarioCollection.snapshotChanges().pipe(
+      map(actions => {
+        return actions.map(a => {
+          const data = a.payload.doc.data();
+          const id = a.payload.doc.id;
+          return {id, ...data};
+        });
+      })
+    );
+
+    this.reciclajes = this.reciclajeCollection.snapshotChanges().pipe(
+      map(actions => {
+        return actions.map(a => {
+          const data = a.payload.doc.data();
+          const id = a.payload.doc.id;
+          return {id, ...data};
+        });
+      })
+    );
+
+    this.incidencias = this.incidenciaCollection.snapshotChanges().pipe(
+      map(actions => {
+        return actions.map(a => {
+          const data = a.payload.doc.data();
+          const id = a.payload.doc.id;
+          return {id, ...data};
+        });
+      })
+    );
+
+    this.recomendaciones = this.recomendacionCollection.snapshotChanges().pipe(
+      map(actions => {
+        return actions.map(a => {
+          const data = a.payload.doc.data();
+          const id = a.payload.doc.id;
+          return {id, ...data};
+        });
+      })
+    );
+
+    this.residuos = this.residuoCollection.snapshotChanges().pipe(
+      map(actions => {
+        return actions.map(a => {
+          const data = a.payload.doc.data();
+          const id = a.payload.doc.id;
+          return {id, ...data};
+        });
+      })
+    );
+
+//==========================================================================================================0
+
+
 
     this.estacionamientos = this.estacionamientoCollection.snapshotChanges().pipe(
       map(actions => {
@@ -110,26 +235,96 @@ export class RegistroProvider {
     );
   }
 
-  getTodos(){
-    return this.todos;
+
+
+  getUsuarios(){
+    return this.usuarios;
+  }
+  getUsuario1(id){
+    return this.usuarioCollection.doc<Usuario>(id).valueChanges();
+  }
+  
+  getUsuario(clave){
+    return this.user.collection('Usuario', ref => ref.where('clave', '==', clave)).valueChanges();
+  }
+  
+  updateUsuario(usuario: Usuario, id: string){
+    return this.usuarioCollection.doc(id).update(usuario);
+  }
+  
+  removeUsuario(id){
+    return this.usuarioCollection.doc(id).delete();
+  }
+  
+  addUsuario(usuario: Usuario, id: string){
+    return this.usuarioCollection.doc(id).set(usuario);
   }
 
+  getComentarios(){
+    return this.comentarios;
+  }
+
+  updateComentarios(comentario: Comentario, id: string){
+    return this.comentarioCollection.doc(id).update(comentario);
+  }
+
+  removeComentario(id){
+    return this.comentarioCollection.doc(id).delete();
+  }
+  
+  addComentario(comentario: Comentario, id: string){
+    return this.comentarioCollection.doc(id).set(comentario);
+  }
+
+  addReciclaje(reciclaje: Reciclaje, id: string){
+    return this.reciclajeCollection.doc(id).set(reciclaje);
+  }
+
+  addIncidencia(incidencia: Incidencia, id: string){
+    return this.incidenciaCollection.doc(id).set(incidencia);
+  }
+
+  getIncidencias(){
+    return this.incidencias;
+  }
+
+  updateIncidencias(incidencia: Incidencia, id: string){
+    return this.incidenciaCollection.doc(id).update(incidencia);
+  }
+  
+  removeIncidencia(id){
+    return this.incidenciaCollection.doc(id).delete();
+  }
+
+  getRecomendaciones(){
+    return this.recomendaciones;
+  }
+
+  getResiduos(){
+    return this.residuos;
+  }
+
+  
+
+
+
+//===============================================================================================================
+
+  
   getEstacionamientos(){
     return this.estacionamientos;
   }
 
-  getTodo(id){
-    return this.todoCollection.doc<Todo>(id).valueChanges();
-  }
-
-  getUsuario(clave){
-    return this.user.collection('Usuario', ref => ref.where('clave', '==', clave)).valueChanges();
-  }
 
   getEspacio(id){
     return this.espacioCollection.doc<Espacio>(id).valueChanges();
   }
 
+  updateEspacio(espacio: Espacio, id: string){
+    return this.espacioCollection.doc(id).update(espacio);
+  }
+
+  
   getReservas(id_usuario){
     return this.reserva.collection('Reserva', ref => ref.where('id_usuario', '==', id_usuario)).valueChanges();
   }
@@ -141,15 +336,7 @@ export class RegistroProvider {
   getReserva(fecha){
     return this.reservaCollection.doc<Reserva>(fecha).valueChanges();
   }
-
-  updateTodo(todo: Todo, id: string){
-    return this.todoCollection.doc(id).update(todo);
-  }
-
-  updateEspacio(espacio: Espacio, id: string){
-    return this.espacioCollection.doc(id).update(espacio);
-  }
-
+  
   updateReserva(reserva: Reserva, id: string){
     return this.reservaCollection.doc(id).update(reserva);
   }
@@ -161,17 +348,9 @@ export class RegistroProvider {
   updateReservaEstado2(id: string){
     this.reservaCollection.doc(id).update({"estado" : "Finalizado"});
   }
-
-  addTodo(todo: Todo, id: string){
-    return this.todoCollection.doc(id).set(todo);
-  }
-
+  
   addReserva(reserva: Reserva, id: string){
     return this.reservaCollection.doc(id).set(reserva);
-  }
-
-  removeTodo(id){
-    return this.todoCollection.doc(id).delete();
   }
 
   removeReserva(id){
@@ -186,5 +365,4 @@ export class RegistroProvider {
   //   //   });
   //   // });
   }
-
 }
