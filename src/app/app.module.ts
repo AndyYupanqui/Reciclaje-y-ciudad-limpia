@@ -25,11 +25,11 @@ import { CarritoProvider, UsuarioProvider, ProductosProvider, RegistroProvider  
 
 // Paginas
 import { CarritoPage,
-         CategoriasPage,
+         MapaPage,
          LoginPage,
          OrdenesPage,
          OrdenesDetallePage,
-         PorCategoriasPage,
+         PublicacionPage,
          TabsPage,
          BusquedaPage,
          ProductoPage,
@@ -43,8 +43,10 @@ import { CarritoPage,
          EspaciosDetallePage,
          HistorialPage,
          ReportesPage,
-         MantenimientoPage} from "../pages/index.paginas";
-//import { RegistroProvider } from '../providers/registro/registro';
+         MantenimientoPage,
+         ResiduosPage,
+         VolumenPage,
+         FotoPage} from "../pages/index.paginas";
 
 export const firebaseConfig = {
   apiKey: "AIzaSyDKkhH0qtvg7FFP5k8SM4eY1gKVavB-KxE",
@@ -60,11 +62,11 @@ export const firebaseConfig = {
     MyApp,
     HomePage,
     CarritoPage,
-    CategoriasPage,
+    MapaPage,
     LoginPage,
     OrdenesPage,
     OrdenesDetallePage,
-    PorCategoriasPage,
+    PublicacionPage,
     TabsPage,
     BusquedaPage,
     ProductoPage,
@@ -78,7 +80,10 @@ export const firebaseConfig = {
     EspaciosDetallePage,
     HistorialPage,
     ReportesPage,
-    MantenimientoPage
+    MantenimientoPage,
+    ResiduosPage,
+    VolumenPage,
+    FotoPage
   ],
   imports: [
     BrowserModule,
@@ -93,11 +98,11 @@ export const firebaseConfig = {
     MyApp,
     HomePage,
     CarritoPage,
-    CategoriasPage,
+    MapaPage,
     LoginPage,
     OrdenesPage,
     OrdenesDetallePage,
-    PorCategoriasPage,
+    PublicacionPage,
     TabsPage,
     BusquedaPage,
     ProductoPage,
@@ -111,7 +116,10 @@ export const firebaseConfig = {
     EspaciosDetallePage,
     HistorialPage,
     ReportesPage,
-    MantenimientoPage
+    MantenimientoPage,
+    ResiduosPage,
+    VolumenPage,
+    FotoPage
   ],
   providers: [
     StatusBar,

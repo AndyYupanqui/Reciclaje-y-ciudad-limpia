@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { UsuarioProvider } from '../../providers/usuario/usuario';
-import { HomePage, CategoriasPage, OrdenesPage, HistorialPage, ReportesPage, MantenimientoPage } from "../index.paginas";
+import { HomePage, MapaPage, OrdenesPage, HistorialPage, ReportesPage, MantenimientoPage, PublicacionPage } from "../index.paginas";
 
 
 @Component({
@@ -14,10 +14,11 @@ export class TabsPage {
   }
 
   tab1 = HomePage;
-  tab2 = CategoriasPage;
-  tab3 = OrdenesPage;
-  tab4 = HistorialPage;
-  tab5 = ReportesPage;
-  tab6 = MantenimientoPage;
+  tab2 = PublicacionPage
+  tab3 = MapaPage;
+  tab4 = OrdenesPage;
+  tab5 = HistorialPage;
+  tab6 = ReportesPage;
+  tab7 = MantenimientoPage;
 
 }

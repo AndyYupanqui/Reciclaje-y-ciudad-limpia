@@ -1,0 +1,71 @@
+
+<ion-header>
+  <ion-navbar color="dark">
+
+    <ion-buttons start>
+      <button ion-button icon-only
+              *ngIf="_us.inactivo()"
+              (click)="_cs.ver_login()">
+        Login<ion-icon name="contact"></ion-icon>
+      </button>
+    </ion-buttons>
+
+
+    <ion-buttons start>
+      <button ion-button icon-only
+              *ngIf="_us.activo()">
+        {{ _us.usuario }} <ion-icon name="contact"></ion-icon>
+      </button>
+      <button ion-button icon-only
+              *ngIf="_us.activo()"
+              (click)="_us.cerrar_sesion()">
+        <ion-icon name="log-out"></ion-icon>
+      </button>
+    </ion-buttons>
+
+
+    <ion-title>
+      Publicar Incidencia
+    </ion-title>
+
+  </ion-navbar>
+</ion-header>
+
+
+
+
+<ion-content padding>
+
+  <div style="text-align: center">
+    <img src="../../assets/imgs/publicar.jpg" style="max-width: 80%; padding-top: 42px">
+  </div>
+  <br><br>
+  <button id="publicacion" ion-button block (click)="_us.ver_residuo()"
+          >
+    Publicar
+  </button>
+  <!-- <ion-list radio-group>
+    <ion-list-header>
+      Selecciona el tipo de residuo
+    </ion-list-header>
+    <ion-item>
+      <ion-label>PHP</ion-label>
+      <ion-radio checked="true" value="PHP" (click)="cambiar()"></ion-radio>
+    </ion-item>
+  
+    <ion-item>
+      <ion-label>Ruby</ion-label>
+      <ion-radio value="Ruby"></ion-radio>
+    </ion-item>
+  
+    <ion-item>
+      <ion-label>Java</ion-label>
+      <ion-radio value="Java"></ion-radio>
+    </ion-item>
+  </ion-list>
+</ion-content>
+
+<ion-content *ngIf="estado == false" padding>
+  <br><br>
+    <h1>YAAAA</h1> -->
+</ion-content>

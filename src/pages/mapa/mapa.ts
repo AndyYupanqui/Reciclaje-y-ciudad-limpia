@@ -5,7 +5,6 @@ import { NavController, NavParams, Platform } from 'ionic-angular';
 import { CarritoProvider } from "../../providers/carrito/carrito";
 import { UsuarioProvider } from "../../providers/usuario/usuario";
 import { RegistroProvider } from '../../providers/registro/registro';
-import { PorCategoriasPage } from "../index.paginas";
 import { EstacionamientoPage } from "../index.paginas";
 import { PhotoViewer } from '@ionic-native/photo-viewer';
 
@@ -14,13 +13,12 @@ import 'rxjs-compat/add/operator/map';
 import * as Leaflet from 'leaflet';
 
 @Component({
-  selector: 'page-categorias',
-  templateUrl: 'categorias.html',
+  selector: 'page-mapa',
+  templateUrl: 'mapa.html',
 })
-export class CategoriasPage {
+export class MapaPage {
   //map: any;
 
-  porCategorias = PorCategoriasPage;
   estacionamiento = EstacionamientoPage;
   view = new PhotoViewer();
 

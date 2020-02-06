@@ -1,11 +1,11 @@
 
 export { HomePage } from "./home/home";
 export { CarritoPage } from "./carrito/carrito";
-export { CategoriasPage} from "./categorias/categorias";
+export { MapaPage} from "./mapa/mapa";
 export { LoginPage } from "./login/login";
 export { OrdenesPage } from "./ordenes/ordenes";
 export { OrdenesDetallePage } from "./ordenes-detalle/ordenes-detalle";
-export { PorCategoriasPage } from "./por-categorias/por-categorias";
+export { PublicacionPage } from "./publicacion/publicacion";
 export { ProductoPage } from "./producto/producto";
 export { TabsPage } from "./tabs/tabs";
 export { BusquedaPage } from "./busqueda/busqueda";
@@ -20,3 +20,6 @@ export { EspaciosDetallePage } from "./espacios-detalle/espacios-detalle";
 export { HistorialPage } from "./historial/historial";
 export { ReportesPage } from "./reportes/reportes";
 export { MantenimientoPage } from "./mantenimiento/mantenimiento";
+export { ResiduosPage } from "./residuos/residuos";
+export { VolumenPage } from "./volumen/volumen";
+export { FotoPage } from "./foto/foto";

@@ -1,6 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Http} from '@angular/http';
 import { RegistroProvider } from '../../providers/registro/registro';
+import { ModalController } from "ionic-angular";
+import { LoginPage } from "../../pages/index.paginas";
+import { ResiduosPage } from "../../pages/index.paginas";
 //import 'rxjs/add/operator/map';
 import 'rxjs-compat/add/operator/map';
 
@@ -22,6 +25,7 @@ export class UsuarioProvider {
   constructor(public http: Http,
               private registroProvider: RegistroProvider,
               private alertCtrl: AlertController,
+              private modalCtrl: ModalController,
               private platform: Platform,
               private storage: Storage) {
     this.cargar_storage();
@@ -161,6 +165,21 @@ export class UsuarioProvider {
 
     return promesa;
 
+  }
+
+  ver_residuo(){
+
+    let modal:any;
+
+    if( !this.token ){
+      // mostrar el login
+      modal = this.modalCtrl.create( LoginPage );
+      modal.present();
+    }else{
+
+    modal = this.modalCtrl.create( ResiduosPage );
+    modal.present();
+    }
   }
 
 }

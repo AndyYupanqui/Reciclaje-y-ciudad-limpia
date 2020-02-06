@@ -1,0 +1,51 @@
+<ion-header>
+
+  <ion-navbar color="dark">
+
+    <ion-buttons left>
+      <button icon-only ion-button
+              (click)="viewCtrl.dismiss()">
+        <ion-icon name="arrow-round-back"></ion-icon>
+      </button>
+    </ion-buttons>
+
+    <ion-title>Publicar Incidencia</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  <br>
+  <ion-card>
+      <ion-item color="primary">
+          <ion-icon name="pin" slot="start"></ion-icon>
+          <ion-label style="font-weight: bold;">Descripción</ion-label>
+      </ion-item>
+
+      <ion-card-content color="primary">
+        <ion-input type="text"></ion-input>
+        <br><br><br>
+      </ion-card-content>
+  </ion-card>
+
+  <br><br>
+  <ion-card>
+      <ion-item color="primary">
+          <ion-icon name="pin" slot="start"></ion-icon>
+          <ion-label style="font-weight: bold;">Subir Foto</ion-label>
+      </ion-item>
+
+      <ion-card-content color="primary">
+        <!-- <ion-input type="text"></ion-input> -->
+        <br><br><br>
+      </ion-card-content>
+  </ion-card>
+  <br><br>
+
+  <button id="registrar" ion-button block
+          >
+    Registrar
+  </button>
+</ion-content>

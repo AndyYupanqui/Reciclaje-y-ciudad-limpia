@@ -8,7 +8,7 @@ import { ModalController } from "ionic-angular";
 import { Estacionamiento, Espacio, RegistroProvider } from "../../providers/registro/registro";
 
 // paginas del modal
-import { LoginPage, RegistrarsePage, TarjetaPage, PaypalPage} from "../../pages/index.paginas";
+import { LoginPage, RegistrarsePage, TarjetaPage, PaypalPage, VolumenPage, FotoPage} from "../../pages/index.paginas";
 
 @Injectable()
 export class CarritoProvider {
@@ -36,6 +36,20 @@ export class CarritoProvider {
 
       modal = this.modalCtrl.create( LoginPage );
       modal.present();
+  }
+
+  ver_volumen(){
+    let modal:any;
+
+    modal = this.modalCtrl.create( VolumenPage );
+    modal.present();
+  }
+
+  ver_foto(){
+    let modal:any;
+
+    modal = this.modalCtrl.create( FotoPage );
+    modal.present();
   }
 
   ver_estacionamiento(){

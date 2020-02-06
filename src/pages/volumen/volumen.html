@@ -1,0 +1,55 @@
+<ion-header>
+
+  <ion-navbar color="dark">
+
+    <ion-buttons left>
+      <button icon-only ion-button
+              (click)="viewCtrl.dismiss()">
+        <ion-icon name="arrow-round-back"></ion-icon>
+      </button>
+    </ion-buttons>
+
+    <ion-title>Publicar Incidencia</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  <ion-list radio-group>
+    <ion-list-header>
+      Selecciona el volumen del residuo
+    </ion-list-header>
+    <ion-item>
+      <ion-label><ion-img src="../../assets/imgs/Iconos/Volumen/cabe_mano.png" alt=""></ion-img>   Cabe en una mano</ion-label>
+      <ion-radio checked="true" value="mano" (click)="_cs.ver_foto()"></ion-radio>
+    </ion-item>
+  
+    <ion-item>
+      <ion-label><ion-img src="../../assets/imgs/Iconos/Volumen/cabe_mochila.png" alt=""></ion-img>   Cabe en una mochila</ion-label>
+      <ion-radio value="mochila" (click)="_cs.ver_foto()"></ion-radio>
+    </ion-item>
+  
+    <ion-item>
+      <ion-label><ion-img src="../../assets/imgs/Iconos/Volumen/cabe_maletero.png" alt=""></ion-img>   Cabe en un maletero</ion-label>
+      <ion-radio value="maletero" (click)="_cs.ver_foto()"></ion-radio>
+    </ion-item>
+
+    <ion-item>
+      <ion-label><ion-img src="../../assets/imgs/Iconos/Volumen/cabe_contenedor.png" alt=""></ion-img>   Cabe en un contenedor</ion-label>
+      <ion-radio value="contenedor" (click)="_cs.ver_foto()"></ion-radio>
+    </ion-item>
+    
+    <ion-item>
+      <ion-label><ion-img src="../../assets/imgs/Iconos/Volumen/cabe_camion.png" alt=""></ion-img>   Cabe en un camión</ion-label>
+      <ion-radio value="camion" (click)="_cs.ver_foto()"></ion-radio>
+    </ion-item>
+
+    <ion-item>
+      <ion-label><ion-img src="../../assets/imgs/Iconos/Volumen/mas_grande.png" alt=""></ion-img>   Más grande</ion-label>
+      <ion-radio value="grande" (click)="_cs.ver_foto()"></ion-radio>
+    </ion-item>
+  </ion-list>
+
+</ion-content>
