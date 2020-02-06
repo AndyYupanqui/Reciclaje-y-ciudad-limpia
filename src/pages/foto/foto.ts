@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams, ViewController } from 'ionic-angular';
+import { Camera, CameraOptions } from '@ionic-native/camera';
 
 
 @Component({
@@ -8,9 +9,27 @@ import { NavController, NavParams, ViewController } from 'ionic-angular';
 })
 export class FotoPage {
 
+  image: string = null;
+
   constructor(public navCtrl: NavController, 
               public navParams: NavParams,
-              private viewCtrl: ViewController,) {
+              private viewCtrl: ViewController,
+              private camera: Camera) {
   }
 
+  getPicture(){
+    let options: CameraOptions = {
+      destinationType: this.camera.DestinationType.DATA_URL,
+      targetWidth: 1000,
+      targetHeight: 1000,
+      quality: 100
+    }
+    this.camera.getPicture( options )
+    .then(imageData => {
+      this.image = `data:image/jpeg;base64,${imageData}`;
+    })
+    .catch(error =>{
+      console.error( error );
+    });
+  }
 }

@@ -38,7 +38,8 @@
       </ion-item>
 
       <ion-card-content color="primary">
-        <!-- <ion-input type="text"></ion-input> -->
+        <button ion-button block (click)="getPicture()">Toma una foto</button>
+        <img [src]="image" *ngIf="image" />
         <br><br><br>
       </ion-card-content>
   </ion-card>

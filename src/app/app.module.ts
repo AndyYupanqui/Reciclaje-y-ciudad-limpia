@@ -7,6 +7,7 @@ import { Geolocation } from '@ionic-native/geolocation';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { PhotoViewer } from '@ionic-native/photo-viewer';
+import { Camera } from '@ionic-native/camera';
 
 import { HttpModule } from '@angular/http';
 
@@ -130,7 +131,8 @@ export const firebaseConfig = {
     RegistroProvider,
     Geolocation,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    PhotoViewer
+    PhotoViewer,
+    Camera
   ]
 })
 export class AppModule {}
