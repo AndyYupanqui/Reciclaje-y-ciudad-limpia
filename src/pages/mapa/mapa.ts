@@ -83,9 +83,9 @@ export class MapaPage {
           Leaflet.marker({lat: -11.995110539390058, lng: -77.0609673857689}).addTo(map).bindPopup("Estacionamiento Mega Plaza");
           Leaflet.marker({lat: -12.077637717148855, lng: -77.08165258169176}).addTo(map).bindPopup("Estacionamiento Plaza San Miguel");
           //Leaflet.marker({lat: -12.057155, lng: -77.0801286}).addTo(map).bindPopup("Puerta 03 UNMSM <img src='/assets/imgs/Pta 3.jpg' alt='' style='max-width:100%;width:auto;height:auto;' onclick=''>");
-          Leaflet.marker({lat: -12.059382, lng: -77.0794179}).addTo(map).bindPopup("Puerta 02 UNMSM <img src='/assets/imgs/Pta3.jpg' alt='' style='max-width:100%;width:auto;height:auto;' onclick=''>");
-          Leaflet.marker({lat: -12.0537523, lng: -77.0850158}).addTo(map).bindPopup("Puerta 07 UNMSM <img src='/assets/imgs/Pta3.jpg' alt='' style='max-width:100%;width:auto;height:auto;' onclick=''>");
-          Leaflet.marker({lat: -12.0610049, lng: -77.0864591}).addTo(map).bindPopup("Puerta 01   UNMSM <img src='/assets/imgs/Pta3.jpg' alt='' style='max-width:100%;width:auto;height:auto;' onclick=''>");
+          Leaflet.marker({lat: -12.059382, lng: -77.0794179}).addTo(map).bindPopup("Puerta 02 UNMSM <img src='/assets/imgs/Pta3.png' alt='' style='max-width:100%;width:auto;height:auto;' onclick=''>");
+          Leaflet.marker({lat: -12.0537523, lng: -77.0850158}).addTo(map).bindPopup("Puerta 07 UNMSM <img src='/assets/imgs/Pta3.png' alt='' style='max-width:100%;width:auto;height:auto;' onclick=''>");
+          Leaflet.marker({lat: -12.0610049, lng: -77.0864591}).addTo(map).bindPopup("Puerta 01   UNMSM <img src='/assets/imgs/Pta3.png' alt='' style='max-width:100%;width:auto;height:auto;' onclick=''>");
 
           let ubicacion = document.getElementsByClassName('leaflet-marker-icon');
           for(var j=1; j<ubicacion.length; j++){
