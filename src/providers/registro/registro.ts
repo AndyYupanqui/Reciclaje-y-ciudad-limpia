@@ -36,12 +36,12 @@ export interface Incidencia{
   id?: string;
   id_usuario: DocumentReference; 
   id_residuo: DocumentReference;
+  id_volumen: DocumentReference;
   titulo: string,
   descripcion: string;
   ubicacion: string;
   latitud: number;
   longitud: number;
-  volumen: number;
   imagen: string;
   fecha: string;
   hora: string;
@@ -54,8 +54,14 @@ export interface Recomendacion{
 
 export interface Residuo{
   id?: string;
-  tipo_residuo: string;
-  descripcion: string;
+  tipo: string;
+  img: string;
+}
+
+export interface Volumen{
+  id?: string;
+  tipo: string;
+  img: string;
 }
 
 
@@ -104,6 +110,8 @@ export class RegistroProvider {
   recomendaciones: Observable<Recomendacion[]>;
   residuoCollection: AngularFirestoreCollection<Residuo>;
   residuos: Observable<Residuo[]>;
+  volumenes: Observable<Volumen[]>;
+  volumenCollection: AngularFirestoreCollection<Volumen>;
 
 
 
@@ -127,6 +135,7 @@ export class RegistroProvider {
     this.incidenciaCollection = db.collection('Incidencia');
     this.recomendacionCollection = db.collection('Recomendacion');
     this.residuoCollection = db.collection('Residuo');
+    this.volumenCollection = db.collection('Volumen');
 
 
 //============================================================================================
@@ -191,6 +200,16 @@ export class RegistroProvider {
     );
 
     this.residuos = this.residuoCollection.snapshotChanges().pipe(
+      map(actions => {
+        return actions.map(a => {
+          const data = a.payload.doc.data();
+          const id = a.payload.doc.id;
+          return {id, ...data};
+        });
+      })
+    );
+
+    this.volumenes = this.volumenCollection.snapshotChanges().pipe(
       map(actions => {
         return actions.map(a => {
           const data = a.payload.doc.data();
@@ -302,6 +321,10 @@ export class RegistroProvider {
 
   getResiduos(){
     return this.residuos;
+  }
+
+  getVolumenes(){
+    return this.volumenes;
   }
 
   

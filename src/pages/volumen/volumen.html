@@ -17,11 +17,18 @@
 
 <ion-content padding>
 
-  <ion-list radio-group>
+  <ion-list radio-group [(ngModel)]="_cs.id_volumen">
     <ion-list-header>
       Selecciona el volumen del residuo
     </ion-list-header>
-    <ion-item>
+
+    <ion-item *ngFor="let volumen of _cs.volumenes">
+      <ion-label><img src={{volumen.img}} alt=""/>   {{volumen.tipo}}</ion-label>
+      <ion-radio *ngIf="volumen.id=='1'" checked="true"  value={{volumen.id}} (click)="_cs.ver_foto()"></ion-radio>
+      <ion-radio *ngIf="volumen.id!='1'" value={{volumen.id}} (click)="_cs.ver_foto()"></ion-radio>
+    </ion-item>
+
+    <!-- <ion-item>
       <ion-label><ion-img src="../../assets/imgs/Iconos/Volumen/cabe_mano.png" alt=""></ion-img>   Cabe en una mano</ion-label>
       <ion-radio checked="true" value="mano" (click)="_cs.ver_foto()"></ion-radio>
     </ion-item>
@@ -49,7 +56,7 @@
     <ion-item>
       <ion-label><ion-img src="../../assets/imgs/Iconos/Volumen/mas_grande.png" alt=""></ion-img>   Más grande</ion-label>
       <ion-radio value="grande" (click)="_cs.ver_foto()"></ion-radio>
-    </ion-item>
+    </ion-item> -->
   </ion-list>
 
 </ion-content>

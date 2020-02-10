@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="io.ionic.parkingfenix" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-    <name>Parking Fenix</name>
-    <description>Parking Fenix para la reserva de espacios en diversas playas de estacionamiento.</description>
+<widget id="io.ionic.reciclaje" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <name>Reciclaje</name>
+    <description>Reciclaje y ciudad limpia.</description>
     <author email="andyyupanqui@gmail.com" href="http://ionicframework.com/">Andy Yupanqui</author>
     <content src="index.html" />
     <access origin="*" />

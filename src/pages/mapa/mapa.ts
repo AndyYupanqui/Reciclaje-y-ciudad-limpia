@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, NavParams, Platform } from 'ionic-angular';
 //import { Geolocation } from '@ionic-native/geolocation';
 
-import { CarritoProvider } from "../../providers/carrito/carrito";
+import { CarritoProvider } from '../../providers/carrito/carrito';
 import { UsuarioProvider } from "../../providers/usuario/usuario";
 import { RegistroProvider } from '../../providers/registro/registro';
 import { EstacionamientoPage } from "../index.paginas";
@@ -58,14 +58,21 @@ export class MapaPage {
      //when we have a location draw a marker and accuracy circle
      function onLocationFound(e) {
         var radius = Math.round(e.accuracy / 2);
- 
+        //console.log(e.latlng.lat, e.latlng.lng);
         Leaflet.marker(e.latlng).addTo(map)
            .bindPopup("Estás dentro de los " + radius + " metros desde este punto").openPopup();
 
-
         _rs.getIncidencias().subscribe(res => {
           for(var i = 0; i<res.length; i++){
-            Leaflet.marker({lat: res[i].latitud, lng: res[i].longitud}).addTo(map).bindPopup(res[i].titulo + "<img src="+res[i].imagen+" alt='' style='max-width:100%;width:auto;height:auto;' onclick=''>");
+            var titulo =  res[i].titulo;
+            var imagen = res[i].imagen;
+            Leaflet.marker({lat: res[i].latitud, lng: res[i].longitud}).addTo(map).bindPopup(res[i].titulo + "<img src="+res[i].imagen+" alt='' style='max-width:100%;width:auto;height:auto;' onclick=''>").on('click', ()=> {
+              var photoUrl =  imagen;   
+              var title = titulo;
+              var options = {
+                share: true
+              }
+              view.show(photoUrl, title, options);});
           }
 
           Leaflet.marker({lat: -12.046848, lng: -77.001806}).addTo(map).bindPopup("Estacionamiento La Muralla <img src='https://e.rpp-noticias.io/normal/2018/12/06/573857_721892.jpg' style='max-width:100%;width:auto;height:auto;'>")

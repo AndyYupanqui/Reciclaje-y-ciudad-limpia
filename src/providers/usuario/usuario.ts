@@ -4,6 +4,7 @@ import { RegistroProvider } from '../../providers/registro/registro';
 import { ModalController } from "ionic-angular";
 import { LoginPage } from "../../pages/index.paginas";
 import { ResiduosPage } from "../../pages/index.paginas";
+import { CarritoProvider } from '../carrito/carrito';
 //import 'rxjs/add/operator/map';
 import 'rxjs-compat/add/operator/map';
 
@@ -26,6 +27,7 @@ export class UsuarioProvider {
               private registroProvider: RegistroProvider,
               private alertCtrl: AlertController,
               private modalCtrl: ModalController,
+              private _cs: CarritoProvider,
               private platform: Platform,
               private storage: Storage) {
     this.cargar_storage();
@@ -176,7 +178,7 @@ export class UsuarioProvider {
       modal = this.modalCtrl.create( LoginPage );
       modal.present();
     }else{
-
+    this._cs.ver_residuo();
     modal = this.modalCtrl.create( ResiduosPage );
     modal.present();
     }

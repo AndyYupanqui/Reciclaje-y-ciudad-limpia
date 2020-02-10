@@ -16,7 +16,19 @@
 
 
 <ion-content padding>
+  <!-- <button ion-button block (click)="getPicture()">Toma una foto</button>
+    <img [src]="image" *ngIf="image" /> -->
+  <br>
 
+  <ion-item>
+    <ion-label floating>Título</ion-label>
+     <ion-input [(ngModel)]="titulo"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label floating>Ubicación</ion-label>
+     <ion-input [(ngModel)]="ubicacion"></ion-input>
+  </ion-item>
   <br>
   <ion-card>
       <ion-item color="primary">
@@ -25,28 +37,43 @@
       </ion-item>
 
       <ion-card-content color="primary">
-        <ion-input type="text"></ion-input>
+        <ion-input type="text" [(ngModel)]="descripcion"></ion-input>
         <br><br><br>
       </ion-card-content>
   </ion-card>
 
   <br><br>
-  <ion-card>
+  <!-- <ion-card>
       <ion-item color="primary">
           <ion-icon name="pin" slot="start"></ion-icon>
           <ion-label style="font-weight: bold;">Subir Foto</ion-label>
       </ion-item>
 
       <ion-card-content color="primary">
-        <button ion-button block (click)="getPicture()">Toma una foto</button>
-        <img [src]="image" *ngIf="image" />
+        
         <br><br><br>
       </ion-card-content>
+  </ion-card> -->
+
+  <!-- <button ion-button id="registrar" block>Subir foto</button> -->
+  <ion-card>
+    <ion-card-content>
+      <button ion-button color="danger" icon-right block (click)="takePicture();">
+        Tomar Foto
+        <ion-icon name="camera">
+
+        </ion-icon>
+      </button>
+      <br>
+      <img *ngIf="base64Image" [src]="base64Image" [(ngModel)]="base64Image">
+    </ion-card-content>
   </ion-card>
+  <!-- <img src='/assets/imgs/Pta3.png' alt='' style='max-width:100%;width:auto;height:auto;' onclick=''>" -->
   <br><br>
 
-  <button id="registrar" ion-button block
+  <button id="registrar" ion-button block (click)="publicar()"
           >
     Registrar
   </button>
+  <br><br>
 </ion-content>

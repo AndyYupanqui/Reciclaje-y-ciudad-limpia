@@ -5,7 +5,7 @@ import 'rxjs-compat/add/operator/map';
 
 import { ModalController } from "ionic-angular";
 
-import { Estacionamiento, Espacio, RegistroProvider } from "../../providers/registro/registro";
+import { Estacionamiento, Espacio, RegistroProvider, Residuo, Volumen } from "../../providers/registro/registro";
 
 // paginas del modal
 import { LoginPage, RegistrarsePage, TarjetaPage, PaypalPage, VolumenPage, FotoPage} from "../../pages/index.paginas";
@@ -14,6 +14,13 @@ import { LoginPage, RegistrarsePage, TarjetaPage, PaypalPage, VolumenPage, FotoP
 export class CarritoProvider {
 
   estacionamientos: Estacionamiento[];
+  residuos: Residuo[];
+  volumenes: Volumen[];
+  id_residuo: string="1";
+  id_volumen: string="1";
+  latitud: number=0;
+  longitud: number=0;
+
   espacio: Espacio;
   total: any;
   cronometro: any;
@@ -41,6 +48,10 @@ export class CarritoProvider {
   ver_volumen(){
     let modal:any;
 
+    this.registroProvider.getVolumenes().subscribe(res => {
+      this.volumenes = res;
+    });
+
     modal = this.modalCtrl.create( VolumenPage );
     modal.present();
   }
@@ -50,6 +61,13 @@ export class CarritoProvider {
 
     modal = this.modalCtrl.create( FotoPage );
     modal.present();
+  }
+
+  ver_residuo(){
+
+    this.registroProvider.getResiduos().subscribe(res => {
+      this.residuos = res;
+    });
   }
 
   ver_estacionamiento(){

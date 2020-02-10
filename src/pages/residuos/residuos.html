@@ -16,11 +16,28 @@
 
 
 <ion-content padding>
-  <ion-list radio-group>
+  <ion-list radio-group [(ngModel)]="_cs.id_residuo">
     <ion-list-header>
       Selecciona el tipo de residuo
     </ion-list-header>
-    <ion-item>
+
+     <!-- <button ion-item
+                *ngFor="let estacionamiento of _cs.estacionamientos"
+                [navPush]="estacionamientoDetalle"
+                [navParams]="{ estacionamiento: estacionamiento }"
+                >
+    
+          <ion-icon name="ios-arrow-forward"></ion-icon>
+            {{ estacionamiento.nombre }}
+        </button> -->
+    
+    <ion-item *ngFor="let residuo of _cs.residuos">
+      <ion-label><img src={{residuo.img}} alt=""/>   {{residuo.tipo}}</ion-label>
+      <ion-radio *ngIf="residuo.id=='1'" checked="true"  value={{residuo.id}} (click)="_cs.ver_volumen()"></ion-radio>
+      <ion-radio *ngIf="residuo.id!='1'" value={{residuo.id}} (click)="_cs.ver_volumen()"></ion-radio>
+    </ion-item>
+
+    <!-- <ion-item>
       <ion-label><ion-img src="../../assets/imgs/Iconos/TipoResiduo/electronicos.png" alt=""></ion-img>   Electrónicos</ion-label>
       <ion-radio checked="true" value="electronicos" (click)="_cs.ver_volumen()"></ion-radio>
     </ion-item>
@@ -68,7 +85,7 @@
     <ion-item>
       <ion-label><ion-img src="../../assets/imgs/Iconos/TipoResiduo/otros.png" alt=""></ion-img>   Otros</ion-label>
       <ion-radio value="otros" (click)="_cs.ver_volumen()"></ion-radio>
-    </ion-item>
+    </ion-item> -->
   </ion-list>
 
 </ion-content>
