@@ -5,7 +5,7 @@ import 'rxjs-compat/add/operator/map';
 
 import { ModalController } from "ionic-angular";
 
-import { Estacionamiento, Espacio, RegistroProvider, Residuo, Volumen } from "../../providers/registro/registro";
+import { Estacionamiento, Espacio, RegistroProvider, Residuo, Volumen, Incidencia } from "../../providers/registro/registro";
 
 // paginas del modal
 import { LoginPage, RegistrarsePage, TarjetaPage, PaypalPage, VolumenPage, FotoPage} from "../../pages/index.paginas";
@@ -16,10 +16,11 @@ export class CarritoProvider {
   estacionamientos: Estacionamiento[];
   residuos: Residuo[];
   volumenes: Volumen[];
+  incidencias: Incidencia[];
   id_residuo: string="1";
   id_volumen: string="1";
-  latitud: number=0;
-  longitud: number=0;
+  noreciclaje = true;
+  listado: boolean;
 
   espacio: Espacio;
   total: any;
@@ -33,7 +34,7 @@ export class CarritoProvider {
 
   constructor( public http: Http,
                private modalCtrl: ModalController,
-               private registroProvider: RegistroProvider ) {
+               private registroProvider: RegistroProvider) {
 
   }
 
@@ -75,6 +76,23 @@ export class CarritoProvider {
     this.registroProvider.getEstacionamientos().subscribe(res => {
       this.estacionamientos = res;
     });
+  }
+
+  ver_incidencia(listado, id_usuario){
+    this.listado = listado;
+    if(this.listado == true){
+      this.registroProvider.getIncidencias().subscribe(res => {
+        this.incidencias = res;
+      });
+    }else{
+      this.registroProvider.getIncidenciasUsuario(id_usuario).subscribe(res => {
+        if(res.length == 0){
+          this.noreciclaje = false;
+        }else{
+          this.incidencias = res;
+        }
+      });
+    }
   }
 
   ver_espacio(id){

@@ -15,6 +15,7 @@ export class PublicacionPage {
 
   productoPage = ProductoPage;
   estado= true;
+  vpublicacion = false;
 
   categoria:any = {};
 

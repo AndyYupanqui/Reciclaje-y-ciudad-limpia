@@ -9,7 +9,8 @@
       </button>
     </ion-buttons>
 
-    <ion-title>Publicar Incidencia</ion-title>
+    <ion-title *ngIf="_us.ventana==false">Publicar Incidencia</ion-title>
+    <ion-title *ngIf="_us.ventana==true">Reciclar</ion-title>
   </ion-navbar>
 
 </ion-header>

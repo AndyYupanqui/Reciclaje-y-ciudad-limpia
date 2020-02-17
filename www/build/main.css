@@ -36511,6 +36511,16 @@ page-espacios-detalle #reserva {
   margin-top: 40px;
 }
 
+page-estacionamiento .carrito_vacio {
+  position: relative;
+  top: 30%;
+  font-size: 20px;
+}
+
+page-estacionamiento .icon-5x {
+  font-size: 100px;
+}
+
 page-estacionamiento-detalle #reserva {
   width: 55%;
   margin-left: 75px;

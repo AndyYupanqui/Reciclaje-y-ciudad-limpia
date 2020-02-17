@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, NavParams, AlertController } from 'ionic-angular';
 import { OrdenesDetallePage } from '../../pages/ordenes-detalle/ordenes-detalle';
 import { LoginPage } from '../../pages/login/login';
+import { EstacionamientoPage } from "../index.paginas";
 import { Espacio, RegistroProvider } from '../../providers/registro/registro';
 import { UsuarioProvider } from '../../providers/usuario/usuario';
 import { CarritoProvider } from '../../providers/carrito/carrito';
@@ -14,11 +15,13 @@ import { CarritoProvider } from '../../providers/carrito/carrito';
 })
 export class OrdenesPage {
 
-
+  incidencia = EstacionamientoPage;
   reservas: any;
   estacionamiento: any;
   espacio: any;
   usuario: any;
+  vreciclaje = true;
+  mireciclaje = false;
   //espacio : any = [];
 
   ordenesDetalle = OrdenesDetallePage;

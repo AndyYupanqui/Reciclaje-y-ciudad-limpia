@@ -22,6 +22,7 @@ export class UsuarioProvider {
   id_usuario:string;
   usuario:string;
   descuento: boolean = false;
+  ventana: boolean;
 
   constructor(public http: Http,
               private registroProvider: RegistroProvider,
@@ -169,7 +170,7 @@ export class UsuarioProvider {
 
   }
 
-  ver_residuo(){
+  ver_residuo(ventana){
 
     let modal:any;
 
@@ -178,6 +179,7 @@ export class UsuarioProvider {
       modal = this.modalCtrl.create( LoginPage );
       modal.present();
     }else{
+    this.ventana = ventana;
     this._cs.ver_residuo();
     modal = this.modalCtrl.create( ResiduosPage );
     modal.present();

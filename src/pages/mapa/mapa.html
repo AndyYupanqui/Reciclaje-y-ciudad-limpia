@@ -28,7 +28,7 @@
     <ion-buttons end>
 
         <button ion-button icon-only
-                (click)="_cs.ver_estacionamiento()"
+                (click)="_cs.ver_incidencia(vmapa, _us.id_usuario)"
                 [navPush]="estacionamiento">
           <ion-icon name="md-list-box"></ion-icon>
         </button>
@@ -42,6 +42,6 @@
 </ion-header>
 
 
-<ion-content [attr.noScroll]="shouldScroll">
+<ion-content id="ga" [attr.noScroll]="shouldScroll">
   <div id="map"></div>
 </ion-content>

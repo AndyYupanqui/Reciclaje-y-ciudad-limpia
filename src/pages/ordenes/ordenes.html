@@ -24,8 +24,25 @@
 </ion-header>
 
 
-<ion-content>
-    <br>
+<ion-content padding>
+    
+    <div style="text-align: center">
+        <img src="../../assets/imgs/mireciclaje.jpg" style="max-width: 80%; padding-top: 42px">
+      </div>
+      <br><br>
+      <button style="width: 70%; margin-left: 50px;" ion-button block (click)="_us.ver_residuo(vreciclaje)"
+              >
+        Reciclar
+      </button>
+      <br><br>
+      <button style="width: 70%; margin-left: 50px;" ion-button block (click)="_cs.ver_incidencia(mireciclaje, _us.id_usuario)"  
+                                                                      [navPush]="incidencia"
+              >
+        Mi reciclaje
+      </button>
+
+
+
     <ion-card *ngIf="reservas && estacionamiento != null && _us.id_usuario != null && _cs.estado_reserva == true && reservas.estado != 'Finalizado'">
         <ion-item color="primary">
             <ion-icon name="pin" slot="start"></ion-icon>
@@ -50,7 +67,7 @@
 
 </ion-content>
 
-<ion-content *ngIf="estacionamiento == null || _us.id_usuario == null || _cs.estado_reserva == false || reservas.estado == 'Finalizado'">
+<!-- <ion-content *ngIf="estacionamiento == null || _us.id_usuario == null || _cs.estado_reserva == false || reservas.estado == 'Finalizado'">
 
     <div text-center class="carrito_vacio">
         <ion-icon name="ios-list-box-outline" class="icon-5x">
@@ -58,4 +75,4 @@
         <br> No tienes reciclajes
     </div>
 
-</ion-content>
+</ion-content> -->

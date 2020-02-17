@@ -5,6 +5,7 @@ import { Camera, CameraOptions } from '@ionic-native/camera';
 import { CarritoProvider } from '../../providers/carrito/carrito';
 import { UsuarioProvider } from '../../providers/usuario/usuario';
 import { Incidencia, RegistroProvider } from '../../providers/registro/registro';
+import { Geolocation, Geoposition } from '@ionic-native/geolocation';
 
 
 @Component({
@@ -18,16 +19,27 @@ export class FotoPage {
   titulo: string="";
   ubicacion: string="";
   descripcion: string="";
+  latitud: number=0;
+  longitud: number=0;
 
   constructor(public navCtrl: NavController, 
               public navParams: NavParams,
               private viewCtrl: ViewController,
               private alertCtrl: AlertController,
               private db: AngularFirestore,
+              public geolocation: Geolocation,
               private _cs: CarritoProvider,
               private _us: UsuarioProvider,
               private _rs: RegistroProvider,
               private camera: Camera) {
+      this.getGeolocation()
+  }
+
+  getGeolocation(){
+    this.geolocation.getCurrentPosition().then((geoposition: Geoposition)=>{
+      this.latitud = geoposition.coords.latitude;
+      this.longitud = geoposition.coords.longitude;
+    });
   }
 
   takePicture(){
@@ -64,7 +76,7 @@ export class FotoPage {
       fecha = `${day}-${month}-${year}`
     }
 
-    var incidencia: Incidencia = {id_usuario: this.db.doc('/Usuario/'+this._us.id_usuario).ref, id_residuo: this.db.doc('/Residuo/'+this._cs.id_residuo).ref, id_volumen:  this.db.doc('/Volumen/'+this._cs.id_volumen).ref, titulo: this.titulo, descripcion: this.descripcion, ubicacion: this.ubicacion, latitud: this._cs.latitud, longitud: this._cs.longitud, imagen: this.base64Image, fecha: fecha, hora: hora};
+    var incidencia: Incidencia = {id_usuario: this._us.id_usuario, id_residuo: this.db.doc('/Residuo/'+this._cs.id_residuo).ref, id_volumen:  this.db.doc('/Volumen/'+this._cs.id_volumen).ref, titulo: this.titulo, descripcion: this.descripcion, ubicacion: this.ubicacion, latitud: this.latitud, longitud: this.longitud, imagen: this.base64Image, fecha: fecha, hora: hora};
 
     this._rs.addIncidencia(incidencia, fecha + ' ' + hora);
 

@@ -5,7 +5,6 @@ import { CarritoProvider } from "../../providers/carrito/carrito";
 
 import { ProductoPage } from "../producto/producto";
 import { UsuarioProvider } from "../../providers/usuario/usuario";
-import { Geolocation, Geoposition } from '@ionic-native/geolocation';
 
 @Component({
   selector: 'page-home',
@@ -24,18 +23,10 @@ export class HomePage {
       }, 2000);
     }
   constructor( public navCtrl: NavController,
-               public geolocation: Geolocation,
                private _cs: CarritoProvider,
                private _us: UsuarioProvider) {
-      this.getGeolocation()
-  }
 
-
-  getGeolocation(){
-    this.geolocation.getCurrentPosition().then((geoposition: Geoposition)=>{
-      this._cs.latitud = geoposition.coords.latitude;
-      this._cs.longitud = geoposition.coords.longitude;
-    });
+                this._cs.ver_incidencia(true, this._us.id_usuario);
   }
 
   // siguiente_pagina( infiniteScroll ){

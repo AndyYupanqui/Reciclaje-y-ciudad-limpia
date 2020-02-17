@@ -18,7 +18,7 @@ import * as Leaflet from 'leaflet';
 })
 export class MapaPage {
   //map: any;
-
+  vmapa = true;
   estacionamiento = EstacionamientoPage;
   view = new PhotoViewer();
 
@@ -29,6 +29,7 @@ export class MapaPage {
               private _rs: RegistroProvider,
               public viewer: PhotoViewer,
               public platform: Platform) {
+                
                 // this.platform.ready().then(() =>{
                 //   var photoUrl = "https://e.rpp-noticias.io/normal/2018/12/06/573857_721892.jpg";
                 //   var title = "Foto Ejemplo";
@@ -39,12 +40,22 @@ export class MapaPage {
                 // })
   }
 
-  ionViewDidLoad(){
-    this.drawMap(this.view, this._rs);
+  ionViewDidEnter(){
+    this.drawMap(this.view, this._cs);
+
   }
 
-  drawMap(view: PhotoViewer, _rs: RegistroProvider): void {
+  ionViewWillLeave(){
+    
+    //document.append("<div id='map' style='width: 100%; height: 100%;'></div>"); 
+  }
 
+  drawMap(view: PhotoViewer, _cs: CarritoProvider): void {
+    document.getElementById('map').remove();
+    var parent = document.createElement("div");
+    parent.setAttribute('id', 'map');
+    // parent.setAttribute('style', 'width: 100%; height: 100%');
+    document.getElementById('ga').getElementsByClassName('scroll-content')[0].appendChild(parent);
     let map = Leaflet.map('map').setView([-0.1836298, -78.4821206], 13);
     Leaflet.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
       attribution: 'AppTuto',
@@ -62,11 +73,11 @@ export class MapaPage {
         Leaflet.marker(e.latlng).addTo(map)
            .bindPopup("Estás dentro de los " + radius + " metros desde este punto").openPopup();
 
-        _rs.getIncidencias().subscribe(res => {
-          for(var i = 0; i<res.length; i++){
-            var titulo =  res[i].titulo;
-            var imagen = res[i].imagen;
-            Leaflet.marker({lat: res[i].latitud, lng: res[i].longitud}).addTo(map).bindPopup(res[i].titulo + "<img src="+res[i].imagen+" alt='' style='max-width:100%;width:auto;height:auto;' onclick=''>").on('click', ()=> {
+         
+          for(var i = 0; i<_cs.incidencias.length; i++){
+            var titulo =  _cs.incidencias[i].titulo;
+            var imagen = _cs.incidencias[i].imagen;
+            Leaflet.marker({lat: _cs.incidencias[i].latitud, lng: _cs.incidencias[i].longitud}).addTo(map).bindPopup(_cs.incidencias[i].titulo + "<img src="+_cs.incidencias[i].imagen+" alt='' style='max-width:100%;width:auto;height:auto;' onclick=''>").on('click', ()=> {
               var photoUrl =  imagen;   
               var title = titulo;
               var options = {
@@ -100,7 +111,7 @@ export class MapaPage {
           var playaid = document.getElementById("playa"+j);
           playaid.setAttribute("src","/assets/images/basura.png");
           }
-        });
+     
  
        Leaflet.circle(e.latlng, radius).addTo(map);
 

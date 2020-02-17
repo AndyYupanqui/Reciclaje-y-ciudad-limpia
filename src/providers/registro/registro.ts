@@ -34,7 +34,7 @@ export interface Reciclaje{
 
 export interface Incidencia{
   id?: string;
-  id_usuario: DocumentReference; 
+  id_usuario: string; 
   id_residuo: DocumentReference;
   id_volumen: DocumentReference;
   titulo: string,
@@ -126,6 +126,7 @@ export class RegistroProvider {
   user: any;
   espacio: any;
   reserva: any;
+  incidencia: any;
 
 
   constructor(db: AngularFirestore) {
@@ -146,6 +147,7 @@ export class RegistroProvider {
     this.user = db;
     this.espacio = db;
     this.reserva = db;
+    this.incidencia = db;
 
    
     
@@ -305,6 +307,10 @@ export class RegistroProvider {
 
   getIncidencias(){
     return this.incidencias;
+  }
+
+  getIncidenciasUsuario(id_usuario){
+    return this.incidencia.collection('Incidencia', ref => ref.where('id_usuario', '==', id_usuario)).valueChanges();
   }
 
   updateIncidencias(incidencia: Incidencia, id: string){

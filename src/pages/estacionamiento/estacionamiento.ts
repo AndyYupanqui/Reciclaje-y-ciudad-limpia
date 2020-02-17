@@ -28,13 +28,7 @@ export class EstacionamientoPage {
   }
 
   ngOnInit(){
-    // if(this._us.descuento == true){
-    //   this.alertCtrl.create({
-    //     title: "Felicidades",
-    //     subTitle: "Tiene un descuento del 20% en el costo por hora de todas las playas",
-    //     buttons: ["OK"]
-    //   }).present();
-    // }
+      
   }
 
 }

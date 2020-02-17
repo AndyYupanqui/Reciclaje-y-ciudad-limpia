@@ -29,19 +29,19 @@
 </ion-header>
 
 
-<ion-content>
+<ion-content *ngIf="_cs.listado == true">
   <h6 padding>Escoja la incidencia más cercano a usted:</h6>
     <ion-list>
-        <!-- <button ion-item
-                *ngFor="let estacionamiento of _cs.estacionamientos"
+        <button ion-item
+                *ngFor="let incidencia of _cs.incidencias"
                 [navPush]="estacionamientoDetalle"
-                [navParams]="{ estacionamiento: estacionamiento }"
+                [navParams]="{ incidencia: incidencia }"
                 >
     
           <ion-icon name="ios-arrow-forward"></ion-icon>
-            {{ estacionamiento.nombre }}
-        </button> -->
-        <button ion-item>
+            {{ incidencia.titulo }}
+        </button>
+        <!-- <button ion-item>
           <ion-icon name="ios-arrow-forward"></ion-icon>
               Puerta 1 UNMSM
           </button>
@@ -56,7 +56,34 @@
           <button ion-item>
             <ion-icon name="ios-arrow-forward"></ion-icon>
                 Puerta 7 UNMSM
-            </button>
+            </button> -->
       </ion-list>
+
+</ion-content>
+
+<ion-content *ngIf="_cs.listado == false && (_us.id_usuario != null && _cs.noreciclaje != false)">
+
+  <h6 padding>Mis reciclajes:</h6>
+    <ion-list>
+        <button ion-item
+                *ngFor="let incidencia of _cs.incidencias"
+                [navPush]="estacionamientoDetalle"
+                [navParams]="{ incidencia: incidencia }"
+                >
+    
+          <ion-icon name="ios-arrow-forward"></ion-icon>
+            {{ incidencia.titulo }}
+        </button>
+      </ion-list>
+
+</ion-content>
+
+<ion-content *ngIf="_cs.listado == false && (_us.id_usuario == null || _cs.noreciclaje == false)">
+
+    <div text-center class="carrito_vacio">
+        <ion-icon name="ios-list-box-outline" class="icon-5x">
+        </ion-icon>
+        <br> No tienes reciclajes
+    </div>
 
 </ion-content>

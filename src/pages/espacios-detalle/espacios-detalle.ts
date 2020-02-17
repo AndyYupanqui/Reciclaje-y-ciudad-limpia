@@ -81,7 +81,7 @@ export class EspaciosDetallePage {
       if(this.descuento != 0){
         var total = this.descuento*this.horas;
       }else{
-        var total = this.costo*this.horas;
+        var total2 = this.costo*this.horas;
       }
       this._cs.fecha_reserva = this.fecha;
 
