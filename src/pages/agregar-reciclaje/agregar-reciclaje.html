@@ -16,9 +16,44 @@
 
 
 <ion-content padding>
-  
-  <h4 *ngIf="residuo">Tipo: {{residuo.tipo}}  <img src={{residuo.img}} alt=""/></h4>
-  <h4 *ngIf="residuo">Precio x kg: S/. {{residuo.precio}}</h4>
-  <h4 *ngIf="residuo">Subtotal: </h4>
+  <div *ngIf="reciclaje.length!=0">
+  <ion-card *ngFor="let item of reciclaje">
+    <ion-item color="primary">
+        <ion-label style="font-weight: bold">{{item.tipo}}   <ion-img src={{item.img}} alt=""></ion-img></ion-label>
+    </ion-item>
+
+    <ion-card-content color="primary">
+        <br>
+        <!-- <h4 *ngIf="residuo">Tipo: {{residuo.tipo}}  <ion-img src={{residuo.img}} alt=""></ion-img></h4> -->
+        <h4>Precio x kg: S/. {{item.precio}}</h4>
+        <h4>Cantidad: {{item.cantidad}} Kg</h4>
+        <h4 style="font-weight: bold">Subtotal: {{item.subtotal}}</h4>
+    </ion-card-content>
+  </ion-card>
+  </div>
+
+  <ion-card>
+    <ion-item color="primary">
+      <ion-label *ngIf="residuo" style="font-weight: bold">{{residuo.tipo}}   <ion-img src={{residuo.img}} alt=""></ion-img></ion-label>
+    </ion-item>
+
+    <ion-card-content color="primary">
+      <br>
+      <!-- <h4 *ngIf="residuo">Tipo: {{residuo.tipo}}  <ion-img src={{residuo.img}} alt=""></ion-img></h4> -->
+      <h4 *ngIf="residuo">Precio x kg: S/. {{residuo.precio}}</h4>
+      <h4 *ngIf="residuo">Cantidad: {{_cs.cantidad}} Kg</h4>
+      <h4 *ngIf="residuo" style="font-weight: bold">Subtotal: {{subtotal}}</h4>
+    </ion-card-content>
+  </ion-card>
+
+  <br><br>
+
+  <h4>Total: </h4>
+
+  <button id="registrarse" ion-button block 
+          (click)="agregarReciclaje()"
+          >
+    Agregar
+  </button>
 
 </ion-content>

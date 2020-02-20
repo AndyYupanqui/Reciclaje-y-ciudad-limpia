@@ -1,0 +1,9 @@
+page-agregar-reciclaje .button-block {
+  width: 40%;
+  margin-left: 102px;
+  background-color: #488aff;
+}
+page-agregar-reciclaje #registrarse {
+  width: 50%;
+  margin-left: 71px;
+}

@@ -21,6 +21,7 @@ export class CarritoProvider {
   id_volumen: string="1";
   noreciclaje = true;
   listado: boolean;
+  cantidad: number=0;
 
   espacio: Espacio;
   total: any;
@@ -57,9 +58,9 @@ export class CarritoProvider {
     modal.present();
   }
 
-  ver_agregar_reciclaje(){
+  ver_agregar_reciclaje(cantidad){
     let modal:any;
-
+    this.cantidad = cantidad;
     // this.registroProvider.getVolumenes().subscribe(res => {
     //   this.volumenes = res;
     // });

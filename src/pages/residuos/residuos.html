@@ -17,6 +17,7 @@
 
 
 <ion-content padding>
+
   <ion-list radio-group [(ngModel)]="_cs.id_residuo">
     <ion-list-header>
       Selecciona el tipo de residuo
@@ -42,27 +43,27 @@
     
     <ion-item *ngIf="_us.ventana==true">
       <ion-label><img src="../../assets/imgs/Iconos/TipoResiduo/plastico.png" alt="">   Plásticos</ion-label>
-      <ion-radio checked="true" value="6" (click)="_cs.ver_agregar_reciclaje()"></ion-radio>
+      <ion-radio checked="true" value="6" (click)="abrirModal()"></ion-radio>
     </ion-item>
     
     <ion-item *ngIf="_us.ventana==true">
       <ion-label><img src="../../assets/imgs/Iconos/TipoResiduo/carton.png" alt="">   Cartón</ion-label>
-      <ion-radio value="11" (click)="_cs.ver_agregar_reciclaje()"></ion-radio>
+      <ion-radio value="11" (click)="abrirModal()"></ion-radio>
     </ion-item>
     
     <ion-item *ngIf="_us.ventana==true">
       <ion-label><img src="../../assets/imgs/Iconos/TipoResiduo/vidrio.png" alt="">   Vidrios</ion-label>
-      <ion-radio value="10" (click)="_cs.ver_agregar_reciclaje()"></ion-radio>
+      <ion-radio value="10" (click)="abrirModal()"></ion-radio>
     </ion-item>
 
     <ion-item *ngIf="_us.ventana==true">
-      <ion-label><ion-img src="../../assets/imgs/Iconos/TipoResiduo/papel.png" alt=""></ion-img>   Papel blanco</ion-label>
-      <ion-radio value="12" (click)="_cs.ver_agregar_reciclaje()"></ion-radio>
+      <ion-label><img src="../../assets/imgs/Iconos/TipoResiduo/papel.png" alt="">   Papel blanco</ion-label>
+      <ion-radio value="12" (click)="abrirModal()"></ion-radio>
     </ion-item>
 
     <ion-item *ngIf="_us.ventana==true">
       <ion-label><img src="../../assets/imgs/Iconos/TipoResiduo/pila.png" alt="">   Baterías/Pilas</ion-label>
-      <ion-radio value="5" (click)="_cs.ver_agregar_reciclaje()"></ion-radio>
+      <ion-radio value="5" (click)="abrirModal()"></ion-radio>
     </ion-item>
 
   </ion-list>

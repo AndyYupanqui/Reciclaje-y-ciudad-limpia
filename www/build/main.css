@@ -36442,6 +36442,46 @@ ion-navbar.toolbar {
   min-height: calc(46px + env(safe-area-inset-bottom));
 }
 
+.pricebreakup .modal-wrapper {
+  position: absolute;
+  overflow: hidden;
+  max-width: 320px;
+  border-radius: 10px;
+  width: 90vw;
+  height: 50vh !important;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  border: 0;
+  -webkit-box-shadow: 0 16px 20px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 16px 20px rgba(0, 0, 0, 0.4);
+  background-color: #fafafa;
+}
+
+page-agregar-reciclaje .button-block {
+  width: 40%;
+  margin-left: 102px;
+  background-color: #488aff;
+}
+
+page-agregar-reciclaje #registrarse {
+  width: 50%;
+  margin-left: 71px;
+}
+
+page-cantidad .button-block {
+  width: 40%;
+  margin-left: 102px;
+  background-color: #488aff;
+}
+
+page-cantidad #registrarse {
+  width: 50%;
+  margin-left: 71px;
+}
+
 page-espacios #tablero {
   background: #808080;
   -webkit-box-shadow: 0 10px 10px -6px rgba(0, 0, 0, 0.6);

@@ -1,0 +1,33 @@
+
+<ion-header>
+
+  <ion-navbar color="primary">
+    <ion-title>Ingresar cantidad</ion-title>
+    <ion-buttons end>
+      <button ion-button (click)="closeModal()">Cerrar</button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  <ion-list>
+
+    <ion-item>
+      <ion-label floating>Cantidad (Kg)</ion-label>
+      <ion-input type="number" [(ngModel)]="cantidad"></ion-input>
+    </ion-item>
+  
+  </ion-list>
+
+  <br><br>
+
+  <button id="registrarse" ion-button block 
+  [disabled]=" cantidad.length == 0 " (click)="closeModal1()"
+          >
+    Aceptar
+  </button>
+
+</ion-content>
