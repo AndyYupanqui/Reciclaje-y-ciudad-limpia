@@ -30,11 +30,15 @@ export class AgregarReciclajePage {
           this._rs.getResiduo(this.id_residuo).subscribe(res => {
             this.residuo = res;
             this.subtotal = res.precio*this._cs.cantidad;
+            this.total = this.subtotal + this.total;
           });
           
-          if(localStorage.getItem('reciclaje'))
+          if(localStorage.getItem('reciclaje')){
             this.reciclaje = JSON.parse(localStorage.getItem('reciclaje'));
-
+            for(var i=0; i<this.reciclaje.length; i++){
+              this.total = this.reciclaje[i].subtotal + this.total; 
+            }
+          }
   }
 
   agregarReciclaje(){
