@@ -167,13 +167,13 @@ var UsuarioProvider = /** @class */ (function () {
         var modal;
         if (!this.token) {
             // mostrar el login
-            modal = this.modalCtrl.create(__WEBPACK_IMPORTED_MODULE_4__pages_index_paginas__["k" /* LoginPage */]);
+            modal = this.modalCtrl.create(__WEBPACK_IMPORTED_MODULE_4__pages_index_paginas__["l" /* LoginPage */]);
             modal.present();
         }
         else {
             this.ventana = ventana;
             this._cs.ver_residuo();
-            modal = this.modalCtrl.create(__WEBPACK_IMPORTED_MODULE_4__pages_index_paginas__["u" /* ResiduosPage */]);
+            modal = this.modalCtrl.create(__WEBPACK_IMPORTED_MODULE_4__pages_index_paginas__["v" /* ResiduosPage */]);
             modal.present();
         }
     };
@@ -238,7 +238,7 @@ var CarritoProvider = /** @class */ (function () {
     }
     CarritoProvider.prototype.ver_login = function () {
         var modal;
-        modal = this.modalCtrl.create(__WEBPACK_IMPORTED_MODULE_5__pages_index_paginas__["k" /* LoginPage */]);
+        modal = this.modalCtrl.create(__WEBPACK_IMPORTED_MODULE_5__pages_index_paginas__["l" /* LoginPage */]);
         modal.present();
     };
     CarritoProvider.prototype.ver_volumen = function () {
@@ -247,12 +247,20 @@ var CarritoProvider = /** @class */ (function () {
         this.registroProvider.getVolumenes().subscribe(function (res) {
             _this.volumenes = res;
         });
-        modal = this.modalCtrl.create(__WEBPACK_IMPORTED_MODULE_5__pages_index_paginas__["x" /* VolumenPage */]);
+        modal = this.modalCtrl.create(__WEBPACK_IMPORTED_MODULE_5__pages_index_paginas__["y" /* VolumenPage */]);
+        modal.present();
+    };
+    CarritoProvider.prototype.ver_agregar_reciclaje = function () {
+        var modal;
+        // this.registroProvider.getVolumenes().subscribe(res => {
+        //   this.volumenes = res;
+        // });
+        modal = this.modalCtrl.create(__WEBPACK_IMPORTED_MODULE_5__pages_index_paginas__["a" /* AgregarReciclajePage */]);
         modal.present();
     };
     CarritoProvider.prototype.ver_foto = function () {
         var modal;
-        modal = this.modalCtrl.create(__WEBPACK_IMPORTED_MODULE_5__pages_index_paginas__["h" /* FotoPage */]);
+        modal = this.modalCtrl.create(__WEBPACK_IMPORTED_MODULE_5__pages_index_paginas__["i" /* FotoPage */]);
         modal.present();
     };
     CarritoProvider.prototype.ver_residuo = function () {
@@ -294,17 +302,17 @@ var CarritoProvider = /** @class */ (function () {
     };
     CarritoProvider.prototype.ver_registrarse = function () {
         var modal;
-        modal = this.modalCtrl.create(__WEBPACK_IMPORTED_MODULE_5__pages_index_paginas__["s" /* RegistrarsePage */]);
+        modal = this.modalCtrl.create(__WEBPACK_IMPORTED_MODULE_5__pages_index_paginas__["t" /* RegistrarsePage */]);
         modal.present();
     };
     CarritoProvider.prototype.pago_tarjeta = function () {
         var modal;
-        modal = this.modalCtrl.create(__WEBPACK_IMPORTED_MODULE_5__pages_index_paginas__["w" /* TarjetaPage */]);
+        modal = this.modalCtrl.create(__WEBPACK_IMPORTED_MODULE_5__pages_index_paginas__["x" /* TarjetaPage */]);
         modal.present();
     };
     CarritoProvider.prototype.pago_paypal = function () {
         var modal;
-        modal = this.modalCtrl.create(__WEBPACK_IMPORTED_MODULE_5__pages_index_paginas__["p" /* PaypalPage */]);
+        modal = this.modalCtrl.create(__WEBPACK_IMPORTED_MODULE_5__pages_index_paginas__["q" /* PaypalPage */]);
         modal.present();
     };
     CarritoProvider = __decorate([
@@ -668,6 +676,9 @@ var RegistroProvider = /** @class */ (function () {
     RegistroProvider.prototype.getResiduos = function () {
         return this.residuos;
     };
+    RegistroProvider.prototype.getResiduo = function (id) {
+        return this.residuoCollection.doc(id).valueChanges();
+    };
     RegistroProvider.prototype.getVolumenes = function () {
         return this.volumenes;
     };
@@ -769,10 +780,11 @@ var HomePage = /** @class */ (function () {
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
             selector: 'page-home',template:/*ion-inline-start:"C:\Users\andyu\Desktop\reciclaje\src\pages\home\home.html"*/'<ion-header>\n\n  <ion-navbar color="dark">\n\n\n\n    <ion-buttons start>\n\n      <button ion-button icon-only\n\n              *ngIf="_us.inactivo()"\n\n              (click)="_cs.ver_login()">\n\n        Login<ion-icon name="contact"></ion-icon>\n\n      </button>\n\n    </ion-buttons>\n\n\n\n\n\n    <ion-buttons start>\n\n      <button ion-button icon-only\n\n              *ngIf="_us.activo()">\n\n        {{ _us.usuario }} <ion-icon name="contact"></ion-icon>\n\n      </button>\n\n      <button ion-button icon-only\n\n              *ngIf="_us.activo()"\n\n              (click)="_us.cerrar_sesion()">\n\n        <ion-icon name="log-out"></ion-icon>\n\n      </button>\n\n    </ion-buttons>\n\n\n\n\n\n    <ion-title>\n\n      Inicio\n\n    </ion-title>\n\n\n\n  </ion-navbar>\n\n</ion-header>\n\n\n\n<ion-content padding class="fondo-home">\n\n\n\n  <!-- <ion-refresher (ionRefresh)="doRefresh($event)">\n\n    <ion-refresher-content></ion-refresher-content>\n\n  </ion-refresher> -->\n\n  <p class="texto">Reciclaje y ciudad limpia</p>\n\n\n\n  <!-- <ion-infinite-scroll (ionInfinite)="siguiente_pagina($event)">\n\n    <ion-infinite-scroll-content></ion-infinite-scroll-content>\n\n  </ion-infinite-scroll> -->\n\n\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\andyu\Desktop\reciclaje\src\pages\home\home.html"*/
         }),
-        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__providers_carrito_carrito__["a" /* CarritoProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__providers_carrito_carrito__["a" /* CarritoProvider */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_4__providers_usuario_usuario__["a" /* UsuarioProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__providers_usuario_usuario__["a" /* UsuarioProvider */]) === "function" && _c || Object])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */],
+            __WEBPACK_IMPORTED_MODULE_2__providers_carrito_carrito__["a" /* CarritoProvider */],
+            __WEBPACK_IMPORTED_MODULE_4__providers_usuario_usuario__["a" /* UsuarioProvider */]])
     ], HomePage);
     return HomePage;
-    var _a, _b, _c;
 }());
 
 //# sourceMappingURL=home.js.map
@@ -1273,53 +1285,56 @@ var EspaciosDetallePage = /** @class */ (function () {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__home_home__ = __webpack_require__(289);
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "j", function() { return __WEBPACK_IMPORTED_MODULE_0__home_home__["a"]; });
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "k", function() { return __WEBPACK_IMPORTED_MODULE_0__home_home__["a"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__carrito_carrito__ = __webpack_require__(607);
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return __WEBPACK_IMPORTED_MODULE_1__carrito_carrito__["a"]; });
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return __WEBPACK_IMPORTED_MODULE_1__carrito_carrito__["a"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__mapa_mapa__ = __webpack_require__(608);
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "m", function() { return __WEBPACK_IMPORTED_MODULE_2__mapa_mapa__["a"]; });
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "n", function() { return __WEBPACK_IMPORTED_MODULE_2__mapa_mapa__["a"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__login_login__ = __webpack_require__(161);
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "k", function() { return __WEBPACK_IMPORTED_MODULE_3__login_login__["a"]; });
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "l", function() { return __WEBPACK_IMPORTED_MODULE_3__login_login__["a"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ordenes_ordenes__ = __webpack_require__(610);
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "o", function() { return __WEBPACK_IMPORTED_MODULE_4__ordenes_ordenes__["a"]; });
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "p", function() { return __WEBPACK_IMPORTED_MODULE_4__ordenes_ordenes__["a"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__ordenes_detalle_ordenes_detalle__ = __webpack_require__(292);
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "n", function() { return __WEBPACK_IMPORTED_MODULE_5__ordenes_detalle_ordenes_detalle__["a"]; });
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "o", function() { return __WEBPACK_IMPORTED_MODULE_5__ordenes_detalle_ordenes_detalle__["a"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__publicacion_publicacion__ = __webpack_require__(611);
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "r", function() { return __WEBPACK_IMPORTED_MODULE_6__publicacion_publicacion__["a"]; });
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "s", function() { return __WEBPACK_IMPORTED_MODULE_6__publicacion_publicacion__["a"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__producto_producto__ = __webpack_require__(160);
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "q", function() { return __WEBPACK_IMPORTED_MODULE_7__producto_producto__["a"]; });
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "r", function() { return __WEBPACK_IMPORTED_MODULE_7__producto_producto__["a"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__tabs_tabs__ = __webpack_require__(612);
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "v", function() { return __WEBPACK_IMPORTED_MODULE_8__tabs_tabs__["a"]; });
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "w", function() { return __WEBPACK_IMPORTED_MODULE_8__tabs_tabs__["a"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__busqueda_busqueda__ = __webpack_require__(613);
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return __WEBPACK_IMPORTED_MODULE_9__busqueda_busqueda__["a"]; });
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return __WEBPACK_IMPORTED_MODULE_9__busqueda_busqueda__["a"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__registrarse_registrarse__ = __webpack_require__(614);
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "s", function() { return __WEBPACK_IMPORTED_MODULE_10__registrarse_registrarse__["a"]; });
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "t", function() { return __WEBPACK_IMPORTED_MODULE_10__registrarse_registrarse__["a"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__compra_compra__ = __webpack_require__(293);
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return __WEBPACK_IMPORTED_MODULE_11__compra_compra__["a"]; });
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return __WEBPACK_IMPORTED_MODULE_11__compra_compra__["a"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__paypal_paypal__ = __webpack_require__(615);
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "p", function() { return __WEBPACK_IMPORTED_MODULE_12__paypal_paypal__["a"]; });
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "q", function() { return __WEBPACK_IMPORTED_MODULE_12__paypal_paypal__["a"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__tarjeta_tarjeta__ = __webpack_require__(616);
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "w", function() { return __WEBPACK_IMPORTED_MODULE_13__tarjeta_tarjeta__["a"]; });
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "x", function() { return __WEBPACK_IMPORTED_MODULE_13__tarjeta_tarjeta__["a"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__estacionamiento_estacionamiento__ = __webpack_require__(617);
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "g", function() { return __WEBPACK_IMPORTED_MODULE_14__estacionamiento_estacionamiento__["a"]; });
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "h", function() { return __WEBPACK_IMPORTED_MODULE_14__estacionamiento_estacionamiento__["a"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__estacionamiento_detalle_estacionamiento_detalle__ = __webpack_require__(294);
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "f", function() { return __WEBPACK_IMPORTED_MODULE_15__estacionamiento_detalle_estacionamiento_detalle__["a"]; });
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "g", function() { return __WEBPACK_IMPORTED_MODULE_15__estacionamiento_detalle_estacionamiento_detalle__["a"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__espacios_espacios__ = __webpack_require__(295);
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "e", function() { return __WEBPACK_IMPORTED_MODULE_16__espacios_espacios__["a"]; });
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "f", function() { return __WEBPACK_IMPORTED_MODULE_16__espacios_espacios__["a"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__espacios_detalle_espacios_detalle__ = __webpack_require__(296);
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return __WEBPACK_IMPORTED_MODULE_17__espacios_detalle_espacios_detalle__["a"]; });
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "e", function() { return __WEBPACK_IMPORTED_MODULE_17__espacios_detalle_espacios_detalle__["a"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__historial_historial__ = __webpack_require__(618);
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "i", function() { return __WEBPACK_IMPORTED_MODULE_18__historial_historial__["a"]; });
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "j", function() { return __WEBPACK_IMPORTED_MODULE_18__historial_historial__["a"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__reportes_reportes__ = __webpack_require__(619);
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "t", function() { return __WEBPACK_IMPORTED_MODULE_19__reportes_reportes__["a"]; });
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "u", function() { return __WEBPACK_IMPORTED_MODULE_19__reportes_reportes__["a"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__mantenimiento_mantenimiento__ = __webpack_require__(623);
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "l", function() { return __WEBPACK_IMPORTED_MODULE_20__mantenimiento_mantenimiento__["a"]; });
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "m", function() { return __WEBPACK_IMPORTED_MODULE_20__mantenimiento_mantenimiento__["a"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__residuos_residuos__ = __webpack_require__(624);
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "u", function() { return __WEBPACK_IMPORTED_MODULE_21__residuos_residuos__["a"]; });
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "v", function() { return __WEBPACK_IMPORTED_MODULE_21__residuos_residuos__["a"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__volumen_volumen__ = __webpack_require__(625);
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "x", function() { return __WEBPACK_IMPORTED_MODULE_22__volumen_volumen__["a"]; });
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "y", function() { return __WEBPACK_IMPORTED_MODULE_22__volumen_volumen__["a"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__foto_foto__ = __webpack_require__(626);
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "h", function() { return __WEBPACK_IMPORTED_MODULE_23__foto_foto__["a"]; });
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "i", function() { return __WEBPACK_IMPORTED_MODULE_23__foto_foto__["a"]; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__agregar_reciclaje_agregar_reciclaje__ = __webpack_require__(628);
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return __WEBPACK_IMPORTED_MODULE_24__agregar_reciclaje_agregar_reciclaje__["a"]; });
+
 
 
 
@@ -1430,29 +1445,30 @@ var AppModule = /** @class */ (function () {
             declarations: [
                 __WEBPACK_IMPORTED_MODULE_11__app_component__["a" /* MyApp */],
                 __WEBPACK_IMPORTED_MODULE_12__pages_home_home__["a" /* HomePage */],
-                __WEBPACK_IMPORTED_MODULE_15__pages_index_paginas__["b" /* CarritoPage */],
-                __WEBPACK_IMPORTED_MODULE_15__pages_index_paginas__["m" /* MapaPage */],
-                __WEBPACK_IMPORTED_MODULE_15__pages_index_paginas__["k" /* LoginPage */],
-                __WEBPACK_IMPORTED_MODULE_15__pages_index_paginas__["o" /* OrdenesPage */],
-                __WEBPACK_IMPORTED_MODULE_15__pages_index_paginas__["n" /* OrdenesDetallePage */],
-                __WEBPACK_IMPORTED_MODULE_15__pages_index_paginas__["r" /* PublicacionPage */],
-                __WEBPACK_IMPORTED_MODULE_15__pages_index_paginas__["v" /* TabsPage */],
-                __WEBPACK_IMPORTED_MODULE_15__pages_index_paginas__["a" /* BusquedaPage */],
-                __WEBPACK_IMPORTED_MODULE_15__pages_index_paginas__["q" /* ProductoPage */],
-                __WEBPACK_IMPORTED_MODULE_15__pages_index_paginas__["s" /* RegistrarsePage */],
-                __WEBPACK_IMPORTED_MODULE_15__pages_index_paginas__["c" /* CompraPage */],
-                __WEBPACK_IMPORTED_MODULE_15__pages_index_paginas__["w" /* TarjetaPage */],
-                __WEBPACK_IMPORTED_MODULE_15__pages_index_paginas__["p" /* PaypalPage */],
-                __WEBPACK_IMPORTED_MODULE_15__pages_index_paginas__["g" /* EstacionamientoPage */],
-                __WEBPACK_IMPORTED_MODULE_15__pages_index_paginas__["f" /* EstacionamientoDetallePage */],
-                __WEBPACK_IMPORTED_MODULE_15__pages_index_paginas__["e" /* EspaciosPage */],
-                __WEBPACK_IMPORTED_MODULE_15__pages_index_paginas__["d" /* EspaciosDetallePage */],
-                __WEBPACK_IMPORTED_MODULE_15__pages_index_paginas__["i" /* HistorialPage */],
-                __WEBPACK_IMPORTED_MODULE_15__pages_index_paginas__["t" /* ReportesPage */],
-                __WEBPACK_IMPORTED_MODULE_15__pages_index_paginas__["l" /* MantenimientoPage */],
-                __WEBPACK_IMPORTED_MODULE_15__pages_index_paginas__["u" /* ResiduosPage */],
-                __WEBPACK_IMPORTED_MODULE_15__pages_index_paginas__["x" /* VolumenPage */],
-                __WEBPACK_IMPORTED_MODULE_15__pages_index_paginas__["h" /* FotoPage */]
+                __WEBPACK_IMPORTED_MODULE_15__pages_index_paginas__["c" /* CarritoPage */],
+                __WEBPACK_IMPORTED_MODULE_15__pages_index_paginas__["n" /* MapaPage */],
+                __WEBPACK_IMPORTED_MODULE_15__pages_index_paginas__["l" /* LoginPage */],
+                __WEBPACK_IMPORTED_MODULE_15__pages_index_paginas__["p" /* OrdenesPage */],
+                __WEBPACK_IMPORTED_MODULE_15__pages_index_paginas__["o" /* OrdenesDetallePage */],
+                __WEBPACK_IMPORTED_MODULE_15__pages_index_paginas__["s" /* PublicacionPage */],
+                __WEBPACK_IMPORTED_MODULE_15__pages_index_paginas__["w" /* TabsPage */],
+                __WEBPACK_IMPORTED_MODULE_15__pages_index_paginas__["b" /* BusquedaPage */],
+                __WEBPACK_IMPORTED_MODULE_15__pages_index_paginas__["r" /* ProductoPage */],
+                __WEBPACK_IMPORTED_MODULE_15__pages_index_paginas__["t" /* RegistrarsePage */],
+                __WEBPACK_IMPORTED_MODULE_15__pages_index_paginas__["d" /* CompraPage */],
+                __WEBPACK_IMPORTED_MODULE_15__pages_index_paginas__["x" /* TarjetaPage */],
+                __WEBPACK_IMPORTED_MODULE_15__pages_index_paginas__["q" /* PaypalPage */],
+                __WEBPACK_IMPORTED_MODULE_15__pages_index_paginas__["h" /* EstacionamientoPage */],
+                __WEBPACK_IMPORTED_MODULE_15__pages_index_paginas__["g" /* EstacionamientoDetallePage */],
+                __WEBPACK_IMPORTED_MODULE_15__pages_index_paginas__["f" /* EspaciosPage */],
+                __WEBPACK_IMPORTED_MODULE_15__pages_index_paginas__["e" /* EspaciosDetallePage */],
+                __WEBPACK_IMPORTED_MODULE_15__pages_index_paginas__["j" /* HistorialPage */],
+                __WEBPACK_IMPORTED_MODULE_15__pages_index_paginas__["u" /* ReportesPage */],
+                __WEBPACK_IMPORTED_MODULE_15__pages_index_paginas__["m" /* MantenimientoPage */],
+                __WEBPACK_IMPORTED_MODULE_15__pages_index_paginas__["v" /* ResiduosPage */],
+                __WEBPACK_IMPORTED_MODULE_15__pages_index_paginas__["y" /* VolumenPage */],
+                __WEBPACK_IMPORTED_MODULE_15__pages_index_paginas__["i" /* FotoPage */],
+                __WEBPACK_IMPORTED_MODULE_15__pages_index_paginas__["a" /* AgregarReciclajePage */]
             ],
             imports: [
                 __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__["a" /* BrowserModule */],
@@ -1468,29 +1484,30 @@ var AppModule = /** @class */ (function () {
             entryComponents: [
                 __WEBPACK_IMPORTED_MODULE_11__app_component__["a" /* MyApp */],
                 __WEBPACK_IMPORTED_MODULE_12__pages_home_home__["a" /* HomePage */],
-                __WEBPACK_IMPORTED_MODULE_15__pages_index_paginas__["b" /* CarritoPage */],
-                __WEBPACK_IMPORTED_MODULE_15__pages_index_paginas__["m" /* MapaPage */],
-                __WEBPACK_IMPORTED_MODULE_15__pages_index_paginas__["k" /* LoginPage */],
-                __WEBPACK_IMPORTED_MODULE_15__pages_index_paginas__["o" /* OrdenesPage */],
-                __WEBPACK_IMPORTED_MODULE_15__pages_index_paginas__["n" /* OrdenesDetallePage */],
-                __WEBPACK_IMPORTED_MODULE_15__pages_index_paginas__["r" /* PublicacionPage */],
-                __WEBPACK_IMPORTED_MODULE_15__pages_index_paginas__["v" /* TabsPage */],
-                __WEBPACK_IMPORTED_MODULE_15__pages_index_paginas__["a" /* BusquedaPage */],
-                __WEBPACK_IMPORTED_MODULE_15__pages_index_paginas__["q" /* ProductoPage */],
-                __WEBPACK_IMPORTED_MODULE_15__pages_index_paginas__["s" /* RegistrarsePage */],
-                __WEBPACK_IMPORTED_MODULE_15__pages_index_paginas__["c" /* CompraPage */],
-                __WEBPACK_IMPORTED_MODULE_15__pages_index_paginas__["w" /* TarjetaPage */],
-                __WEBPACK_IMPORTED_MODULE_15__pages_index_paginas__["p" /* PaypalPage */],
-                __WEBPACK_IMPORTED_MODULE_15__pages_index_paginas__["g" /* EstacionamientoPage */],
-                __WEBPACK_IMPORTED_MODULE_15__pages_index_paginas__["f" /* EstacionamientoDetallePage */],
-                __WEBPACK_IMPORTED_MODULE_15__pages_index_paginas__["e" /* EspaciosPage */],
-                __WEBPACK_IMPORTED_MODULE_15__pages_index_paginas__["d" /* EspaciosDetallePage */],
-                __WEBPACK_IMPORTED_MODULE_15__pages_index_paginas__["i" /* HistorialPage */],
-                __WEBPACK_IMPORTED_MODULE_15__pages_index_paginas__["t" /* ReportesPage */],
-                __WEBPACK_IMPORTED_MODULE_15__pages_index_paginas__["l" /* MantenimientoPage */],
-                __WEBPACK_IMPORTED_MODULE_15__pages_index_paginas__["u" /* ResiduosPage */],
-                __WEBPACK_IMPORTED_MODULE_15__pages_index_paginas__["x" /* VolumenPage */],
-                __WEBPACK_IMPORTED_MODULE_15__pages_index_paginas__["h" /* FotoPage */]
+                __WEBPACK_IMPORTED_MODULE_15__pages_index_paginas__["c" /* CarritoPage */],
+                __WEBPACK_IMPORTED_MODULE_15__pages_index_paginas__["n" /* MapaPage */],
+                __WEBPACK_IMPORTED_MODULE_15__pages_index_paginas__["l" /* LoginPage */],
+                __WEBPACK_IMPORTED_MODULE_15__pages_index_paginas__["p" /* OrdenesPage */],
+                __WEBPACK_IMPORTED_MODULE_15__pages_index_paginas__["o" /* OrdenesDetallePage */],
+                __WEBPACK_IMPORTED_MODULE_15__pages_index_paginas__["s" /* PublicacionPage */],
+                __WEBPACK_IMPORTED_MODULE_15__pages_index_paginas__["w" /* TabsPage */],
+                __WEBPACK_IMPORTED_MODULE_15__pages_index_paginas__["b" /* BusquedaPage */],
+                __WEBPACK_IMPORTED_MODULE_15__pages_index_paginas__["r" /* ProductoPage */],
+                __WEBPACK_IMPORTED_MODULE_15__pages_index_paginas__["t" /* RegistrarsePage */],
+                __WEBPACK_IMPORTED_MODULE_15__pages_index_paginas__["d" /* CompraPage */],
+                __WEBPACK_IMPORTED_MODULE_15__pages_index_paginas__["x" /* TarjetaPage */],
+                __WEBPACK_IMPORTED_MODULE_15__pages_index_paginas__["q" /* PaypalPage */],
+                __WEBPACK_IMPORTED_MODULE_15__pages_index_paginas__["h" /* EstacionamientoPage */],
+                __WEBPACK_IMPORTED_MODULE_15__pages_index_paginas__["g" /* EstacionamientoDetallePage */],
+                __WEBPACK_IMPORTED_MODULE_15__pages_index_paginas__["f" /* EspaciosPage */],
+                __WEBPACK_IMPORTED_MODULE_15__pages_index_paginas__["e" /* EspaciosDetallePage */],
+                __WEBPACK_IMPORTED_MODULE_15__pages_index_paginas__["j" /* HistorialPage */],
+                __WEBPACK_IMPORTED_MODULE_15__pages_index_paginas__["u" /* ReportesPage */],
+                __WEBPACK_IMPORTED_MODULE_15__pages_index_paginas__["m" /* MantenimientoPage */],
+                __WEBPACK_IMPORTED_MODULE_15__pages_index_paginas__["v" /* ResiduosPage */],
+                __WEBPACK_IMPORTED_MODULE_15__pages_index_paginas__["y" /* VolumenPage */],
+                __WEBPACK_IMPORTED_MODULE_15__pages_index_paginas__["i" /* FotoPage */],
+                __WEBPACK_IMPORTED_MODULE_15__pages_index_paginas__["a" /* AgregarReciclajePage */]
             ],
             providers: [
                 __WEBPACK_IMPORTED_MODULE_4__ionic_native_status_bar__["a" /* StatusBar */],
@@ -1540,7 +1557,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 var MyApp = /** @class */ (function () {
     function MyApp(platform, statusBar, splashScreen) {
-        this.rootPage = __WEBPACK_IMPORTED_MODULE_4__pages_index_paginas__["v" /* TabsPage */];
+        this.rootPage = __WEBPACK_IMPORTED_MODULE_4__pages_index_paginas__["w" /* TabsPage */];
         platform.ready().then(function () {
             // Okay, so the platform is ready and our plugins are available.
             // Here you can do any higher level native things you might need.
@@ -1650,7 +1667,7 @@ var MapaPage = /** @class */ (function () {
         this.platform = platform;
         //map: any;
         this.vmapa = true;
-        this.estacionamiento = __WEBPACK_IMPORTED_MODULE_5__index_paginas__["g" /* EstacionamientoPage */];
+        this.estacionamiento = __WEBPACK_IMPORTED_MODULE_5__index_paginas__["h" /* EstacionamientoPage */];
         this.view = new __WEBPACK_IMPORTED_MODULE_6__ionic_native_photo_viewer__["a" /* PhotoViewer */]();
         // this.platform.ready().then(() =>{
         //   var photoUrl = "https://e.rpp-noticias.io/normal/2018/12/06/573857_721892.jpg";
@@ -1788,7 +1805,7 @@ var OrdenesPage = /** @class */ (function () {
         this._us = _us;
         this._cs = _cs;
         this._rs = _rs;
-        this.incidencia = __WEBPACK_IMPORTED_MODULE_4__index_paginas__["g" /* EstacionamientoPage */];
+        this.incidencia = __WEBPACK_IMPORTED_MODULE_4__index_paginas__["h" /* EstacionamientoPage */];
         this.vreciclaje = true;
         this.mireciclaje = false;
         //espacio : any = [];
@@ -1845,10 +1862,14 @@ var OrdenesPage = /** @class */ (function () {
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
             selector: 'page-ordenes',template:/*ion-inline-start:"C:\Users\andyu\Desktop\reciclaje\src\pages\ordenes\ordenes.html"*/'<ion-header>\n\n\n\n    <ion-navbar color="dark">\n\n\n\n        <ion-buttons start>\n\n            <button ion-button icon-only *ngIf="_us.inactivo()" [navPush]="login">\n\n            <ion-icon name="contact"></ion-icon>\n\n          </button>\n\n        </ion-buttons>\n\n\n\n\n\n        <ion-buttons start>\n\n            <button ion-button icon-only *ngIf="_us.activo()">\n\n            {{ _us.usuario }} <ion-icon name="contact"></ion-icon>\n\n          </button>\n\n            <button ion-button icon-only *ngIf="_us.activo()" (click)="_us.cerrar_sesion()">\n\n            <ion-icon name="log-out"></ion-icon>\n\n          </button>\n\n        </ion-buttons>\n\n\n\n        <ion-title>Reciclaje</ion-title>\n\n    </ion-navbar>\n\n\n\n</ion-header>\n\n\n\n\n\n<ion-content padding>\n\n    \n\n    <div style="text-align: center">\n\n        <img src="../../assets/imgs/mireciclaje.jpg" style="max-width: 80%; padding-top: 42px">\n\n      </div>\n\n      <br><br>\n\n      <button style="width: 70%; margin-left: 50px;" ion-button block (click)="_us.ver_residuo(vreciclaje)"\n\n              >\n\n        Reciclar\n\n      </button>\n\n      <br><br>\n\n      <button style="width: 70%; margin-left: 50px;" ion-button block (click)="_cs.ver_incidencia(mireciclaje, _us.id_usuario)"  \n\n                                                                      [navPush]="incidencia"\n\n              >\n\n        Mi reciclaje\n\n      </button>\n\n\n\n\n\n\n\n    <ion-card *ngIf="reservas && estacionamiento != null && _us.id_usuario != null && _cs.estado_reserva == true && reservas.estado != \'Finalizado\'">\n\n        <ion-item color="primary">\n\n            <ion-icon name="pin" slot="start"></ion-icon>\n\n            <ion-label style="font-weight: bold">Reserva 1</ion-label>\n\n            <ion-label *ngIf="_cs.cronometro" style="font-weight: bold">Tiempo Restante: {{_cs.cronometro}}</ion-label>\n\n        </ion-item>\n\n\n\n        <ion-card-content color="primary">\n\n            <br>\n\n            <div style="text-align: right">\n\n                <button ion-button [navPush]="ordenesDetalle" [navParams]="{usuario : usuario, reserva : reservas, espacio : espacio}">Ver</button>\n\n                <button ion-button color="danger" (click)="eliminarReserva()">Eliminar</button>\n\n                <!-- <button *ngIf="espacio && espacio.estado_ocupacion.stringValue == \'0\'" ion-button color="danger" (click)="eliminarReserva()">Eliminar</button>\n\n                <button *ngIf="espacio && espacio.estado_ocupacion.stringValue == \'1\'" ion-button disabled color="danger" (click)="eliminarReserva()">Eliminar</button> -->\n\n            </div>\n\n            <br>\n\n            <span *ngIf="estacionamiento">{{estacionamiento.nombre.stringValue}} - </span>\n\n            <span *ngIf="espacio">{{espacio.id.stringValue}}</span>\n\n        </ion-card-content>\n\n    </ion-card>\n\n\n\n\n\n</ion-content>\n\n\n\n<!-- <ion-content *ngIf="estacionamiento == null || _us.id_usuario == null || _cs.estado_reserva == false || reservas.estado == \'Finalizado\'">\n\n\n\n    <div text-center class="carrito_vacio">\n\n        <ion-icon name="ios-list-box-outline" class="icon-5x">\n\n        </ion-icon>\n\n        <br> No tienes reciclajes\n\n    </div>\n\n\n\n</ion-content> -->'/*ion-inline-end:"C:\Users\andyu\Desktop\reciclaje\src\pages\ordenes\ordenes.html"*/,
         }),
-        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_6__providers_usuario_usuario__["a" /* UsuarioProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_6__providers_usuario_usuario__["a" /* UsuarioProvider */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_7__providers_carrito_carrito__["a" /* CarritoProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_7__providers_carrito_carrito__["a" /* CarritoProvider */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_5__providers_registro_registro__["a" /* RegistroProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5__providers_registro_registro__["a" /* RegistroProvider */]) === "function" && _f || Object])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */],
+            __WEBPACK_IMPORTED_MODULE_6__providers_usuario_usuario__["a" /* UsuarioProvider */],
+            __WEBPACK_IMPORTED_MODULE_7__providers_carrito_carrito__["a" /* CarritoProvider */],
+            __WEBPACK_IMPORTED_MODULE_5__providers_registro_registro__["a" /* RegistroProvider */]])
     ], OrdenesPage);
     return OrdenesPage;
-    var _a, _b, _c, _d, _e, _f;
 }());
 
 //# sourceMappingURL=ordenes.js.map
@@ -1935,13 +1956,13 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var TabsPage = /** @class */ (function () {
     function TabsPage(_us) {
         this._us = _us;
-        this.tab1 = __WEBPACK_IMPORTED_MODULE_2__index_paginas__["j" /* HomePage */];
-        this.tab2 = __WEBPACK_IMPORTED_MODULE_2__index_paginas__["r" /* PublicacionPage */];
-        this.tab3 = __WEBPACK_IMPORTED_MODULE_2__index_paginas__["m" /* MapaPage */];
-        this.tab4 = __WEBPACK_IMPORTED_MODULE_2__index_paginas__["o" /* OrdenesPage */];
-        this.tab5 = __WEBPACK_IMPORTED_MODULE_2__index_paginas__["i" /* HistorialPage */];
-        this.tab6 = __WEBPACK_IMPORTED_MODULE_2__index_paginas__["t" /* ReportesPage */];
-        this.tab7 = __WEBPACK_IMPORTED_MODULE_2__index_paginas__["l" /* MantenimientoPage */];
+        this.tab1 = __WEBPACK_IMPORTED_MODULE_2__index_paginas__["k" /* HomePage */];
+        this.tab2 = __WEBPACK_IMPORTED_MODULE_2__index_paginas__["s" /* PublicacionPage */];
+        this.tab3 = __WEBPACK_IMPORTED_MODULE_2__index_paginas__["n" /* MapaPage */];
+        this.tab4 = __WEBPACK_IMPORTED_MODULE_2__index_paginas__["p" /* OrdenesPage */];
+        this.tab5 = __WEBPACK_IMPORTED_MODULE_2__index_paginas__["j" /* HistorialPage */];
+        this.tab6 = __WEBPACK_IMPORTED_MODULE_2__index_paginas__["u" /* ReportesPage */];
+        this.tab7 = __WEBPACK_IMPORTED_MODULE_2__index_paginas__["m" /* MantenimientoPage */];
     }
     TabsPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
@@ -1983,7 +2004,7 @@ var BusquedaPage = /** @class */ (function () {
         this.navCtrl = navCtrl;
         this.navParams = navParams;
         this._ps = _ps;
-        this.productoPage = __WEBPACK_IMPORTED_MODULE_3__index_paginas__["q" /* ProductoPage */];
+        this.productoPage = __WEBPACK_IMPORTED_MODULE_3__index_paginas__["r" /* ProductoPage */];
     }
     BusquedaPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
@@ -3036,7 +3057,7 @@ var ResiduosPage = /** @class */ (function () {
     }
     ResiduosPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-residuos',template:/*ion-inline-start:"C:\Users\andyu\Desktop\reciclaje\src\pages\residuos\residuos.html"*/'<ion-header>\n\n  <ion-navbar color="dark">\n\n    <ion-buttons left>\n      <button icon-only ion-button\n              (click)="viewCtrl.dismiss()">\n        <ion-icon name="arrow-round-back"></ion-icon>\n      </button>\n    </ion-buttons>\n\n    <ion-title *ngIf="_us.ventana==false">Publicar Incidencia</ion-title>\n    <ion-title *ngIf="_us.ventana==true">Reciclar</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n  <ion-list radio-group [(ngModel)]="_cs.id_residuo">\n    <ion-list-header>\n      Selecciona el tipo de residuo\n    </ion-list-header>\n\n     <!-- <button ion-item\n                *ngFor="let estacionamiento of _cs.estacionamientos"\n                [navPush]="estacionamientoDetalle"\n                [navParams]="{ estacionamiento: estacionamiento }"\n                >\n    \n          <ion-icon name="ios-arrow-forward"></ion-icon>\n            {{ estacionamiento.nombre }}\n        </button> -->\n    \n    <ion-item *ngFor="let residuo of _cs.residuos">\n      <ion-label><img src={{residuo.img}} alt=""/>   {{residuo.tipo}}</ion-label>\n      <ion-radio *ngIf="residuo.id==\'1\'" checked="true"  value={{residuo.id}} (click)="_cs.ver_volumen()"></ion-radio>\n      <ion-radio *ngIf="residuo.id!=\'1\'" value={{residuo.id}} (click)="_cs.ver_volumen()"></ion-radio>\n    </ion-item>\n\n    <!-- <ion-item>\n      <ion-label><ion-img src="../../assets/imgs/Iconos/TipoResiduo/electronicos.png" alt=""></ion-img>   Electrónicos</ion-label>\n      <ion-radio checked="true" value="electronicos" (click)="_cs.ver_volumen()"></ion-radio>\n    </ion-item>\n  \n    <ion-item>\n      <ion-label><ion-img src="../../assets/imgs/Iconos/TipoResiduo/medicamentos.png" alt=""></ion-img>   Medicamentos</ion-label>\n      <ion-radio value="medicamentos" (click)="_cs.ver_volumen()"></ion-radio>\n    </ion-item>\n  \n    <ion-item>\n      <ion-label><ion-img src="../../assets/imgs/Iconos/TipoResiduo/neumatico.png" alt=""></ion-img>   Neumáticos</ion-label>\n      <ion-radio value="neumaticos" (click)="_cs.ver_volumen()"></ion-radio>\n    </ion-item>\n\n    <ion-item>\n      <ion-label><ion-img src="../../assets/imgs/Iconos/TipoResiduo/organico.png" alt=""></ion-img>   Orgánicos</ion-label>\n      <ion-radio value="organicos" (click)="_cs.ver_volumen()"></ion-radio>\n    </ion-item>\n    \n    <ion-item>\n      <ion-label><ion-img src="../../assets/imgs/Iconos/TipoResiduo/pila.png" alt=""></ion-img>   Pilas</ion-label>\n      <ion-radio value="pilas" (click)="_cs.ver_volumen()"></ion-radio>\n    </ion-item>\n\n    <ion-item>\n      <ion-label><ion-img src="../../assets/imgs/Iconos/TipoResiduo/plastico.png" alt=""></ion-img>   Plásticos</ion-label>\n      <ion-radio value="plastico" (click)="_cs.ver_volumen()"></ion-radio>\n    </ion-item>\n\n    <ion-item>\n      <ion-label><ion-img src="../../assets/imgs/Iconos/TipoResiduo/ropa.png" alt=""></ion-img>   Ropas</ion-label>\n      <ion-radio value="ropa" (click)="_cs.ver_volumen()"></ion-radio>\n    </ion-item>\n\n    <ion-item>\n      <ion-label><ion-img src="../../assets/imgs/Iconos/TipoResiduo/vertido.png" alt=""></ion-img>   Vertidos</ion-label>\n      <ion-radio value="vertido" (click)="_cs.ver_volumen()"></ion-radio>\n    </ion-item>\n\n    <ion-item>\n      <ion-label><ion-img src="../../assets/imgs/Iconos/TipoResiduo/vidrio.png" alt=""></ion-img>   Vidrios</ion-label>\n      <ion-radio value="vidrio" (click)="_cs.ver_volumen()"></ion-radio>\n    </ion-item>\n\n    <ion-item>\n      <ion-label><ion-img src="../../assets/imgs/Iconos/TipoResiduo/otros.png" alt=""></ion-img>   Otros</ion-label>\n      <ion-radio value="otros" (click)="_cs.ver_volumen()"></ion-radio>\n    </ion-item> -->\n  </ion-list>\n\n</ion-content>\n'/*ion-inline-end:"C:\Users\andyu\Desktop\reciclaje\src\pages\residuos\residuos.html"*/,
+            selector: 'page-residuos',template:/*ion-inline-start:"C:\Users\andyu\Desktop\reciclaje\src\pages\residuos\residuos.html"*/'<ion-header>\n\n  <ion-navbar color="dark">\n\n    <ion-buttons left>\n      <button icon-only ion-button\n              (click)="viewCtrl.dismiss()">\n        <ion-icon name="arrow-round-back"></ion-icon>\n      </button>\n    </ion-buttons>\n\n    <ion-title *ngIf="_us.ventana==false">Publicar Incidencia</ion-title>\n    <ion-title *ngIf="_us.ventana==true">Reciclar</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n  <ion-list radio-group [(ngModel)]="_cs.id_residuo">\n    <ion-list-header>\n      Selecciona el tipo de residuo\n    </ion-list-header>\n\n     <!-- <button ion-item\n                *ngFor="let estacionamiento of _cs.estacionamientos"\n                [navPush]="estacionamientoDetalle"\n                [navParams]="{ estacionamiento: estacionamiento }"\n                >\n    \n          <ion-icon name="ios-arrow-forward"></ion-icon>\n            {{ estacionamiento.nombre }}\n        </button> -->\n    \n    <div *ngIf="_us.ventana==false">\n      <ion-item *ngFor="let residuo of _cs.residuos">\n        <ion-label><img src={{residuo.img}} alt=""/>   {{residuo.tipo}}</ion-label>\n        <ion-radio *ngIf="residuo.id==\'1\'" checked="true"  value={{residuo.id}} (click)="_cs.ver_volumen()"></ion-radio>\n        <ion-radio *ngIf="residuo.id!=\'1\'" value={{residuo.id}} (click)="_cs.ver_volumen()"></ion-radio>\n      </ion-item>\n    </div>\n    \n    <ion-item *ngIf="_us.ventana==true">\n      <ion-label><img src="../../assets/imgs/Iconos/TipoResiduo/plastico.png" alt="">   Plásticos</ion-label>\n      <ion-radio checked="true" value="6" (click)="_cs.ver_agregar_reciclaje()"></ion-radio>\n    </ion-item>\n    \n    <ion-item *ngIf="_us.ventana==true">\n      <ion-label><img src="../../assets/imgs/Iconos/TipoResiduo/carton.png" alt="">   Cartón</ion-label>\n      <ion-radio value="11" (click)="_cs.ver_agregar_reciclaje()"></ion-radio>\n    </ion-item>\n    \n    <ion-item *ngIf="_us.ventana==true">\n      <ion-label><img src="../../assets/imgs/Iconos/TipoResiduo/vidrio.png" alt="">   Vidrios</ion-label>\n      <ion-radio value="10" (click)="_cs.ver_agregar_reciclaje()"></ion-radio>\n    </ion-item>\n\n    <ion-item *ngIf="_us.ventana==true">\n      <ion-label><ion-img src="../../assets/imgs/Iconos/TipoResiduo/papel.png" alt=""></ion-img>   Papel blanco</ion-label>\n      <ion-radio value="12" (click)="_cs.ver_agregar_reciclaje()"></ion-radio>\n    </ion-item>\n\n    <ion-item *ngIf="_us.ventana==true">\n      <ion-label><img src="../../assets/imgs/Iconos/TipoResiduo/pila.png" alt="">   Baterías/Pilas</ion-label>\n      <ion-radio value="5" (click)="_cs.ver_agregar_reciclaje()"></ion-radio>\n    </ion-item>\n\n  </ion-list>\n\n</ion-content>\n'/*ion-inline-end:"C:\Users\andyu\Desktop\reciclaje\src\pages\residuos\residuos.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */],
@@ -3196,10 +3217,18 @@ var FotoPage = /** @class */ (function () {
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
             selector: 'page-foto',template:/*ion-inline-start:"C:\Users\andyu\Desktop\reciclaje\src\pages\foto\foto.html"*/'<ion-header>\n\n  <ion-navbar color="dark">\n\n    <ion-buttons left>\n      <button icon-only ion-button\n              (click)="viewCtrl.dismiss()">\n        <ion-icon name="arrow-round-back"></ion-icon>\n      </button>\n    </ion-buttons>\n\n    <ion-title>Publicar Incidencia</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n  <!-- <button ion-button block (click)="getPicture()">Toma una foto</button>\n    <img [src]="image" *ngIf="image" /> -->\n  <br>\n\n  <ion-item>\n    <ion-label floating>Título</ion-label>\n     <ion-input [(ngModel)]="titulo"></ion-input>\n  </ion-item>\n\n  <ion-item>\n    <ion-label floating>Ubicación</ion-label>\n     <ion-input [(ngModel)]="ubicacion"></ion-input>\n  </ion-item>\n  <br>\n  <ion-card>\n      <ion-item color="primary">\n          <ion-icon name="pin" slot="start"></ion-icon>\n          <ion-label style="font-weight: bold;">Descripción</ion-label>\n      </ion-item>\n\n      <ion-card-content color="primary">\n        <ion-input type="text" [(ngModel)]="descripcion"></ion-input>\n        <br><br><br>\n      </ion-card-content>\n  </ion-card>\n\n  <br><br>\n  <!-- <ion-card>\n      <ion-item color="primary">\n          <ion-icon name="pin" slot="start"></ion-icon>\n          <ion-label style="font-weight: bold;">Subir Foto</ion-label>\n      </ion-item>\n\n      <ion-card-content color="primary">\n        \n        <br><br><br>\n      </ion-card-content>\n  </ion-card> -->\n\n  <!-- <button ion-button id="registrar" block>Subir foto</button> -->\n  <ion-card>\n    <ion-card-content>\n      <button ion-button color="danger" icon-right block (click)="takePicture();">\n        Tomar Foto\n        <ion-icon name="camera">\n\n        </ion-icon>\n      </button>\n      <br>\n      <img *ngIf="base64Image" [src]="base64Image" [(ngModel)]="base64Image">\n    </ion-card-content>\n  </ion-card>\n  <!-- <img src=\'/assets/imgs/Pta3.png\' alt=\'\' style=\'max-width:100%;width:auto;height:auto;\' onclick=\'\'>" -->\n  <br><br>\n\n  <button id="registrar" ion-button block (click)="publicar()"\n          >\n    Registrar\n  </button>\n  <br><br>\n</ion-content>\n'/*ion-inline-end:"C:\Users\andyu\Desktop\reciclaje\src\pages\foto\foto.html"*/,
         }),
-        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* ViewController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* ViewController */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_2_angularfire2_firestore__["AngularFirestore"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2_angularfire2_firestore__["AngularFirestore"]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_7__ionic_native_geolocation__["a" /* Geolocation */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_7__ionic_native_geolocation__["a" /* Geolocation */]) === "function" && _f || Object, typeof (_g = typeof __WEBPACK_IMPORTED_MODULE_4__providers_carrito_carrito__["a" /* CarritoProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__providers_carrito_carrito__["a" /* CarritoProvider */]) === "function" && _g || Object, typeof (_h = typeof __WEBPACK_IMPORTED_MODULE_5__providers_usuario_usuario__["a" /* UsuarioProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5__providers_usuario_usuario__["a" /* UsuarioProvider */]) === "function" && _h || Object, typeof (_j = typeof __WEBPACK_IMPORTED_MODULE_6__providers_registro_registro__["a" /* RegistroProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_6__providers_registro_registro__["a" /* RegistroProvider */]) === "function" && _j || Object, typeof (_k = typeof __WEBPACK_IMPORTED_MODULE_3__ionic_native_camera__["a" /* Camera */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__ionic_native_camera__["a" /* Camera */]) === "function" && _k || Object])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* ViewController */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */],
+            __WEBPACK_IMPORTED_MODULE_2_angularfire2_firestore__["AngularFirestore"],
+            __WEBPACK_IMPORTED_MODULE_7__ionic_native_geolocation__["a" /* Geolocation */],
+            __WEBPACK_IMPORTED_MODULE_4__providers_carrito_carrito__["a" /* CarritoProvider */],
+            __WEBPACK_IMPORTED_MODULE_5__providers_usuario_usuario__["a" /* UsuarioProvider */],
+            __WEBPACK_IMPORTED_MODULE_6__providers_registro_registro__["a" /* RegistroProvider */],
+            __WEBPACK_IMPORTED_MODULE_3__ionic_native_camera__["a" /* Camera */]])
     ], FotoPage);
     return FotoPage;
-    var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k;
 }());
 
 //# sourceMappingURL=foto.js.map
@@ -3223,6 +3252,59 @@ var FotoPage = /** @class */ (function () {
 
 
 //# sourceMappingURL=index.services.js.map
+
+/***/ }),
+
+/***/ 628:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AgregarReciclajePage; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(12);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_carrito_carrito__ = __webpack_require__(15);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_usuario_usuario__ = __webpack_require__(14);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_registro_registro__ = __webpack_require__(25);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+
+var AgregarReciclajePage = /** @class */ (function () {
+    function AgregarReciclajePage(navCtrl, navParams, viewCtrl, _cs, _us, _rs) {
+        var _this = this;
+        this.navCtrl = navCtrl;
+        this.navParams = navParams;
+        this.viewCtrl = viewCtrl;
+        this._cs = _cs;
+        this._us = _us;
+        this._rs = _rs;
+        this.id_residuo = "";
+        this.id_residuo = this._cs.id_residuo;
+        this._rs.getResiduo(this.id_residuo).subscribe(function (res) {
+            _this.residuo = res;
+        });
+    }
+    AgregarReciclajePage = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
+            selector: 'page-agregar-reciclaje',template:/*ion-inline-start:"C:\Users\andyu\Desktop\reciclaje\src\pages\agregar-reciclaje\agregar-reciclaje.html"*/'<ion-header>\n\n  <ion-navbar color="dark">\n\n    <ion-buttons left>\n      <button icon-only ion-button\n              (click)="viewCtrl.dismiss()">\n        <ion-icon name="arrow-round-back"></ion-icon>\n      </button>\n    </ion-buttons>\n\n    <ion-title>Mi Reciclaje</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n  \n  <h4 *ngIf="residuo">Tipo: {{residuo.tipo}}  <img src={{residuo.img}} alt=""/></h4>\n  <h4 *ngIf="residuo">Precio x kg: S/. {{residuo.precio}}</h4>\n  <h4 *ngIf="residuo">Subtotal: </h4>\n\n</ion-content>\n'/*ion-inline-end:"C:\Users\andyu\Desktop\reciclaje\src\pages\agregar-reciclaje\agregar-reciclaje.html"*/,
+        }),
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* ViewController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* ViewController */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_2__providers_carrito_carrito__["a" /* CarritoProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__providers_carrito_carrito__["a" /* CarritoProvider */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_3__providers_usuario_usuario__["a" /* UsuarioProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__providers_usuario_usuario__["a" /* UsuarioProvider */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_4__providers_registro_registro__["a" /* RegistroProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__providers_registro_registro__["a" /* RegistroProvider */]) === "function" && _f || Object])
+    ], AgregarReciclajePage);
+    return AgregarReciclajePage;
+    var _a, _b, _c, _d, _e, _f;
+}());
+
+//# sourceMappingURL=agregar-reciclaje.js.map
 
 /***/ })
 

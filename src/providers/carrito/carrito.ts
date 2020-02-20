@@ -8,7 +8,7 @@ import { ModalController } from "ionic-angular";
 import { Estacionamiento, Espacio, RegistroProvider, Residuo, Volumen, Incidencia } from "../../providers/registro/registro";
 
 // paginas del modal
-import { LoginPage, RegistrarsePage, TarjetaPage, PaypalPage, VolumenPage, FotoPage} from "../../pages/index.paginas";
+import { LoginPage, RegistrarsePage, TarjetaPage, PaypalPage, VolumenPage, FotoPage, AgregarReciclajePage} from "../../pages/index.paginas";
 
 @Injectable()
 export class CarritoProvider {
@@ -54,6 +54,17 @@ export class CarritoProvider {
     });
 
     modal = this.modalCtrl.create( VolumenPage );
+    modal.present();
+  }
+
+  ver_agregar_reciclaje(){
+    let modal:any;
+
+    // this.registroProvider.getVolumenes().subscribe(res => {
+    //   this.volumenes = res;
+    // });
+
+    modal = this.modalCtrl.create( AgregarReciclajePage );
     modal.present();
   }
 

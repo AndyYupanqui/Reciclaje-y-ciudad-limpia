@@ -32,61 +32,39 @@
             {{ estacionamiento.nombre }}
         </button> -->
     
-    <ion-item *ngFor="let residuo of _cs.residuos">
-      <ion-label><img src={{residuo.img}} alt=""/>   {{residuo.tipo}}</ion-label>
-      <ion-radio *ngIf="residuo.id=='1'" checked="true"  value={{residuo.id}} (click)="_cs.ver_volumen()"></ion-radio>
-      <ion-radio *ngIf="residuo.id!='1'" value={{residuo.id}} (click)="_cs.ver_volumen()"></ion-radio>
-    </ion-item>
-
-    <!-- <ion-item>
-      <ion-label><ion-img src="../../assets/imgs/Iconos/TipoResiduo/electronicos.png" alt=""></ion-img>   Electrónicos</ion-label>
-      <ion-radio checked="true" value="electronicos" (click)="_cs.ver_volumen()"></ion-radio>
-    </ion-item>
-  
-    <ion-item>
-      <ion-label><ion-img src="../../assets/imgs/Iconos/TipoResiduo/medicamentos.png" alt=""></ion-img>   Medicamentos</ion-label>
-      <ion-radio value="medicamentos" (click)="_cs.ver_volumen()"></ion-radio>
-    </ion-item>
-  
-    <ion-item>
-      <ion-label><ion-img src="../../assets/imgs/Iconos/TipoResiduo/neumatico.png" alt=""></ion-img>   Neumáticos</ion-label>
-      <ion-radio value="neumaticos" (click)="_cs.ver_volumen()"></ion-radio>
-    </ion-item>
-
-    <ion-item>
-      <ion-label><ion-img src="../../assets/imgs/Iconos/TipoResiduo/organico.png" alt=""></ion-img>   Orgánicos</ion-label>
-      <ion-radio value="organicos" (click)="_cs.ver_volumen()"></ion-radio>
+    <div *ngIf="_us.ventana==false">
+      <ion-item *ngFor="let residuo of _cs.residuos">
+        <ion-label><img src={{residuo.img}} alt=""/>   {{residuo.tipo}}</ion-label>
+        <ion-radio *ngIf="residuo.id=='1'" checked="true"  value={{residuo.id}} (click)="_cs.ver_volumen()"></ion-radio>
+        <ion-radio *ngIf="residuo.id!='1'" value={{residuo.id}} (click)="_cs.ver_volumen()"></ion-radio>
+      </ion-item>
+    </div>
+    
+    <ion-item *ngIf="_us.ventana==true">
+      <ion-label><img src="../../assets/imgs/Iconos/TipoResiduo/plastico.png" alt="">   Plásticos</ion-label>
+      <ion-radio checked="true" value="6" (click)="_cs.ver_agregar_reciclaje()"></ion-radio>
     </ion-item>
     
-    <ion-item>
-      <ion-label><ion-img src="../../assets/imgs/Iconos/TipoResiduo/pila.png" alt=""></ion-img>   Pilas</ion-label>
-      <ion-radio value="pilas" (click)="_cs.ver_volumen()"></ion-radio>
+    <ion-item *ngIf="_us.ventana==true">
+      <ion-label><img src="../../assets/imgs/Iconos/TipoResiduo/carton.png" alt="">   Cartón</ion-label>
+      <ion-radio value="11" (click)="_cs.ver_agregar_reciclaje()"></ion-radio>
+    </ion-item>
+    
+    <ion-item *ngIf="_us.ventana==true">
+      <ion-label><img src="../../assets/imgs/Iconos/TipoResiduo/vidrio.png" alt="">   Vidrios</ion-label>
+      <ion-radio value="10" (click)="_cs.ver_agregar_reciclaje()"></ion-radio>
     </ion-item>
 
-    <ion-item>
-      <ion-label><ion-img src="../../assets/imgs/Iconos/TipoResiduo/plastico.png" alt=""></ion-img>   Plásticos</ion-label>
-      <ion-radio value="plastico" (click)="_cs.ver_volumen()"></ion-radio>
+    <ion-item *ngIf="_us.ventana==true">
+      <ion-label><ion-img src="../../assets/imgs/Iconos/TipoResiduo/papel.png" alt=""></ion-img>   Papel blanco</ion-label>
+      <ion-radio value="12" (click)="_cs.ver_agregar_reciclaje()"></ion-radio>
     </ion-item>
 
-    <ion-item>
-      <ion-label><ion-img src="../../assets/imgs/Iconos/TipoResiduo/ropa.png" alt=""></ion-img>   Ropas</ion-label>
-      <ion-radio value="ropa" (click)="_cs.ver_volumen()"></ion-radio>
+    <ion-item *ngIf="_us.ventana==true">
+      <ion-label><img src="../../assets/imgs/Iconos/TipoResiduo/pila.png" alt="">   Baterías/Pilas</ion-label>
+      <ion-radio value="5" (click)="_cs.ver_agregar_reciclaje()"></ion-radio>
     </ion-item>
 
-    <ion-item>
-      <ion-label><ion-img src="../../assets/imgs/Iconos/TipoResiduo/vertido.png" alt=""></ion-img>   Vertidos</ion-label>
-      <ion-radio value="vertido" (click)="_cs.ver_volumen()"></ion-radio>
-    </ion-item>
-
-    <ion-item>
-      <ion-label><ion-img src="../../assets/imgs/Iconos/TipoResiduo/vidrio.png" alt=""></ion-img>   Vidrios</ion-label>
-      <ion-radio value="vidrio" (click)="_cs.ver_volumen()"></ion-radio>
-    </ion-item>
-
-    <ion-item>
-      <ion-label><ion-img src="../../assets/imgs/Iconos/TipoResiduo/otros.png" alt=""></ion-img>   Otros</ion-label>
-      <ion-radio value="otros" (click)="_cs.ver_volumen()"></ion-radio>
-    </ion-item> -->
   </ion-list>
 
 </ion-content>

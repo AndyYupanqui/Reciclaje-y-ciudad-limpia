@@ -23,3 +23,4 @@ export { MantenimientoPage } from "./mantenimiento/mantenimiento";
 export { ResiduosPage } from "./residuos/residuos";
 export { VolumenPage } from "./volumen/volumen";
 export { FotoPage } from "./foto/foto";
+export { AgregarReciclajePage } from "./agregar-reciclaje/agregar-reciclaje";

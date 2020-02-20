@@ -56,6 +56,7 @@ export interface Residuo{
   id?: string;
   tipo: string;
   img: string;
+  precio: number;
 }
 
 export interface Volumen{
@@ -327,6 +328,10 @@ export class RegistroProvider {
 
   getResiduos(){
     return this.residuos;
+  }
+
+  getResiduo(id){
+    return this.residuoCollection.doc<Residuo>(id).valueChanges();
   }
 
   getVolumenes(){
