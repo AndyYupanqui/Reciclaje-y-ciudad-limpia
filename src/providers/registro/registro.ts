@@ -27,9 +27,13 @@ export interface Comentario{
 
 export interface Reciclaje{
   id?: string;
-  id_usuario: DocumentReference;
-  tipo_reciclaje: string;
-  cantidad: number;
+  id_usuario: string;
+  reciclaje: [];
+  estado: string;
+  fecha: string;
+  hora: string;
+  direccion: string;
+  total: number;
 }
 
 export interface Incidencia{
@@ -128,6 +132,7 @@ export class RegistroProvider {
   espacio: any;
   reserva: any;
   incidencia: any;
+  reciclaje: any;
 
 
   constructor(db: AngularFirestore) {
@@ -149,6 +154,7 @@ export class RegistroProvider {
     this.espacio = db;
     this.reserva = db;
     this.incidencia = db;
+    this.reciclaje = db;
 
    
     
@@ -337,6 +343,28 @@ export class RegistroProvider {
   getVolumenes(){
     return this.volumenes;
   }
+
+  getReciclaje(){
+    return this.reciclajes;
+  }
+
+  getReciclajeNoRecogido(estado){
+    return this.reciclaje.collection('Reciclaje', ref => ref.where('estado', '==', estado)).valueChanges();
+  }
+
+  getReciclajeRecogido(estado){
+    return this.reciclaje.collection('Reciclaje', ref => ref.where('estado', '==', estado)).valueChanges();
+  }
+
+  getReciclajeUsuario(id_usuario){
+    return this.reciclaje.collection('Reciclaje', ref => ref.where('id_usuario', '==', id_usuario)).valueChanges();
+  }
+
+  updateReciclaje(reciclaje: Reciclaje, id: string){
+    return this.reciclajeCollection.doc(id).update(reciclaje);
+  }
+
+
 
   
 

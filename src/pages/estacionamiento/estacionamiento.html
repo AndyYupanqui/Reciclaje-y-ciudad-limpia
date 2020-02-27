@@ -23,7 +23,8 @@
             </button>
           </ion-buttons>
 
-    <ion-title>Incidencias</ion-title>
+    <ion-title *ngIf="_cs.listado == true">Incidencias</ion-title>
+    <ion-title *ngIf="_cs.listado == false">Mi Reciclaje</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -36,6 +37,7 @@
                 *ngFor="let incidencia of _cs.incidencias"
                 [navPush]="estacionamientoDetalle"
                 [navParams]="{ incidencia: incidencia }"
+                style="background: aliceblue"
                 >
     
           <ion-icon name="ios-arrow-forward"></ion-icon>
@@ -66,13 +68,14 @@
   <h6 padding>Mis reciclajes:</h6>
     <ion-list>
         <button ion-item
-                *ngFor="let incidencia of _cs.incidencias"
-                [navPush]="estacionamientoDetalle"
-                [navParams]="{ incidencia: incidencia }"
+                *ngFor="let reciclaje of _cs.reciclajes"
+                [navPush]="detalleReciclaje"
+                [navParams]="{ reciclaje: reciclaje }"
+                style="background: aliceblue"
                 >
     
           <ion-icon name="ios-arrow-forward"></ion-icon>
-            {{ incidencia.titulo }}
+            {{ reciclaje.fecha }}     {{ reciclaje.hora }}     <span *ngIf="reciclaje.estado=='false'" style="color: red;">NO RECOGIGO</span><span *ngIf="reciclaje.estado=='true'" style="color: blue;">RECOGIDO</span>
         </button>
       </ion-list>
 

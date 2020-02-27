@@ -49,7 +49,8 @@ import { CarritoPage,
          VolumenPage,
          FotoPage,
          AgregarReciclajePage,
-         CantidadPage} from "../pages/index.paginas";
+         CantidadPage,
+         DetalleReciclajePage} from "../pages/index.paginas";
 
 export const firebaseConfig = {
   apiKey: "AIzaSyDKkhH0qtvg7FFP5k8SM4eY1gKVavB-KxE",
@@ -88,7 +89,8 @@ export const firebaseConfig = {
     VolumenPage,
     FotoPage,
     AgregarReciclajePage,
-    CantidadPage
+    CantidadPage,
+    DetalleReciclajePage
   ],
   imports: [
     BrowserModule,
@@ -126,7 +128,8 @@ export const firebaseConfig = {
     VolumenPage,
     FotoPage,
     AgregarReciclajePage,
-    CantidadPage
+    CantidadPage,
+    DetalleReciclajePage
   ],
   providers: [
     StatusBar,

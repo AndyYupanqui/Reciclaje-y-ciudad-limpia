@@ -36482,6 +36482,27 @@ page-cantidad #registrarse {
   margin-left: 71px;
 }
 
+page-detalle-reciclaje .button-block {
+  width: 40%;
+  margin-left: 102px;
+  background-color: #488aff;
+}
+
+page-detalle-reciclaje #registrarse {
+  width: 50%;
+  margin-left: 73px;
+}
+
+page-detalle-reciclaje .carrito_vacio {
+  position: relative;
+  top: 30%;
+  font-size: 20px;
+}
+
+page-detalle-reciclaje .icon-5x {
+  font-size: 100px;
+}
+
 page-espacios #tablero {
   background: #808080;
   -webkit-box-shadow: 0 10px 10px -6px rgba(0, 0, 0, 0.6);
@@ -36658,4 +36679,15 @@ page-residuos ion-img {
 
 page-residuos ion-label {
   display: contents;
+}
+
+page-residuos .button-block {
+  width: 40%;
+  margin-left: 102px;
+  background-color: #488aff;
+}
+
+page-residuos #registrarse {
+  width: 50%;
+  margin-left: 71px;
 }

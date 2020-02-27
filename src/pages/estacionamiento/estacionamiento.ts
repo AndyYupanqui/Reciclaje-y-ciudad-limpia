@@ -3,6 +3,7 @@ import { NavController, NavParams, ViewController, AlertController } from 'ionic
 import { CarritoProvider } from '../../providers/carrito/carrito';
 import { UsuarioProvider } from '../../providers/usuario/usuario';
 import { EstacionamientoDetallePage } from '../../pages/estacionamiento-detalle/estacionamiento-detalle';
+import { DetalleReciclajePage } from '../../pages/detalle-reciclaje/detalle-reciclaje';
 
 /**
  * Generated class for the EstacionamientoPage page.
@@ -18,6 +19,7 @@ import { EstacionamientoDetallePage } from '../../pages/estacionamiento-detalle/
 export class EstacionamientoPage {
 
   estacionamientoDetalle = EstacionamientoDetallePage;
+  detalleReciclaje = DetalleReciclajePage;
 
   constructor(public navCtrl: NavController, 
               public navParams: NavParams,

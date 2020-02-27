@@ -32,8 +32,8 @@
   </ion-card>
   </div>
 
-  <ion-card>
-    <ion-item color="primary">
+  <ion-card *ngIf="residuo">
+    <ion-item color="primary" style="background: mediumpurple;">
       <ion-label *ngIf="residuo" style="font-weight: bold">{{residuo.tipo}}   <ion-img src={{residuo.img}} alt=""></ion-img></ion-label>
     </ion-item>
 
@@ -52,11 +52,46 @@
 
   <br><br>
 
-  <button id="registrarse" ion-button block 
+  <ion-item>
+    <ion-label floating>Dirección</ion-label>
+    <ion-input type="text" [(ngModel)]="direccion"></ion-input>
+  </ion-item>
+
+  <br><br>
+
+  <div>
+  <button *ngIf="total !=0 && _cs.estado==true" id="registrarse" ion-button block 
           (click)="agregarReciclaje()"
           >
     Agregar
   </button>
+
+  <button *ngIf="total ==0 || _cs.estado==false" disabled id="registrarse" ion-button block 
+          (click)="agregarReciclaje()"
+          >
+    Agregar
+  </button>
+
+  </div>
+
+  <br><br>
+
+  <div>
+  <button *ngIf="total !=0" id="registrarse" style="background: red;" ion-button block color="red"
+          [disabled]=" direccion.length < 5 "
+          (click)="registrarReciclaje()"
+          >
+    Registrar
+  </button>
+
+  <button *ngIf="total ==0" id="registrarse" disabled style="background: red;" ion-button block color="red" 
+          (click)="registrarReciclaje()"
+          >
+    Registrar
+  </button>
+  
+  
+  </div>
 
   <br><br>
 

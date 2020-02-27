@@ -30,13 +30,13 @@
         <img src="../../assets/imgs/mireciclaje.jpg" style="max-width: 80%; padding-top: 42px">
       </div>
       <br><br>
-      <button style="width: 70%; margin-left: 50px;" ion-button block (click)="_us.ver_residuo(vreciclaje)"
+      <button style="width: 70%; margin-left: 50px;" ion-button block (click)="_us.ver_residuo(vreciclaje1)"
               >
         Reciclar
       </button>
       <br><br>
-      <button style="width: 70%; margin-left: 50px;" ion-button block (click)="_cs.ver_incidencia(mireciclaje, _us.id_usuario)"  
-                                                                      [navPush]="incidencia"
+      <button style="width: 70%; margin-left: 50px;" ion-button block (click)="_cs.ver_incidencia(vreciclaje, _us.id_usuario)"
+                                                                        [navPush]="reciclaje"
               >
         Mi reciclaje
       </button>

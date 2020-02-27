@@ -5,10 +5,10 @@ import 'rxjs-compat/add/operator/map';
 
 import { ModalController } from "ionic-angular";
 
-import { Estacionamiento, Espacio, RegistroProvider, Residuo, Volumen, Incidencia } from "../../providers/registro/registro";
+import { Estacionamiento, Espacio, RegistroProvider, Residuo, Volumen, Incidencia, Reciclaje } from "../../providers/registro/registro";
 
 // paginas del modal
-import { LoginPage, RegistrarsePage, TarjetaPage, PaypalPage, VolumenPage, FotoPage, AgregarReciclajePage} from "../../pages/index.paginas";
+import { LoginPage, RegistrarsePage, TarjetaPage, PaypalPage, VolumenPage, FotoPage, AgregarReciclajePage, DetalleReciclajePage} from "../../pages/index.paginas";
 
 @Injectable()
 export class CarritoProvider {
@@ -17,11 +17,18 @@ export class CarritoProvider {
   residuos: Residuo[];
   volumenes: Volumen[];
   incidencias: Incidencia[];
+  reciclajes: Reciclaje[];
+  todo_reciclajes: Reciclaje[];
+  norecogidos: Reciclaje[];
+  recogidos: Reciclaje[];
+  totalrecogidos: number=0;
+  totalnorecogidos: number=0;
   id_residuo: string="1";
   id_volumen: string="1";
   noreciclaje = true;
   listado: boolean;
   cantidad: number=0;
+  estado: boolean;
 
   espacio: Espacio;
   total: any;
@@ -59,6 +66,7 @@ export class CarritoProvider {
   }
 
   ver_agregar_reciclaje(cantidad){
+    this.estado = true;
     let modal:any;
     this.cantidad = cantidad;
     // this.registroProvider.getVolumenes().subscribe(res => {
@@ -67,6 +75,40 @@ export class CarritoProvider {
 
     modal = this.modalCtrl.create( AgregarReciclajePage );
     modal.present();
+  }
+
+  ver_agregar_reciclaje1(){
+    this.estado = false;
+    let modal:any;
+
+    modal = this.modalCtrl.create( AgregarReciclajePage );
+    modal.present();
+  }
+
+  ver_reciclajes(){
+    this.registroProvider.getReciclaje().subscribe(res => {
+      this.todo_reciclajes = res;
+    })
+  }
+
+  ver_reciclajesNoRecogidos(){
+    this.registroProvider.getReciclajeNoRecogido("false").subscribe(res => {
+      this.norecogidos = res;
+      for(var i=0; i<this.norecogidos.length; i++){
+        this.totalnorecogidos = this.totalnorecogidos + this.norecogidos[i].total;
+        this.total = this.total + this.norecogidos[i].total;
+      }
+    })
+  }
+
+  ver_reciclajesRecogidos(){
+    this.registroProvider.getReciclajeRecogido("true").subscribe(res => {
+      this.recogidos = res;
+      for(var i=0; i<this.recogidos.length; i++){
+        this.totalrecogidos = this.totalrecogidos + this.recogidos[i].total;
+        this.total = this.total + this.recogidos[i].total;
+      }
+    })
   }
 
   ver_foto(){
@@ -97,14 +139,22 @@ export class CarritoProvider {
         this.incidencias = res;
       });
     }else{
-      this.registroProvider.getIncidenciasUsuario(id_usuario).subscribe(res => {
+      this.registroProvider.getReciclajeUsuario(id_usuario).subscribe(res => {
         if(res.length == 0){
           this.noreciclaje = false;
         }else{
-          this.incidencias = res;
+          this.reciclajes = res;
+          this.reciclajes = this.reciclajes.reverse();
         }
       });
     }
+  }
+
+  ver_detalle_reciclaje(){
+    let modal: any;
+
+    modal = this.modalCtrl.create( DetalleReciclajePage );
+    modal.present();
   }
 
   ver_espacio(id){

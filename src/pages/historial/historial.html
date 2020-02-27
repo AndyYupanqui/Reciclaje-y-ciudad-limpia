@@ -1,28 +1,22 @@
-
 <ion-header>
 
   <ion-navbar color="dark">
 
-      <ion-buttons start>
-          <button ion-button icon-only
-                  *ngIf="_us.inactivo()"
-                  (click)="_cs.ver_login()">
-            <ion-icon name="contact"></ion-icon>
-          </button>
-        </ion-buttons>
-    
-    
-        <ion-buttons start>
-          <button ion-button icon-only
-                  *ngIf="_us.activo()">
-            {{ _us.usuario }} <ion-icon name="contact"></ion-icon>
-          </button>
-          <button ion-button icon-only
-                  *ngIf="_us.activo()"
-                  (click)="_us.cerrar_sesion()">
-            <ion-icon name="log-out"></ion-icon>
-          </button>
-        </ion-buttons>
+    <ion-buttons start>
+      <button ion-button icon-only *ngIf="_us.inactivo()" (click)="_cs.ver_login()">
+        <ion-icon name="contact"></ion-icon>
+      </button>
+    </ion-buttons>
+
+
+    <ion-buttons start>
+      <button ion-button icon-only *ngIf="_us.activo()">
+        {{ _us.usuario }} <ion-icon name="contact"></ion-icon>
+      </button>
+      <button ion-button icon-only *ngIf="_us.activo()" (click)="_us.cerrar_sesion()">
+        <ion-icon name="log-out"></ion-icon>
+      </button>
+    </ion-buttons>
 
     <ion-title>Historial</ion-title>
   </ion-navbar>
@@ -31,9 +25,39 @@
 
 
 <ion-content padding>
-  <br>
-  <h5 style="color: blue; text-align: center">Nro |      Fecha y Hora     | Horas |  Pago</h5>
+    <h6 padding>Reciclajes no recogidos:</h6>
+    <ion-list>
+      <button ion-item *ngFor="let reciclaje of _cs.norecogidos" [navPush]="detalleReciclaje"
+        [navParams]="{ reciclaje: reciclaje }" style="background: aliceblue">
+
+        <ion-icon name="ios-arrow-forward"></ion-icon>
+          {{reciclaje.id_usuario}}     {{ reciclaje.fecha }}     {{ reciclaje.hora }}     
+        <!-- <span *ngIf="reciclaje.estado=='false'"
+          style="color: red;">NO RECOGIGO</span><span *ngIf="reciclaje.estado=='true'"
+          style="color: blue;">RECOGIDO</span> -->
+      </button>
+    </ion-list>
+
+    <h6 style="text-align: center; color:red">Total: S/.{{_cs.totalnorecogidos}}</h6>
+    <br>
+    <h6 padding>Reciclajes recogidos:</h6>
+    <ion-list>
+      <button ion-item *ngFor="let reciclaje of _cs.recogidos" [navPush]="detalleReciclaje"
+        [navParams]="{ reciclaje: reciclaje }" style="background: aliceblue">
+
+        <ion-icon name="ios-arrow-forward"></ion-icon>
+          {{reciclaje.id_usuario}}     {{ reciclaje.fecha }}     {{ reciclaje.hora }}     
+        <!-- <span *ngIf="reciclaje.estado=='false'"
+          style="color: red;">NO RECOGIGO</span><span *ngIf="reciclaje.estado=='true'"
+          style="color: blue;">RECOGIDO</span> -->
+      </button>
+    </ion-list>
+
+    <h6 style="text-align: center; color: blue;">Total: S/.{{_cs.totalrecogidos}}</h6>
+    <br><br>
+    <h4 style="text-align: center;font-weight: bold;color: green;">Total: S/.{{_cs.total}}</h4>
+  <!-- <h5 style="color: blue; text-align: center">Nro |      Fecha y Hora     | Horas |  Pago</h5>
   <hr>
-  <h6 *ngFor="let reserva of reservas">      {{reservas.indexOf(reserva)+1}}      {{reserva.fecha}}        {{reserva.horas}}          S/. {{reserva.total}}</h6>
+  <h6 *ngFor="let reserva of reservas">      {{reservas.indexOf(reserva)+1}}      {{reserva.fecha}}        {{reserva.horas}}          S/. {{reserva.total}}</h6> -->
 
 </ion-content>

@@ -66,6 +66,14 @@
       <ion-radio value="5" (click)="abrirModal()"></ion-radio>
     </ion-item>
 
+    <br><br>
+
+    <button *ngIf="_us.ventana==true" id="registrarse" ion-button block color="primary" 
+    (click)="_cs.ver_agregar_reciclaje1()"
+    >
+    Continuar
+    </button>
+
   </ion-list>
 
 </ion-content>

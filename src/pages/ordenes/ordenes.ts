@@ -15,12 +15,13 @@ import { CarritoProvider } from '../../providers/carrito/carrito';
 })
 export class OrdenesPage {
 
-  incidencia = EstacionamientoPage;
+  reciclaje = EstacionamientoPage;
   reservas: any;
   estacionamiento: any;
   espacio: any;
   usuario: any;
-  vreciclaje = true;
+  vreciclaje = false;
+  vreciclaje1 = true;
   mireciclaje = false;
   //espacio : any = [];
 

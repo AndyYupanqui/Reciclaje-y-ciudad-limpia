@@ -1,0 +1,67 @@
+<ion-header>
+
+  <ion-navbar color="dark">
+
+    <ion-title>Detalle</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+
+  <ion-card padding *ngIf="reciclaje">
+    <ion-item color="primary" style="background: lightseagreen;">
+      <ion-label style="font-weight: bold">Mi Reciclaje</ion-label>
+    </ion-item>
+
+    <ion-card-content color="primary">
+      <br>
+      <h4 style="font-weight: bold; text-align: center;">DETALLE</h4>
+      <br>
+    <div *ngFor="let item of reciclaje.reciclaje">
+      <h4 style="font-weight: bold;">Tipo: {{item.tipo}}</h4>
+      <h4>Precio x kg: S/. {{item.precio}}</h4>
+      <h4>Cantidad: {{item.cantidad}} Kg</h4>
+      <h4>Subtotal: {{item.subtotal}}</h4>
+      <br>
+    </div>
+    <br>
+    <h4 style="font-weight: bold;">Dirección: {{reciclaje.direccion}}</h4>
+    <h4 style="font-weight: bold;">Fecha: {{reciclaje.fecha}}</h4>
+    <h4 style="font-weight: bold;">Hora: {{reciclaje.hora}}</h4>
+    <br>
+    <h4 *ngIf="estado=='false'" style="font-weight: bold;">Estado: <span style="font-weight: bold; color: red;">NO RECOGIDO</span></h4>
+    <h4 *ngIf="estado=='true'" style="font-weight: bold;">Estado: <span style="font-weight: bold; color: blue;">RECOGIDO</span></h4>
+    <br>
+    <h4 style="font-weight: bold;">Total: S/. {{reciclaje.total}}</h4>
+    <br><br>
+    
+    <button *ngIf="estado=='false' && _us.id_usuario!= '75012728'" id="registrarse" ion-button block 
+    (click)="cambiarEstado()"
+    >
+    Cambiar estado
+    </button>
+
+    <button *ngIf="estado=='true' && _us.id_usuario!= '75012728'" id="registrarse" ion-button block
+    disabled (click)="cambiarEstado()"
+    >
+    Cambiar estado
+    </button>
+
+    <br><br>
+
+  </ion-card-content>
+  </ion-card>
+
+</ion-content>
+
+<!-- <ion-content *ngIf="!reciclaje || _us.id_usuario == null">
+
+  <div text-center class="carrito_vacio">
+      <ion-icon name="ios-list-box-outline" class="icon-5x">
+      </ion-icon>
+      <br> No tienes reciclajes
+  </div>
+
+</ion-content> -->
