@@ -3732,18 +3732,14 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 var ClientesPage = /** @class */ (function () {
     function ClientesPage(navCtrl, navParams, _cs, _us, _rs) {
-        var _this = this;
+        //     this._rs.getUsuarios().subscribe(res => {
+        //       this.arreglos = res;
         this.navCtrl = navCtrl;
         this.navParams = navParams;
         this._cs = _cs;
         this._us = _us;
         this._rs = _rs;
         this.clientes = [];
-        this._rs.getUsuarios().subscribe(function (res) {
-            _this.clientes = res;
-        });
-        //     this._rs.getUsuarios().subscribe(res => {
-        //       this.arreglos = res;
         //       for(var i=0; i < res.length; i++){
         //         this._rs.getReciclajeUsuario(res[i].id).subscribe(response => {
         //           this.subtotal = 0;
@@ -3758,17 +3754,20 @@ var ClientesPage = /** @class */ (function () {
         //       }
         //  })
     }
+    ClientesPage.prototype.ionViewWillEnter = function () {
+        var _this = this;
+        this._rs.getUsuarios().subscribe(function (res) {
+            _this.clientes = res;
+        });
+    };
     ClientesPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
             selector: 'page-clientes',template:/*ion-inline-start:"C:\Users\BCAutomatizacion\Desktop\Reciclaje-y-ciudad-limpia\src\pages\clientes\clientes.html"*/'\n<ion-header>\n\n  <ion-navbar color="dark">\n\n    <ion-buttons start>\n      <button ion-button icon-only\n              *ngIf="_us.activo()">\n        {{ _us.usuario }} <ion-icon name="contact"></ion-icon>\n      </button>\n      <button ion-button icon-only\n              *ngIf="_us.activo()"\n              (click)="_us.cerrar_sesion()">\n        <ion-icon name="log-out"></ion-icon>\n      </button>\n    </ion-buttons>\n\n\n    <ion-title>\n      Clientes\n    </ion-title>\n\n  </ion-navbar>\n\n</ion-header>\n\n<ion-content padding>\n\n  <ion-list>\n    <button ion-item *ngFor="let cliente of clientes;" [navPush]="detalleReciclaje"\n      [navParams]="{ cliente: cliente }">\n\n      <ion-icon name="ios-arrow-forward"></ion-icon>\n        {{cliente.id}}     {{ cliente.nombres.split(" ")[0] }}   {{cliente.apellidos.split(" ")[0]}}\n      <!-- <span *ngIf="reciclaje.estado==\'false\'"\n        style="color: red;">NO RECOGIGO</span><span *ngIf="reciclaje.estado==\'true\'"\n        style="color: blue;">RECOGIDO</span> -->\n    </button>\n  </ion-list>\n\n</ion-content>\n'/*ion-inline-end:"C:\Users\BCAutomatizacion\Desktop\Reciclaje-y-ciudad-limpia\src\pages\clientes\clientes.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */],
-            __WEBPACK_IMPORTED_MODULE_2__providers_carrito_carrito__["a" /* CarritoProvider */],
-            __WEBPACK_IMPORTED_MODULE_3__providers_usuario_usuario__["a" /* UsuarioProvider */],
-            __WEBPACK_IMPORTED_MODULE_4__providers_registro_registro__["a" /* RegistroProvider */]])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2__providers_carrito_carrito__["a" /* CarritoProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__providers_carrito_carrito__["a" /* CarritoProvider */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_3__providers_usuario_usuario__["a" /* UsuarioProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__providers_usuario_usuario__["a" /* UsuarioProvider */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_4__providers_registro_registro__["a" /* RegistroProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__providers_registro_registro__["a" /* RegistroProvider */]) === "function" && _e || Object])
     ], ClientesPage);
     return ClientesPage;
+    var _a, _b, _c, _d, _e;
 }());
 
 //# sourceMappingURL=clientes.js.map

@@ -19,9 +19,7 @@ export class ClientesPage {
               private _us: UsuarioProvider,
               private _rs: RegistroProvider) {
 
-        this._rs.getUsuarios().subscribe(res => {
-             this.clientes = res;
-        })
+        
 
 
         //     this._rs.getUsuarios().subscribe(res => {
@@ -44,6 +42,12 @@ export class ClientesPage {
     //  })
 
 
+  }
+
+  ionViewWillEnter(){
+    this._rs.getUsuarios().subscribe(res => {
+      this.clientes = res;
+ })
   }
 
 
