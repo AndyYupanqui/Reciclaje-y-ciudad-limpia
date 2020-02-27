@@ -1,0 +1,41 @@
+
+<ion-header>
+
+  <ion-navbar color="dark">
+
+    <ion-buttons start>
+      <button ion-button icon-only
+              *ngIf="_us.activo()">
+        {{ _us.usuario }} <ion-icon name="contact"></ion-icon>
+      </button>
+      <button ion-button icon-only
+              *ngIf="_us.activo()"
+              (click)="_us.cerrar_sesion()">
+        <ion-icon name="log-out"></ion-icon>
+      </button>
+    </ion-buttons>
+
+
+    <ion-title>
+      Clientes
+    </ion-title>
+
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content padding>
+
+  <ion-list>
+    <button ion-item *ngFor="let cliente of clientes;" [navPush]="detalleReciclaje"
+      [navParams]="{ cliente: cliente }">
+
+      <ion-icon name="ios-arrow-forward"></ion-icon>
+        {{cliente.id}}     {{ cliente.nombres.split(" ")[0] }}   {{cliente.apellidos.split(" ")[0]}}
+      <!-- <span *ngIf="reciclaje.estado=='false'"
+        style="color: red;">NO RECOGIGO</span><span *ngIf="reciclaje.estado=='true'"
+        style="color: blue;">RECOGIDO</span> -->
+    </button>
+  </ion-list>
+
+</ion-content>

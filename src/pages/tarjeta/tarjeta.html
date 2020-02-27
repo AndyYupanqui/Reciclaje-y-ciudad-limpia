@@ -10,14 +10,14 @@
       </button>
     </ion-buttons>
 
-    <ion-title>Confirmación de Compra</ion-title>
+    <ion-title>Confirmación de Pago</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
-  <h3>Total: {{ _cs.total  | currency:'S/. ':symbol }}</h3>
+  <h3>Total: {{ _cs.totalreciclaje  | currency:'S/. ':symbol }}</h3>
   <br>
   <br>
   <ion-list>
@@ -45,7 +45,7 @@
     <button ion-button
             [disabled]=" numero.length < 16 || myDate.length == 0 || cvv.length < 3 "
             (click)="realizar_compra()">
-      Completar Compra
+      Completar Pago
     </button>
   </div>
 

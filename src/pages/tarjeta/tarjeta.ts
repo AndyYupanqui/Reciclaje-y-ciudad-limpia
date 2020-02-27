@@ -24,20 +24,20 @@ export class TarjetaPage {
   }
 
   realizar_compra(){
-    this._cs.estado_pago = false;
-    this._rs.getReserva(this._cs.fecha_reserva).subscribe(res => {
-      if(res != null)
-        this._rs.updateReservaEstado(res.fecha);
-    });
+    // this._cs.estado_pago = false;
+    // this._rs.getReserva(this._cs.fecha_reserva).subscribe(res => {
+    //   if(res != null)
+    //     this._rs.updateReservaEstado(res.fecha);
+    // });
     this.alertCtrl.create({
       title: "Pago Realizado",
-      subTitle: "Pago realizado correctamente de la reserva",
+      subTitle: "Pago realizado correctamente del reciclaje",
       buttons: ["OK"]
     }).present();
 
-    this._cs.estado_pago = true;
+    // this._cs.estado_pago = true;
    
-    this.navCtrl.popToRoot();
+     this.navCtrl.popToRoot();
   }
 
 }

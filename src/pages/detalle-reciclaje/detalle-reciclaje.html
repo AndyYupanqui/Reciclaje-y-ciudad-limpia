@@ -12,7 +12,8 @@
 
   <ion-card padding *ngIf="reciclaje">
     <ion-item color="primary" style="background: lightseagreen;">
-      <ion-label style="font-weight: bold">Mi Reciclaje</ion-label>
+      <ion-label style="font-weight: bold" *ngIf="_us.id_usuario != '75012728'">Mi Reciclaje</ion-label>
+      <ion-label style="font-weight: bold" *ngIf="_us.id_usuario == '75012728'">Usuario: {{usuario.usuario}}      DNI: {{usuario.id}}</ion-label>
     </ion-item>
 
     <ion-card-content color="primary">
@@ -47,6 +48,12 @@
     disabled (click)="cambiarEstado()"
     >
     Cambiar estado
+    </button>
+
+    <button *ngIf="_us.id_usuario == '75012728'" id="registrarse" ion-button block
+     (click)="_cs.pagar(usuario, reciclaje.total)"
+    >
+    Realizar pago
     </button>
 
     <br><br>

@@ -26,3 +26,4 @@ export { FotoPage } from "./foto/foto";
 export { AgregarReciclajePage } from "./agregar-reciclaje/agregar-reciclaje";
 export { CantidadPage } from "./cantidad/cantidad";
 export { DetalleReciclajePage } from "./detalle-reciclaje/detalle-reciclaje";
+export { ClientesPage } from "./clientes/clientes";

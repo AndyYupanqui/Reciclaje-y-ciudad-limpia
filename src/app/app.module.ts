@@ -22,7 +22,7 @@ import { HomePage } from '../pages/home/home';
 import { IonicStorageModule } from '@ionic/storage';
 
 // servicios
-import { CarritoProvider, UsuarioProvider, ProductosProvider, RegistroProvider  }  from "../providers/index.services";
+import { CarritoProvider, UsuarioProvider, ProductosProvider, RegistroProvider }  from "../providers/index.services";
 
 // Paginas
 import { CarritoPage,
@@ -50,7 +50,8 @@ import { CarritoPage,
          FotoPage,
          AgregarReciclajePage,
          CantidadPage,
-         DetalleReciclajePage} from "../pages/index.paginas";
+         DetalleReciclajePage,
+         ClientesPage} from "../pages/index.paginas";
 
 export const firebaseConfig = {
   apiKey: "AIzaSyDKkhH0qtvg7FFP5k8SM4eY1gKVavB-KxE",
@@ -90,7 +91,8 @@ export const firebaseConfig = {
     FotoPage,
     AgregarReciclajePage,
     CantidadPage,
-    DetalleReciclajePage
+    DetalleReciclajePage,
+    ClientesPage
   ],
   imports: [
     BrowserModule,
@@ -129,7 +131,8 @@ export const firebaseConfig = {
     FotoPage,
     AgregarReciclajePage,
     CantidadPage,
-    DetalleReciclajePage
+    DetalleReciclajePage,
+    ClientesPage
   ],
   providers: [
     StatusBar,

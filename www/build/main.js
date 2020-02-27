@@ -9,7 +9,7 @@ webpackJsonp([0],{
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__(95);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_compat_add_operator_map__ = __webpack_require__(74);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_compat_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_compat_add_operator_map__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_ionic_angular__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_ionic_angular__ = __webpack_require__(7);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_registro_registro__ = __webpack_require__(21);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__pages_index_paginas__ = __webpack_require__(38);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -40,6 +40,7 @@ var CarritoProvider = /** @class */ (function () {
         this.id_volumen = "1";
         this.noreciclaje = true;
         this.cantidad = 0;
+        this.totalreciclaje = 0;
         this.estado_reserva = true;
         this.estado_pago = false;
         this.reserva_estado = false;
@@ -47,7 +48,7 @@ var CarritoProvider = /** @class */ (function () {
     }
     CarritoProvider.prototype.ver_login = function () {
         var modal;
-        modal = this.modalCtrl.create(__WEBPACK_IMPORTED_MODULE_5__pages_index_paginas__["n" /* LoginPage */]);
+        modal = this.modalCtrl.create(__WEBPACK_IMPORTED_MODULE_5__pages_index_paginas__["o" /* LoginPage */]);
         modal.present();
     };
     CarritoProvider.prototype.ver_volumen = function () {
@@ -56,7 +57,7 @@ var CarritoProvider = /** @class */ (function () {
         this.registroProvider.getVolumenes().subscribe(function (res) {
             _this.volumenes = res;
         });
-        modal = this.modalCtrl.create(__WEBPACK_IMPORTED_MODULE_5__pages_index_paginas__["A" /* VolumenPage */]);
+        modal = this.modalCtrl.create(__WEBPACK_IMPORTED_MODULE_5__pages_index_paginas__["B" /* VolumenPage */]);
         modal.present();
     };
     CarritoProvider.prototype.ver_agregar_reciclaje = function (cantidad) {
@@ -103,7 +104,7 @@ var CarritoProvider = /** @class */ (function () {
     };
     CarritoProvider.prototype.ver_foto = function () {
         var modal;
-        modal = this.modalCtrl.create(__WEBPACK_IMPORTED_MODULE_5__pages_index_paginas__["k" /* FotoPage */]);
+        modal = this.modalCtrl.create(__WEBPACK_IMPORTED_MODULE_5__pages_index_paginas__["l" /* FotoPage */]);
         modal.present();
     };
     CarritoProvider.prototype.ver_residuo = function () {
@@ -140,7 +141,7 @@ var CarritoProvider = /** @class */ (function () {
     };
     CarritoProvider.prototype.ver_detalle_reciclaje = function () {
         var modal;
-        modal = this.modalCtrl.create(__WEBPACK_IMPORTED_MODULE_5__pages_index_paginas__["f" /* DetalleReciclajePage */]);
+        modal = this.modalCtrl.create(__WEBPACK_IMPORTED_MODULE_5__pages_index_paginas__["g" /* DetalleReciclajePage */]);
         modal.present();
     };
     CarritoProvider.prototype.ver_espacio = function (id) {
@@ -151,17 +152,24 @@ var CarritoProvider = /** @class */ (function () {
     };
     CarritoProvider.prototype.ver_registrarse = function () {
         var modal;
-        modal = this.modalCtrl.create(__WEBPACK_IMPORTED_MODULE_5__pages_index_paginas__["v" /* RegistrarsePage */]);
+        modal = this.modalCtrl.create(__WEBPACK_IMPORTED_MODULE_5__pages_index_paginas__["w" /* RegistrarsePage */]);
         modal.present();
     };
     CarritoProvider.prototype.pago_tarjeta = function () {
         var modal;
-        modal = this.modalCtrl.create(__WEBPACK_IMPORTED_MODULE_5__pages_index_paginas__["z" /* TarjetaPage */]);
+        modal = this.modalCtrl.create(__WEBPACK_IMPORTED_MODULE_5__pages_index_paginas__["A" /* TarjetaPage */]);
         modal.present();
     };
     CarritoProvider.prototype.pago_paypal = function () {
         var modal;
-        modal = this.modalCtrl.create(__WEBPACK_IMPORTED_MODULE_5__pages_index_paginas__["s" /* PaypalPage */]);
+        modal = this.modalCtrl.create(__WEBPACK_IMPORTED_MODULE_5__pages_index_paginas__["t" /* PaypalPage */]);
+        modal.present();
+    };
+    CarritoProvider.prototype.pagar = function (usuario, total) {
+        var modal;
+        this.usuario = usuario;
+        this.totalreciclaje = total;
+        modal = this.modalCtrl.create(__WEBPACK_IMPORTED_MODULE_5__pages_index_paginas__["f" /* CompraPage */]);
         modal.present();
     };
     CarritoProvider = __decorate([
@@ -184,7 +192,7 @@ var CarritoProvider = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__(95);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_registro_registro__ = __webpack_require__(21);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_ionic_angular__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_ionic_angular__ = __webpack_require__(7);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__pages_index_paginas__ = __webpack_require__(38);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__carrito_carrito__ = __webpack_require__(13);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_rxjs_compat_add_operator_map__ = __webpack_require__(74);
@@ -343,13 +351,13 @@ var UsuarioProvider = /** @class */ (function () {
         var modal;
         if (!this.token) {
             // mostrar el login
-            modal = this.modalCtrl.create(__WEBPACK_IMPORTED_MODULE_4__pages_index_paginas__["n" /* LoginPage */]);
+            modal = this.modalCtrl.create(__WEBPACK_IMPORTED_MODULE_4__pages_index_paginas__["o" /* LoginPage */]);
             modal.present();
         }
         else {
             this.ventana = ventana;
             this._cs.ver_residuo();
-            modal = this.modalCtrl.create(__WEBPACK_IMPORTED_MODULE_4__pages_index_paginas__["x" /* ResiduosPage */]);
+            modal = this.modalCtrl.create(__WEBPACK_IMPORTED_MODULE_4__pages_index_paginas__["y" /* ResiduosPage */]);
             modal.present();
         }
     };
@@ -376,7 +384,7 @@ var UsuarioProvider = /** @class */ (function () {
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ProductoPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(7);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -396,7 +404,7 @@ var ProductoPage = /** @class */ (function () {
     }
     ProductoPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-producto',template:/*ion-inline-start:"C:\Users\andyu\Desktop\reciclaje\src\pages\producto\producto.html"*/'\n\n<ion-header>\n\n\n\n  <ion-navbar color="dark">\n\n    <ion-title>Producto</ion-title>\n\n  </ion-navbar>\n\n\n\n</ion-header>\n\n\n\n\n\n<ion-content>\n\n\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\andyu\Desktop\reciclaje\src\pages\producto\producto.html"*/,
+            selector: 'page-producto',template:/*ion-inline-start:"C:\Users\BCAutomatizacion\Desktop\Reciclaje-y-ciudad-limpia\src\pages\producto\producto.html"*/'\n\n<ion-header>\n\n\n\n  <ion-navbar color="dark">\n\n    <ion-title>Producto</ion-title>\n\n  </ion-navbar>\n\n\n\n</ion-header>\n\n\n\n\n\n<ion-content>\n\n\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\BCAutomatizacion\Desktop\Reciclaje-y-ciudad-limpia\src\pages\producto\producto.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */]])
@@ -414,7 +422,7 @@ var ProductoPage = /** @class */ (function () {
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return LoginPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(7);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_usuario_usuario__ = __webpack_require__(14);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_carrito_carrito__ = __webpack_require__(13);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -452,7 +460,7 @@ var LoginPage = /** @class */ (function () {
     };
     LoginPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-login',template:/*ion-inline-start:"C:\Users\andyu\Desktop\reciclaje\src\pages\login\login.html"*/'\n\n<ion-header>\n\n\n\n  <ion-navbar color="dark">\n\n\n\n    <ion-buttons left>\n\n      <button icon-only ion-button\n\n              (click)="viewCtrl.dismiss()">\n\n        <ion-icon name="arrow-round-back"></ion-icon>\n\n      </button>\n\n    </ion-buttons>\n\n\n\n    <ion-title>Iniciar sesión</ion-title>\n\n  </ion-navbar>\n\n\n\n</ion-header>\n\n\n\n\n\n<ion-content padding>\n\n  <br>\n\n  <div style="text-align: center">\n\n    <img src="../../assets/imgs/login.png" style="max-width: 40%">\n\n  </div>\n\n\n\n  <ion-list>\n\n\n\n  <ion-item>\n\n    <ion-label floating>Usuario</ion-label>\n\n    <ion-input type="email" [(ngModel)]="usuario"></ion-input>\n\n  </ion-item>\n\n\n\n  <ion-item>\n\n    <ion-label floating>Contraseña</ion-label>\n\n    <ion-input type="password" [(ngModel)]="contrasena"></ion-input>\n\n  </ion-item>\n\n\n\n  </ion-list>\n\n\n\n  <br>\n\n  <br>\n\n\n\n  <button ion-button block\n\n          [disabled]=" usuario.length < 5 || contrasena.length < 5 "\n\n          (click)="loguearse()">\n\n    Ingresar\n\n  </button>\n\n  <br>\n\n\n\n  <h6 text-center style="font-size: 14px">¿No tiene una cuenta?</h6>\n\n\n\n  <br>\n\n  <button id="registrarse" ion-button block\n\n          (click)="_cs.ver_registrarse()">\n\n    Registrarse\n\n  </button>\n\n  <br><br>\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\andyu\Desktop\reciclaje\src\pages\login\login.html"*/,
+            selector: 'page-login',template:/*ion-inline-start:"C:\Users\BCAutomatizacion\Desktop\Reciclaje-y-ciudad-limpia\src\pages\login\login.html"*/'\n\n<ion-header>\n\n\n\n  <ion-navbar color="dark">\n\n\n\n    <ion-buttons left>\n\n      <button icon-only ion-button\n\n              (click)="viewCtrl.dismiss()">\n\n        <ion-icon name="arrow-round-back"></ion-icon>\n\n      </button>\n\n    </ion-buttons>\n\n\n\n    <ion-title>Iniciar sesión</ion-title>\n\n  </ion-navbar>\n\n\n\n</ion-header>\n\n\n\n\n\n<ion-content padding>\n\n  <br>\n\n  <div style="text-align: center">\n\n    <img src="../../assets/imgs/login.png" style="max-width: 40%">\n\n  </div>\n\n\n\n  <ion-list>\n\n\n\n  <ion-item>\n\n    <ion-label floating>Usuario</ion-label>\n\n    <ion-input type="email" [(ngModel)]="usuario"></ion-input>\n\n  </ion-item>\n\n\n\n  <ion-item>\n\n    <ion-label floating>Contraseña</ion-label>\n\n    <ion-input type="password" [(ngModel)]="contrasena"></ion-input>\n\n  </ion-item>\n\n\n\n  </ion-list>\n\n\n\n  <br>\n\n  <br>\n\n\n\n  <button ion-button block\n\n          [disabled]=" usuario.length < 5 || contrasena.length < 5 "\n\n          (click)="loguearse()">\n\n    Ingresar\n\n  </button>\n\n  <br>\n\n\n\n  <h6 text-center style="font-size: 14px">¿No tiene una cuenta?</h6>\n\n\n\n  <br>\n\n  <button id="registrarse" ion-button block\n\n          (click)="_cs.ver_registrarse()">\n\n    Registrarse\n\n  </button>\n\n  <br><br>\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\BCAutomatizacion\Desktop\Reciclaje-y-ciudad-limpia\src\pages\login\login.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */],
@@ -515,7 +523,7 @@ var ProductosProvider = /** @class */ (function () {
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return DetalleReciclajePage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(7);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_carrito_carrito__ = __webpack_require__(13);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_usuario_usuario__ = __webpack_require__(14);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_registro_registro__ = __webpack_require__(21);
@@ -535,6 +543,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 var DetalleReciclajePage = /** @class */ (function () {
     function DetalleReciclajePage(navCtrl, navParams, viewCtrl, alertCtrl, _cs, _us, _rs) {
+        var _this = this;
         this.navCtrl = navCtrl;
         this.navParams = navParams;
         this.viewCtrl = viewCtrl;
@@ -544,7 +553,11 @@ var DetalleReciclajePage = /** @class */ (function () {
         this._rs = _rs;
         this.reciclaje = {};
         this.estado = "false";
+        this.usuario = {};
         this.reciclaje = this.navParams.get("reciclaje");
+        this._rs.getUsuario1(this.reciclaje.id_usuario).subscribe(function (res) {
+            _this.usuario = res;
+        });
         if (this.reciclaje.estado == "true")
             this.estado = "true";
         //console.log(this.reciclaje);
@@ -565,7 +578,7 @@ var DetalleReciclajePage = /** @class */ (function () {
     };
     DetalleReciclajePage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-detalle-reciclaje',template:/*ion-inline-start:"C:\Users\andyu\Desktop\reciclaje\src\pages\detalle-reciclaje\detalle-reciclaje.html"*/'<ion-header>\n\n  <ion-navbar color="dark">\n\n    <ion-title>Detalle</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content>\n\n  <ion-card padding *ngIf="reciclaje">\n    <ion-item color="primary" style="background: lightseagreen;">\n      <ion-label style="font-weight: bold">Mi Reciclaje</ion-label>\n    </ion-item>\n\n    <ion-card-content color="primary">\n      <br>\n      <h4 style="font-weight: bold; text-align: center;">DETALLE</h4>\n      <br>\n    <div *ngFor="let item of reciclaje.reciclaje">\n      <h4 style="font-weight: bold;">Tipo: {{item.tipo}}</h4>\n      <h4>Precio x kg: S/. {{item.precio}}</h4>\n      <h4>Cantidad: {{item.cantidad}} Kg</h4>\n      <h4>Subtotal: {{item.subtotal}}</h4>\n      <br>\n    </div>\n    <br>\n    <h4 style="font-weight: bold;">Dirección: {{reciclaje.direccion}}</h4>\n    <h4 style="font-weight: bold;">Fecha: {{reciclaje.fecha}}</h4>\n    <h4 style="font-weight: bold;">Hora: {{reciclaje.hora}}</h4>\n    <br>\n    <h4 *ngIf="estado==\'false\'" style="font-weight: bold;">Estado: <span style="font-weight: bold; color: red;">NO RECOGIDO</span></h4>\n    <h4 *ngIf="estado==\'true\'" style="font-weight: bold;">Estado: <span style="font-weight: bold; color: blue;">RECOGIDO</span></h4>\n    <br>\n    <h4 style="font-weight: bold;">Total: S/. {{reciclaje.total}}</h4>\n    <br><br>\n    \n    <button *ngIf="estado==\'false\' && _us.id_usuario!= \'75012728\'" id="registrarse" ion-button block \n    (click)="cambiarEstado()"\n    >\n    Cambiar estado\n    </button>\n\n    <button *ngIf="estado==\'true\' && _us.id_usuario!= \'75012728\'" id="registrarse" ion-button block\n    disabled (click)="cambiarEstado()"\n    >\n    Cambiar estado\n    </button>\n\n    <br><br>\n\n  </ion-card-content>\n  </ion-card>\n\n</ion-content>\n\n<!-- <ion-content *ngIf="!reciclaje || _us.id_usuario == null">\n\n  <div text-center class="carrito_vacio">\n      <ion-icon name="ios-list-box-outline" class="icon-5x">\n      </ion-icon>\n      <br> No tienes reciclajes\n  </div>\n\n</ion-content> -->\n'/*ion-inline-end:"C:\Users\andyu\Desktop\reciclaje\src\pages\detalle-reciclaje\detalle-reciclaje.html"*/,
+            selector: 'page-detalle-reciclaje',template:/*ion-inline-start:"C:\Users\BCAutomatizacion\Desktop\Reciclaje-y-ciudad-limpia\src\pages\detalle-reciclaje\detalle-reciclaje.html"*/'<ion-header>\n\n\n\n  <ion-navbar color="dark">\n\n\n\n    <ion-title>Detalle</ion-title>\n\n  </ion-navbar>\n\n\n\n</ion-header>\n\n\n\n\n\n<ion-content>\n\n\n\n  <ion-card padding *ngIf="reciclaje">\n\n    <ion-item color="primary" style="background: lightseagreen;">\n\n      <ion-label style="font-weight: bold" *ngIf="_us.id_usuario != \'75012728\'">Mi Reciclaje</ion-label>\n\n      <ion-label style="font-weight: bold" *ngIf="_us.id_usuario == \'75012728\'">Usuario: {{usuario.usuario}}      DNI: {{usuario.id}}</ion-label>\n\n    </ion-item>\n\n\n\n    <ion-card-content color="primary">\n\n      <br>\n\n      <h4 style="font-weight: bold; text-align: center;">DETALLE</h4>\n\n      <br>\n\n    <div *ngFor="let item of reciclaje.reciclaje">\n\n      <h4 style="font-weight: bold;">Tipo: {{item.tipo}}</h4>\n\n      <h4>Precio x kg: S/. {{item.precio}}</h4>\n\n      <h4>Cantidad: {{item.cantidad}} Kg</h4>\n\n      <h4>Subtotal: {{item.subtotal}}</h4>\n\n      <br>\n\n    </div>\n\n    <br>\n\n    <h4 style="font-weight: bold;">Dirección: {{reciclaje.direccion}}</h4>\n\n    <h4 style="font-weight: bold;">Fecha: {{reciclaje.fecha}}</h4>\n\n    <h4 style="font-weight: bold;">Hora: {{reciclaje.hora}}</h4>\n\n    <br>\n\n    <h4 *ngIf="estado==\'false\'" style="font-weight: bold;">Estado: <span style="font-weight: bold; color: red;">NO RECOGIDO</span></h4>\n\n    <h4 *ngIf="estado==\'true\'" style="font-weight: bold;">Estado: <span style="font-weight: bold; color: blue;">RECOGIDO</span></h4>\n\n    <br>\n\n    <h4 style="font-weight: bold;">Total: S/. {{reciclaje.total}}</h4>\n\n    <br><br>\n\n    \n\n    <button *ngIf="estado==\'false\' && _us.id_usuario!= \'75012728\'" id="registrarse" ion-button block \n\n    (click)="cambiarEstado()"\n\n    >\n\n    Cambiar estado\n\n    </button>\n\n\n\n    <button *ngIf="estado==\'true\' && _us.id_usuario!= \'75012728\'" id="registrarse" ion-button block\n\n    disabled (click)="cambiarEstado()"\n\n    >\n\n    Cambiar estado\n\n    </button>\n\n\n\n    <button *ngIf="_us.id_usuario == \'75012728\'" id="registrarse" ion-button block\n\n     (click)="_cs.pagar(usuario, reciclaje.total)"\n\n    >\n\n    Realizar pago\n\n    </button>\n\n\n\n    <br><br>\n\n\n\n  </ion-card-content>\n\n  </ion-card>\n\n\n\n</ion-content>\n\n\n\n<!-- <ion-content *ngIf="!reciclaje || _us.id_usuario == null">\n\n\n\n  <div text-center class="carrito_vacio">\n\n      <ion-icon name="ios-list-box-outline" class="icon-5x">\n\n      </ion-icon>\n\n      <br> No tienes reciclajes\n\n  </div>\n\n\n\n</ion-content> -->\n\n'/*ion-inline-end:"C:\Users\BCAutomatizacion\Desktop\Reciclaje-y-ciudad-limpia\src\pages\detalle-reciclaje\detalle-reciclaje.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */],
@@ -874,7 +887,7 @@ webpackEmptyAsyncContext.id = 239;
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return HomePage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(7);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_carrito_carrito__ = __webpack_require__(13);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__producto_producto__ = __webpack_require__(160);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_usuario_usuario__ = __webpack_require__(14);
@@ -909,7 +922,7 @@ var HomePage = /** @class */ (function () {
     };
     HomePage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-home',template:/*ion-inline-start:"C:\Users\andyu\Desktop\reciclaje\src\pages\home\home.html"*/'<ion-header>\n\n  <ion-navbar color="dark">\n\n\n\n    <ion-buttons start>\n\n      <button ion-button icon-only\n\n              *ngIf="_us.inactivo()"\n\n              (click)="_cs.ver_login()">\n\n        Login<ion-icon name="contact"></ion-icon>\n\n      </button>\n\n    </ion-buttons>\n\n\n\n\n\n    <ion-buttons start>\n\n      <button ion-button icon-only\n\n              *ngIf="_us.activo()">\n\n        {{ _us.usuario }} <ion-icon name="contact"></ion-icon>\n\n      </button>\n\n      <button ion-button icon-only\n\n              *ngIf="_us.activo()"\n\n              (click)="_us.cerrar_sesion()">\n\n        <ion-icon name="log-out"></ion-icon>\n\n      </button>\n\n    </ion-buttons>\n\n\n\n\n\n    <ion-title>\n\n      Inicio\n\n    </ion-title>\n\n\n\n  </ion-navbar>\n\n</ion-header>\n\n\n\n<ion-content padding class="fondo-home">\n\n\n\n  <!-- <ion-refresher (ionRefresh)="doRefresh($event)">\n\n    <ion-refresher-content></ion-refresher-content>\n\n  </ion-refresher> -->\n\n  <p class="texto">Reciclaje y ciudad limpia</p>\n\n\n\n  <!-- <ion-infinite-scroll (ionInfinite)="siguiente_pagina($event)">\n\n    <ion-infinite-scroll-content></ion-infinite-scroll-content>\n\n  </ion-infinite-scroll> -->\n\n\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\andyu\Desktop\reciclaje\src\pages\home\home.html"*/
+            selector: 'page-home',template:/*ion-inline-start:"C:\Users\BCAutomatizacion\Desktop\Reciclaje-y-ciudad-limpia\src\pages\home\home.html"*/'<ion-header>\n\n  <ion-navbar color="dark">\n\n\n\n    <ion-buttons start>\n\n      <button ion-button icon-only\n\n              *ngIf="_us.inactivo()"\n\n              (click)="_cs.ver_login()">\n\n        Login<ion-icon name="contact"></ion-icon>\n\n      </button>\n\n    </ion-buttons>\n\n\n\n\n\n    <ion-buttons start>\n\n      <button ion-button icon-only\n\n              *ngIf="_us.activo()">\n\n        {{ _us.usuario }} <ion-icon name="contact"></ion-icon>\n\n      </button>\n\n      <button ion-button icon-only\n\n              *ngIf="_us.activo()"\n\n              (click)="_us.cerrar_sesion()">\n\n        <ion-icon name="log-out"></ion-icon>\n\n      </button>\n\n    </ion-buttons>\n\n\n\n\n\n    <ion-title>\n\n      Inicio\n\n    </ion-title>\n\n\n\n  </ion-navbar>\n\n</ion-header>\n\n\n\n<ion-content padding class="fondo-home">\n\n\n\n  <!-- <ion-refresher (ionRefresh)="doRefresh($event)">\n\n    <ion-refresher-content></ion-refresher-content>\n\n  </ion-refresher> -->\n\n  <p class="texto">Reciclaje y ciudad limpia</p>\n\n\n\n  <!-- <ion-infinite-scroll (ionInfinite)="siguiente_pagina($event)">\n\n    <ion-infinite-scroll-content></ion-infinite-scroll-content>\n\n  </ion-infinite-scroll> -->\n\n\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\BCAutomatizacion\Desktop\Reciclaje-y-ciudad-limpia\src\pages\home\home.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */],
             __WEBPACK_IMPORTED_MODULE_2__providers_carrito_carrito__["a" /* CarritoProvider */],
@@ -928,7 +941,7 @@ var HomePage = /** @class */ (function () {
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return OrdenesDetallePage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(7);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__pages_compra_compra__ = __webpack_require__(294);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_registro_registro__ = __webpack_require__(21);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_usuario_usuario__ = __webpack_require__(14);
@@ -979,7 +992,7 @@ var OrdenesDetallePage = /** @class */ (function () {
     };
     OrdenesDetallePage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-ordenes-detalle',template:/*ion-inline-start:"C:\Users\andyu\Desktop\reciclaje\src\pages\ordenes-detalle\ordenes-detalle.html"*/'<ion-header>\n\n\n\n    <ion-navbar color="dark">\n\n\n\n        <ion-buttons start>\n\n            <button ion-button icon-only *ngIf="_us.inactivo()" (click)="_cs.ver_login()">\n\n            <ion-icon name="contact"></ion-icon>\n\n          </button>\n\n        </ion-buttons>\n\n\n\n\n\n        <ion-buttons start>\n\n            <button ion-button icon-only *ngIf="_us.activo()">\n\n            {{ _us.usuario }} <ion-icon name="contact"></ion-icon>\n\n          </button>\n\n            <button ion-button icon-only *ngIf="_us.activo()" (click)="_us.cerrar_sesion()">\n\n            <ion-icon name="log-out"></ion-icon>\n\n          </button>\n\n        </ion-buttons>\n\n\n\n        <ion-title>Mi Reserva</ion-title>\n\n    </ion-navbar>\n\n\n\n</ion-header>\n\n\n\n\n\n<ion-content>\n\n    <br>\n\n    <ion-card *ngIf="_us.id_usuario != null" color="blanco">\n\n        <ion-item color="primary">\n\n            <ion-icon name="pin" slot="start"></ion-icon>\n\n            <ion-label style="font-weight: bold;">Reserva 1</ion-label>\n\n            <ion-label *ngIf="_cs.cronometro2" style="font-weight: bold">Tiempo Restante: {{_cs.cronometro2}}</ion-label>\n\n        </ion-item>\n\n        <ion-card-content color="primary">\n\n            <span style="line-height: 50px"><span style="font-weight: bold">Usuario:</span><span>   {{usuario.usuario.stringValue}}</span></span><br>\n\n            <span style="line-height: 50px"><span style="font-weight: bold">Placa:</span><span>   {{usuario.placa.stringValue}}</span></span><br>\n\n            <span style="line-height: 50px"><span style="font-weight: bold">Fecha y hora de reserva:</span><span>   {{reserva.fecha}}</span></span><br>\n\n            <span style="line-height: 50px"><span style="font-weight: bold">Horas de reserva:</span><span>   {{reserva.horas}}</span></span><br>\n\n            <span style="line-height: 50px"><span style="font-weight: bold">Precio:</span><span>   S/. {{reserva.total}}</span></span><br>\n\n            <span style="line-height: 50px"><span style="font-weight: bold">Estado de la reserva:</span><span *ngIf="estado">   {{estado}}</span></span><br>\n\n            <span style="line-height: 50px"><span style="font-weight: bold">Estado de pago:</span><span *ngIf="reserva_pago">   {{reserva_pago}}</span></span><br>\n\n            <span style="line-height: 50px"><span style="font-weight: bold">Estado de ocupación:</span ><span *ngIf="espacio_actual && espacio_actual.estado_ocupacion == \'0\'" style="color:#f53d3d; font-weight: bold">   POR LLEGAR</span>\n\n            <span *ngIf="espacio_actual && espacio_actual.estado_ocupacion == \'1\'" style="color: #32db64; font-weight: bold">   LLEGÓ</span></span><br>\n\n            <div style="text-align: center; margin-top: 50px">\n\n                <button *ngIf="(espacio_actual && espacio_actual.estado_ocupacion == \'0\') || reserva_pago == \'Pago Realizado\'" ion-button disabled>Pagar</button>\n\n            </div>\n\n\n\n            <div style="text-align: center; margin-top: 50px">\n\n                <button *ngIf="espacio_actual && espacio_actual.estado_ocupacion == \'1\' && reserva_pago == \'Por pagar\'" ion-button (click)="pagar()">Pagar</button>\n\n            </div>\n\n\n\n        </ion-card-content>\n\n    </ion-card>\n\n\n\n\n\n</ion-content>'/*ion-inline-end:"C:\Users\andyu\Desktop\reciclaje\src\pages\ordenes-detalle\ordenes-detalle.html"*/,
+            selector: 'page-ordenes-detalle',template:/*ion-inline-start:"C:\Users\BCAutomatizacion\Desktop\Reciclaje-y-ciudad-limpia\src\pages\ordenes-detalle\ordenes-detalle.html"*/'<ion-header>\n\n\n\n    <ion-navbar color="dark">\n\n\n\n        <ion-buttons start>\n\n            <button ion-button icon-only *ngIf="_us.inactivo()" (click)="_cs.ver_login()">\n\n            <ion-icon name="contact"></ion-icon>\n\n          </button>\n\n        </ion-buttons>\n\n\n\n\n\n        <ion-buttons start>\n\n            <button ion-button icon-only *ngIf="_us.activo()">\n\n            {{ _us.usuario }} <ion-icon name="contact"></ion-icon>\n\n          </button>\n\n            <button ion-button icon-only *ngIf="_us.activo()" (click)="_us.cerrar_sesion()">\n\n            <ion-icon name="log-out"></ion-icon>\n\n          </button>\n\n        </ion-buttons>\n\n\n\n        <ion-title>Mi Reserva</ion-title>\n\n    </ion-navbar>\n\n\n\n</ion-header>\n\n\n\n\n\n<ion-content>\n\n    <br>\n\n    <ion-card *ngIf="_us.id_usuario != null" color="blanco">\n\n        <ion-item color="primary">\n\n            <ion-icon name="pin" slot="start"></ion-icon>\n\n            <ion-label style="font-weight: bold;">Reserva 1</ion-label>\n\n            <ion-label *ngIf="_cs.cronometro2" style="font-weight: bold">Tiempo Restante: {{_cs.cronometro2}}</ion-label>\n\n        </ion-item>\n\n        <ion-card-content color="primary">\n\n            <span style="line-height: 50px"><span style="font-weight: bold">Usuario:</span><span>   {{usuario.usuario.stringValue}}</span></span><br>\n\n            <span style="line-height: 50px"><span style="font-weight: bold">Placa:</span><span>   {{usuario.placa.stringValue}}</span></span><br>\n\n            <span style="line-height: 50px"><span style="font-weight: bold">Fecha y hora de reserva:</span><span>   {{reserva.fecha}}</span></span><br>\n\n            <span style="line-height: 50px"><span style="font-weight: bold">Horas de reserva:</span><span>   {{reserva.horas}}</span></span><br>\n\n            <span style="line-height: 50px"><span style="font-weight: bold">Precio:</span><span>   S/. {{reserva.total}}</span></span><br>\n\n            <span style="line-height: 50px"><span style="font-weight: bold">Estado de la reserva:</span><span *ngIf="estado">   {{estado}}</span></span><br>\n\n            <span style="line-height: 50px"><span style="font-weight: bold">Estado de pago:</span><span *ngIf="reserva_pago">   {{reserva_pago}}</span></span><br>\n\n            <span style="line-height: 50px"><span style="font-weight: bold">Estado de ocupación:</span ><span *ngIf="espacio_actual && espacio_actual.estado_ocupacion == \'0\'" style="color:#f53d3d; font-weight: bold">   POR LLEGAR</span>\n\n            <span *ngIf="espacio_actual && espacio_actual.estado_ocupacion == \'1\'" style="color: #32db64; font-weight: bold">   LLEGÓ</span></span><br>\n\n            <div style="text-align: center; margin-top: 50px">\n\n                <button *ngIf="(espacio_actual && espacio_actual.estado_ocupacion == \'0\') || reserva_pago == \'Pago Realizado\'" ion-button disabled>Pagar</button>\n\n            </div>\n\n\n\n            <div style="text-align: center; margin-top: 50px">\n\n                <button *ngIf="espacio_actual && espacio_actual.estado_ocupacion == \'1\' && reserva_pago == \'Por pagar\'" ion-button (click)="pagar()">Pagar</button>\n\n            </div>\n\n\n\n        </ion-card-content>\n\n    </ion-card>\n\n\n\n\n\n</ion-content>'/*ion-inline-end:"C:\Users\BCAutomatizacion\Desktop\Reciclaje-y-ciudad-limpia\src\pages\ordenes-detalle\ordenes-detalle.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */],
@@ -1001,7 +1014,7 @@ var OrdenesDetallePage = /** @class */ (function () {
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CompraPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(7);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_carrito_carrito__ = __webpack_require__(13);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_usuario_usuario__ = __webpack_require__(14);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -1033,7 +1046,7 @@ var CompraPage = /** @class */ (function () {
     }
     CompraPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-compra',template:/*ion-inline-start:"C:\Users\andyu\Desktop\reciclaje\src\pages\compra\compra.html"*/'<!--\n\n  Generated template for the CompraPage page.\n\n\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n\n  Ionic pages and navigation.\n\n-->\n\n<ion-header>\n\n\n\n  <ion-navbar  color="dark">\n\n\n\n    <ion-buttons left>\n\n      <button icon-only ion-button\n\n              (click)="viewCtrl.dismiss()">\n\n        <ion-icon name="arrow-round-back"></ion-icon>\n\n      </button>\n\n    </ion-buttons>\n\n    <ion-title>Confirmación de Compra</ion-title>\n\n  </ion-navbar>\n\n\n\n</ion-header>\n\n\n\n\n\n<ion-content padding>\n\n  <br>\n\n  <br>\n\n  <h6 text-center>Ya puedes confirmar tu compra</h6>\n\n  <h5 text-center style="font-weight: bold"> {{ _us.usuario }} </h5>\n\n  <br>\n\n  <br>\n\n\n\n  <ion-list>\n\n    <button ion-item (click)="_cs.pago_tarjeta()"><ion-icon name="ios-card"></ion-icon>  Pagar con tarjeta            <img src="../../assets/imgs/visa.png" height="20" width="32"> <img src="../../assets/imgs/mastercard.png" height="28" width="28"></button>\n\n    <button ion-item (click)="_cs.pago_paypal()"><ion-icon name="ios-card"></ion-icon>  Pagar con paypal              <img src="../../assets/imgs/paypal.png" height="32" width="32"></button>\n\n  </ion-list>\n\n\n\n  <br>\n\n  <br>\n\n  <h5 text-center>Total: {{ _cs.total | currency:\'S/. \':symbol }}</h5>\n\n\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\andyu\Desktop\reciclaje\src\pages\compra\compra.html"*/,
+            selector: 'page-compra',template:/*ion-inline-start:"C:\Users\BCAutomatizacion\Desktop\Reciclaje-y-ciudad-limpia\src\pages\compra\compra.html"*/'<!--\n\n  Generated template for the CompraPage page.\n\n\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n\n  Ionic pages and navigation.\n\n-->\n\n<ion-header>\n\n\n\n  <ion-navbar  color="dark">\n\n\n\n    <ion-buttons left>\n\n      <button icon-only ion-button\n\n              (click)="viewCtrl.dismiss()">\n\n        <ion-icon name="arrow-round-back"></ion-icon>\n\n      </button>\n\n    </ion-buttons>\n\n    <ion-title>Confirmación de Compra</ion-title>\n\n  </ion-navbar>\n\n\n\n</ion-header>\n\n\n\n\n\n<ion-content padding>\n\n  <br>\n\n  <br>\n\n  <h6 text-center>Confirmar pago a usuario</h6>\n\n  <h5 text-center style="font-weight: bold"> {{ _cs.usuario.usuario }} </h5>\n\n  <br>\n\n  <br>\n\n\n\n  <ion-list>\n\n    <button ion-item (click)="_cs.pago_tarjeta()"><ion-icon name="ios-card"></ion-icon>  Pagar con tarjeta            <img src="../../assets/imgs/visa.png" height="20" width="32"> <img src="../../assets/imgs/mastercard.png" height="28" width="28"></button>\n\n    <button ion-item (click)="_cs.pago_paypal()"><ion-icon name="ios-card"></ion-icon>  Pagar con paypal              <img src="../../assets/imgs/paypal.png" height="32" width="32"></button>\n\n  </ion-list>\n\n\n\n  <br>\n\n  <br>\n\n  <h5 text-center>Total: {{ _cs.totalreciclaje | currency:\'S/. \':symbol }}</h5>\n\n\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\BCAutomatizacion\Desktop\Reciclaje-y-ciudad-limpia\src\pages\compra\compra.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */],
@@ -1054,7 +1067,7 @@ var CompraPage = /** @class */ (function () {
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return EstacionamientoDetallePage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(7);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_carrito_carrito__ = __webpack_require__(13);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_usuario_usuario__ = __webpack_require__(14);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_registro_registro__ = __webpack_require__(21);
@@ -1117,7 +1130,7 @@ var EstacionamientoDetallePage = /** @class */ (function () {
     };
     EstacionamientoDetallePage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-estacionamiento-detalle',template:/*ion-inline-start:"C:\Users\andyu\Desktop\reciclaje\src\pages\estacionamiento-detalle\estacionamiento-detalle.html"*/'<ion-header>\n\n\n\n  <ion-navbar color="dark">\n\n    \n\n      <ion-buttons start>\n\n          <button ion-button icon-only\n\n                  *ngIf="_us.inactivo()"\n\n                  (click)="_cs.ver_login()">\n\n            <ion-icon name="contact"></ion-icon>\n\n          </button>\n\n        </ion-buttons>\n\n    \n\n    \n\n        <ion-buttons start>\n\n          <button ion-button icon-only\n\n                  *ngIf="_us.activo()">\n\n            {{ _us.usuario }} <ion-icon name="contact"></ion-icon>\n\n          </button>\n\n          <button ion-button icon-only\n\n                  *ngIf="_us.activo()"\n\n                  (click)="_us.cerrar_sesion()">\n\n            <ion-icon name="log-out"></ion-icon>\n\n          </button>\n\n        </ion-buttons>\n\n\n\n    <ion-title>Detalle</ion-title>\n\n  </ion-navbar>\n\n\n\n</ion-header>\n\n\n\n\n\n<ion-content padding>\n\n\n\n    <h5 padding style="text-align: center; font-weight: bold">{{incidencia.titulo}}</h5>\n\n\n\n    <div style="text-align: center">\n\n        <img [src]="incidencia.imagen" style="max-width: 100%">\n\n      </div>\n\n\n\n      <h6 style="font-size: 14px; padding: 0px">Ubicación:           {{incidencia.ubicacion}}</h6>\n\n      <h6 style="font-size: 14px; padding: 0px">Descripción:                   {{incidencia.descripcion}}</h6>\n\n      <h6 style="font-size: 14px; padding: 0px">Residuo:                        <span style="color: green;">{{residuo}}</span></h6>\n\n      <h6 style="font-size: 14px; padding: 0px">Volumen:            <span style="color: green;">{{volumen}}</span></h6>\n\n      <h6 style="font-size: 14px; padding: 0px">Fecha:                        {{incidencia.fecha}}</h6>\n\n      <h6 style="font-size: 14px; padding: 0px">Hora:                             {{incidencia.hora}}</h6>\n\n      <h6 style="font-size: 14px; padding: 0px;">Estado:                       <span style="color: red;">No recogido</span></h6>\n\n      <!-- <h6 *ngIf="!descuento" style="font-size: 14px; padding: 0px">Costo por hora:     S/. {{estacionamiento.costo}}</h6>\n\n      <h6 *ngIf="descuento" style="font-size: 14px; padding: 0px">Costo por hora:     <span style="text-decoration: line-through">S/. {{estacionamiento.costo}}</span>  <span style="color: red">(-20%)</span>  ->  <span style="color: blue">S/.{{descuento}}</span></h6> -->\n\n\n\n      <button id="reserva" ion-button block\n\n              [navPush]="espacios"\n\n              [navParams]="{ estacionamiento: estacionamiento }"\n\n        >\n\n    Cambiar estado\n\n  </button>\n\n  <br><br>\n\n\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\andyu\Desktop\reciclaje\src\pages\estacionamiento-detalle\estacionamiento-detalle.html"*/,
+            selector: 'page-estacionamiento-detalle',template:/*ion-inline-start:"C:\Users\BCAutomatizacion\Desktop\Reciclaje-y-ciudad-limpia\src\pages\estacionamiento-detalle\estacionamiento-detalle.html"*/'<ion-header>\n\n\n\n  <ion-navbar color="dark">\n\n    \n\n      <ion-buttons start>\n\n          <button ion-button icon-only\n\n                  *ngIf="_us.inactivo()"\n\n                  (click)="_cs.ver_login()">\n\n            <ion-icon name="contact"></ion-icon>\n\n          </button>\n\n        </ion-buttons>\n\n    \n\n    \n\n        <ion-buttons start>\n\n          <button ion-button icon-only\n\n                  *ngIf="_us.activo()">\n\n            {{ _us.usuario }} <ion-icon name="contact"></ion-icon>\n\n          </button>\n\n          <button ion-button icon-only\n\n                  *ngIf="_us.activo()"\n\n                  (click)="_us.cerrar_sesion()">\n\n            <ion-icon name="log-out"></ion-icon>\n\n          </button>\n\n        </ion-buttons>\n\n\n\n    <ion-title>Detalle</ion-title>\n\n  </ion-navbar>\n\n\n\n</ion-header>\n\n\n\n\n\n<ion-content padding>\n\n\n\n    <h5 padding style="text-align: center; font-weight: bold">{{incidencia.titulo}}</h5>\n\n\n\n    <div style="text-align: center">\n\n        <img [src]="incidencia.imagen" style="max-width: 100%">\n\n      </div>\n\n\n\n      <h6 style="font-size: 14px; padding: 0px">Ubicación:           {{incidencia.ubicacion}}</h6>\n\n      <h6 style="font-size: 14px; padding: 0px">Descripción:                   {{incidencia.descripcion}}</h6>\n\n      <h6 style="font-size: 14px; padding: 0px">Residuo:                        <span style="color: green;">{{residuo}}</span></h6>\n\n      <h6 style="font-size: 14px; padding: 0px">Volumen:            <span style="color: green;">{{volumen}}</span></h6>\n\n      <h6 style="font-size: 14px; padding: 0px">Fecha:                        {{incidencia.fecha}}</h6>\n\n      <h6 style="font-size: 14px; padding: 0px">Hora:                             {{incidencia.hora}}</h6>\n\n      <h6 style="font-size: 14px; padding: 0px;">Estado:                       <span style="color: red;">No recogido</span></h6>\n\n      <!-- <h6 *ngIf="!descuento" style="font-size: 14px; padding: 0px">Costo por hora:     S/. {{estacionamiento.costo}}</h6>\n\n      <h6 *ngIf="descuento" style="font-size: 14px; padding: 0px">Costo por hora:     <span style="text-decoration: line-through">S/. {{estacionamiento.costo}}</span>  <span style="color: red">(-20%)</span>  ->  <span style="color: blue">S/.{{descuento}}</span></h6> -->\n\n\n\n      <button id="reserva" ion-button block\n\n              [navPush]="espacios"\n\n              [navParams]="{ estacionamiento: estacionamiento }"\n\n        >\n\n    Cambiar estado\n\n  </button>\n\n  <br><br>\n\n\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\BCAutomatizacion\Desktop\Reciclaje-y-ciudad-limpia\src\pages\estacionamiento-detalle\estacionamiento-detalle.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */],
@@ -1139,7 +1152,7 @@ var EstacionamientoDetallePage = /** @class */ (function () {
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return EspaciosPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(7);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_carrito_carrito__ = __webpack_require__(13);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_usuario_usuario__ = __webpack_require__(14);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__pages_espacios_detalle_espacios_detalle__ = __webpack_require__(297);
@@ -1180,7 +1193,7 @@ var EspaciosPage = /** @class */ (function () {
     }
     EspaciosPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-espacios',template:/*ion-inline-start:"C:\Users\andyu\Desktop\reciclaje\src\pages\espacios\espacios.html"*/'<ion-header>\n\n\n\n  <ion-navbar color="dark">\n\n\n\n      <ion-buttons start>\n\n          <button ion-button icon-only\n\n                  *ngIf="_us.inactivo()"\n\n                  (click)="_cs.ver_login()">\n\n            <ion-icon name="contact"></ion-icon>\n\n          </button>\n\n        </ion-buttons>\n\n    \n\n    \n\n        <ion-buttons start>\n\n          <button ion-button icon-only\n\n                  *ngIf="_us.activo()">\n\n            {{ _us.usuario }} <ion-icon name="contact"></ion-icon>\n\n          </button>\n\n          <button ion-button icon-only\n\n                  *ngIf="_us.activo()"\n\n                  (click)="_us.cerrar_sesion()">\n\n            <ion-icon name="log-out"></ion-icon>\n\n          </button>\n\n        </ion-buttons>\n\n\n\n    <ion-title>Espacios</ion-title>\n\n  </ion-navbar>\n\n\n\n</ion-header>\n\n\n\n\n\n<ion-content>\n\n  <h6 padding>Escoja el espacio que va a reservar en el estacionamiento:</h6>\n\n  <br>\n\n  <!-- <ion-list>\n\n      <button id="reserva" ion-item\n\n              *ngFor="let espacio of espacios"\n\n              (click)="_cs.ver_espacio(espacio.id.stringValue)"\n\n              [navPush]="espaciosdetalle"\n\n              [navParams]="{ estacionamiento: estacionamiento }"\n\n      >\n\n      <ion-icon name="ios-arrow-forward"></ion-icon>\n\n          Espacio {{espacio.id.stringValue}}\n\n    </button>\n\n  </ion-list> -->\n\n\n\n  <table id="tablero">\n\n  \n\n    <tr>\n\n      <td><div id="caseta2"></div></td>\n\n      <td></td>\n\n      <td></td>\n\n      <td></td>\n\n    </tr>\n\n    \n\n    <tr>\n\n      <td class="ruta"></td>\n\n      <td class="ruta"></td>\n\n      <td class="ruta"></td>\n\n      <td class="ruta"></td>\n\n      \n\n    </tr>\n\n    <tr>\n\n      <td></td>\n\n      <td></td>\n\n      <td></td>\n\n      <td></td>\n\n     \n\n    </tr>\n\n    <tr>\n\n      <td class="espacio" *ngFor="let espacio of espacios"\n\n      (click)="_cs.ver_espacio(espacio.id.stringValue)"\n\n      [navPush]="espaciosdetalle"\n\n      [navParams]="{ estacionamiento: estacionamiento }">\n\n        <button *ngIf="espacio.estado_reservacion.stringValue == \'1\' && espacio.estado_ocupacion.stringValue == \'0\'" class="espacio2" id="1" style="background-color: #F77917">{{espacio.id.stringValue}}</button>\n\n        <button *ngIf="espacio.estado_reservacion.stringValue == \'0\' && espacio.estado_ocupacion.stringValue == \'0\'" class="espacio2" id="1">{{espacio.id.stringValue}}</button>\n\n        <button *ngIf="espacio.estado_ocupacion.stringValue == \'1\'" class="espacio2" id="1" style="background-color: red">{{espacio.id.stringValue}}</button>\n\n      </td>\n\n      \n\n    </tr>\n\n  </table>\n\n  <br><br>\n\n  <ion-card style="margin-top: 100%">\n\n    <ion-card-content  color="black">\n\n        <br>\n\n        <div>\n\n          <h5 padding style="font-weight: bold">Leyenda:</h5>\n\n          <div style="display: -webkit-box">\n\n            <div class="circulo" style="background: green"></div>\n\n            <span style="margin-left: 5px">Caseta</span>\n\n            <div class="circulo" style="background: #808080"></div>\n\n            <span style="margin-left: 5px">Pista</span>\n\n            <div class="circulo" style="background: #454545"></div>\n\n            <span style="margin-left: 5px">Espacio Libre</span>\n\n          </div>\n\n          <br>\n\n          <div style="display: -webkit-box">\n\n            <div class="circulo" style="background: #F77917"></div>\n\n            <span style="margin-left: 5px">Reservado</span>\n\n            <div class="circulo" style="background: red"></div>\n\n            <span style="margin-left: 5px">Ocupado</span>\n\n          </div>\n\n          <br><br>\n\n        </div>\n\n    </ion-card-content>\n\n</ion-card>\n\n\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\andyu\Desktop\reciclaje\src\pages\espacios\espacios.html"*/,
+            selector: 'page-espacios',template:/*ion-inline-start:"C:\Users\BCAutomatizacion\Desktop\Reciclaje-y-ciudad-limpia\src\pages\espacios\espacios.html"*/'<ion-header>\n\n\n\n  <ion-navbar color="dark">\n\n\n\n      <ion-buttons start>\n\n          <button ion-button icon-only\n\n                  *ngIf="_us.inactivo()"\n\n                  (click)="_cs.ver_login()">\n\n            <ion-icon name="contact"></ion-icon>\n\n          </button>\n\n        </ion-buttons>\n\n    \n\n    \n\n        <ion-buttons start>\n\n          <button ion-button icon-only\n\n                  *ngIf="_us.activo()">\n\n            {{ _us.usuario }} <ion-icon name="contact"></ion-icon>\n\n          </button>\n\n          <button ion-button icon-only\n\n                  *ngIf="_us.activo()"\n\n                  (click)="_us.cerrar_sesion()">\n\n            <ion-icon name="log-out"></ion-icon>\n\n          </button>\n\n        </ion-buttons>\n\n\n\n    <ion-title>Espacios</ion-title>\n\n  </ion-navbar>\n\n\n\n</ion-header>\n\n\n\n\n\n<ion-content>\n\n  <h6 padding>Escoja el espacio que va a reservar en el estacionamiento:</h6>\n\n  <br>\n\n  <!-- <ion-list>\n\n      <button id="reserva" ion-item\n\n              *ngFor="let espacio of espacios"\n\n              (click)="_cs.ver_espacio(espacio.id.stringValue)"\n\n              [navPush]="espaciosdetalle"\n\n              [navParams]="{ estacionamiento: estacionamiento }"\n\n      >\n\n      <ion-icon name="ios-arrow-forward"></ion-icon>\n\n          Espacio {{espacio.id.stringValue}}\n\n    </button>\n\n  </ion-list> -->\n\n\n\n  <table id="tablero">\n\n  \n\n    <tr>\n\n      <td><div id="caseta2"></div></td>\n\n      <td></td>\n\n      <td></td>\n\n      <td></td>\n\n    </tr>\n\n    \n\n    <tr>\n\n      <td class="ruta"></td>\n\n      <td class="ruta"></td>\n\n      <td class="ruta"></td>\n\n      <td class="ruta"></td>\n\n      \n\n    </tr>\n\n    <tr>\n\n      <td></td>\n\n      <td></td>\n\n      <td></td>\n\n      <td></td>\n\n     \n\n    </tr>\n\n    <tr>\n\n      <td class="espacio" *ngFor="let espacio of espacios"\n\n      (click)="_cs.ver_espacio(espacio.id.stringValue)"\n\n      [navPush]="espaciosdetalle"\n\n      [navParams]="{ estacionamiento: estacionamiento }">\n\n        <button *ngIf="espacio.estado_reservacion.stringValue == \'1\' && espacio.estado_ocupacion.stringValue == \'0\'" class="espacio2" id="1" style="background-color: #F77917">{{espacio.id.stringValue}}</button>\n\n        <button *ngIf="espacio.estado_reservacion.stringValue == \'0\' && espacio.estado_ocupacion.stringValue == \'0\'" class="espacio2" id="1">{{espacio.id.stringValue}}</button>\n\n        <button *ngIf="espacio.estado_ocupacion.stringValue == \'1\'" class="espacio2" id="1" style="background-color: red">{{espacio.id.stringValue}}</button>\n\n      </td>\n\n      \n\n    </tr>\n\n  </table>\n\n  <br><br>\n\n  <ion-card style="margin-top: 100%">\n\n    <ion-card-content  color="black">\n\n        <br>\n\n        <div>\n\n          <h5 padding style="font-weight: bold">Leyenda:</h5>\n\n          <div style="display: -webkit-box">\n\n            <div class="circulo" style="background: green"></div>\n\n            <span style="margin-left: 5px">Caseta</span>\n\n            <div class="circulo" style="background: #808080"></div>\n\n            <span style="margin-left: 5px">Pista</span>\n\n            <div class="circulo" style="background: #454545"></div>\n\n            <span style="margin-left: 5px">Espacio Libre</span>\n\n          </div>\n\n          <br>\n\n          <div style="display: -webkit-box">\n\n            <div class="circulo" style="background: #F77917"></div>\n\n            <span style="margin-left: 5px">Reservado</span>\n\n            <div class="circulo" style="background: red"></div>\n\n            <span style="margin-left: 5px">Ocupado</span>\n\n          </div>\n\n          <br><br>\n\n        </div>\n\n    </ion-card-content>\n\n</ion-card>\n\n\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\BCAutomatizacion\Desktop\Reciclaje-y-ciudad-limpia\src\pages\espacios\espacios.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */],
@@ -1200,7 +1213,7 @@ var EspaciosPage = /** @class */ (function () {
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return EspaciosDetallePage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(7);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_angularfire2_firestore__ = __webpack_require__(93);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_angularfire2_firestore___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_angularfire2_firestore__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__pages_login_login__ = __webpack_require__(161);
@@ -1393,7 +1406,7 @@ var EspaciosDetallePage = /** @class */ (function () {
     };
     EspaciosDetallePage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-espacios-detalle',template:/*ion-inline-start:"C:\Users\andyu\Desktop\reciclaje\src\pages\espacios-detalle\espacios-detalle.html"*/'\n\n<ion-header>\n\n\n\n  <ion-navbar  color="dark">\n\n\n\n      <ion-buttons start>\n\n          <button ion-button icon-only\n\n                  *ngIf="_us.inactivo()"\n\n                  (click)="_cs.ver_login()">\n\n            <ion-icon name="contact"></ion-icon>\n\n          </button>\n\n        </ion-buttons>\n\n    \n\n    \n\n        <ion-buttons start>\n\n          <button ion-button icon-only\n\n                  *ngIf="_us.activo()">\n\n            {{ _us.usuario }} <ion-icon name="contact"></ion-icon>\n\n          </button>\n\n          <button ion-button icon-only\n\n                  *ngIf="_us.activo()"\n\n                  (click)="_us.cerrar_sesion()">\n\n            <ion-icon name="log-out"></ion-icon>\n\n          </button>\n\n        </ion-buttons>\n\n\n\n    <ion-title>Reservar Espacio</ion-title>\n\n  </ion-navbar>\n\n\n\n</ion-header>\n\n\n\n\n\n<ion-content padding>\n\n  <div *ngIf="_cs.espacio">\n\n    <h5 padding style="text-align: center; font-weight: bold">{{_cs.espacio.id}}</h5>\n\n\n\n    <!-- <div style="text-align: center">\n\n        <img [src]="estacionamiento.imagen" style="max-width: 100%">\n\n      </div> -->\n\n\n\n      <h6 *ngIf="_cs.espacio.estado_ocupacion == \'0\'" style="font-size: 14px; padding: 0px">Estado de ocupación:                 <span style="color: blue">Libre</span></h6>\n\n      <h6 *ngIf="_cs.espacio.estado_ocupacion == \'1\'" style="font-size: 14px; padding: 0px">Estado de ocupación:        <span style="color: red">Ocupado</span></h6>\n\n      <h6 *ngIf="_cs.espacio.estado_reservacion == \'0\'" style="font-size: 14px; padding: 0px">Estado de reservación:        <span style="color: blue">No reservado</span></h6>\n\n      <h6 *ngIf="_cs.espacio.estado_reservacion == \'1\'" style="font-size: 14px; padding: 0px">Estado de reservación:        <span style="color: red">En reserva</span></h6>\n\n      <h6 *ngIf="descuento == 0" style="font-size: 14px; padding: 0px">Costo por hora:                          S/. {{costo}}</h6>\n\n      <h6 *ngIf="descuento" style="font-size: 14px; padding: 0px">Costo por hora:     <span style="text-decoration: line-through">S/. {{estacionamiento.costo}}</span>  <span style="color: red">(-20%)</span>  ->  <span style="color: blue">S/.{{descuento}}</span></h6>\n\n\n\n      <ion-item *ngIf="_cs.espacio.estado_ocupacion == \'0\' && _cs.espacio.estado_reservacion == \'0\'">\n\n        <ion-label floating>Ingrese cantidad de horas a reservar</ion-label>\n\n          <ion-input type="number" [(ngModel)]="horas"></ion-input>\n\n      </ion-item>\n\n    \n\n      <button *ngIf="_cs.espacio.estado_ocupacion == \'0\' && _cs.espacio.estado_reservacion == \'0\'" id="reserva" ion-button block [disabled]=" horas.length < 1" (click)="reservar()">Reservar ahora</button>\n\n      <button *ngIf="_cs.espacio.estado_ocupacion != \'0\' || _cs.espacio.estado_reservacion != \'0\'" id="reserva" disabled ion-button block>Reservar ahora</button>\n\n    \n\n    </div>\n\n\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\andyu\Desktop\reciclaje\src\pages\espacios-detalle\espacios-detalle.html"*/,
+            selector: 'page-espacios-detalle',template:/*ion-inline-start:"C:\Users\BCAutomatizacion\Desktop\Reciclaje-y-ciudad-limpia\src\pages\espacios-detalle\espacios-detalle.html"*/'\n\n<ion-header>\n\n\n\n  <ion-navbar  color="dark">\n\n\n\n      <ion-buttons start>\n\n          <button ion-button icon-only\n\n                  *ngIf="_us.inactivo()"\n\n                  (click)="_cs.ver_login()">\n\n            <ion-icon name="contact"></ion-icon>\n\n          </button>\n\n        </ion-buttons>\n\n    \n\n    \n\n        <ion-buttons start>\n\n          <button ion-button icon-only\n\n                  *ngIf="_us.activo()">\n\n            {{ _us.usuario }} <ion-icon name="contact"></ion-icon>\n\n          </button>\n\n          <button ion-button icon-only\n\n                  *ngIf="_us.activo()"\n\n                  (click)="_us.cerrar_sesion()">\n\n            <ion-icon name="log-out"></ion-icon>\n\n          </button>\n\n        </ion-buttons>\n\n\n\n    <ion-title>Reservar Espacio</ion-title>\n\n  </ion-navbar>\n\n\n\n</ion-header>\n\n\n\n\n\n<ion-content padding>\n\n  <div *ngIf="_cs.espacio">\n\n    <h5 padding style="text-align: center; font-weight: bold">{{_cs.espacio.id}}</h5>\n\n\n\n    <!-- <div style="text-align: center">\n\n        <img [src]="estacionamiento.imagen" style="max-width: 100%">\n\n      </div> -->\n\n\n\n      <h6 *ngIf="_cs.espacio.estado_ocupacion == \'0\'" style="font-size: 14px; padding: 0px">Estado de ocupación:                 <span style="color: blue">Libre</span></h6>\n\n      <h6 *ngIf="_cs.espacio.estado_ocupacion == \'1\'" style="font-size: 14px; padding: 0px">Estado de ocupación:        <span style="color: red">Ocupado</span></h6>\n\n      <h6 *ngIf="_cs.espacio.estado_reservacion == \'0\'" style="font-size: 14px; padding: 0px">Estado de reservación:        <span style="color: blue">No reservado</span></h6>\n\n      <h6 *ngIf="_cs.espacio.estado_reservacion == \'1\'" style="font-size: 14px; padding: 0px">Estado de reservación:        <span style="color: red">En reserva</span></h6>\n\n      <h6 *ngIf="descuento == 0" style="font-size: 14px; padding: 0px">Costo por hora:                          S/. {{costo}}</h6>\n\n      <h6 *ngIf="descuento" style="font-size: 14px; padding: 0px">Costo por hora:     <span style="text-decoration: line-through">S/. {{estacionamiento.costo}}</span>  <span style="color: red">(-20%)</span>  ->  <span style="color: blue">S/.{{descuento}}</span></h6>\n\n\n\n      <ion-item *ngIf="_cs.espacio.estado_ocupacion == \'0\' && _cs.espacio.estado_reservacion == \'0\'">\n\n        <ion-label floating>Ingrese cantidad de horas a reservar</ion-label>\n\n          <ion-input type="number" [(ngModel)]="horas"></ion-input>\n\n      </ion-item>\n\n    \n\n      <button *ngIf="_cs.espacio.estado_ocupacion == \'0\' && _cs.espacio.estado_reservacion == \'0\'" id="reserva" ion-button block [disabled]=" horas.length < 1" (click)="reservar()">Reservar ahora</button>\n\n      <button *ngIf="_cs.espacio.estado_ocupacion != \'0\' || _cs.espacio.estado_reservacion != \'0\'" id="reserva" disabled ion-button block>Reservar ahora</button>\n\n    \n\n    </div>\n\n\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\BCAutomatizacion\Desktop\Reciclaje-y-ciudad-limpia\src\pages\espacios-detalle\espacios-detalle.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */],
@@ -1416,59 +1429,62 @@ var EspaciosDetallePage = /** @class */ (function () {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__home_home__ = __webpack_require__(290);
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "m", function() { return __WEBPACK_IMPORTED_MODULE_0__home_home__["a"]; });
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "n", function() { return __WEBPACK_IMPORTED_MODULE_0__home_home__["a"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__carrito_carrito__ = __webpack_require__(608);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return __WEBPACK_IMPORTED_MODULE_1__carrito_carrito__["a"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__mapa_mapa__ = __webpack_require__(609);
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "p", function() { return __WEBPACK_IMPORTED_MODULE_2__mapa_mapa__["a"]; });
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "q", function() { return __WEBPACK_IMPORTED_MODULE_2__mapa_mapa__["a"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__login_login__ = __webpack_require__(161);
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "n", function() { return __WEBPACK_IMPORTED_MODULE_3__login_login__["a"]; });
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "o", function() { return __WEBPACK_IMPORTED_MODULE_3__login_login__["a"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ordenes_ordenes__ = __webpack_require__(611);
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "r", function() { return __WEBPACK_IMPORTED_MODULE_4__ordenes_ordenes__["a"]; });
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "s", function() { return __WEBPACK_IMPORTED_MODULE_4__ordenes_ordenes__["a"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__ordenes_detalle_ordenes_detalle__ = __webpack_require__(293);
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "q", function() { return __WEBPACK_IMPORTED_MODULE_5__ordenes_detalle_ordenes_detalle__["a"]; });
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "r", function() { return __WEBPACK_IMPORTED_MODULE_5__ordenes_detalle_ordenes_detalle__["a"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__publicacion_publicacion__ = __webpack_require__(612);
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "u", function() { return __WEBPACK_IMPORTED_MODULE_6__publicacion_publicacion__["a"]; });
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "v", function() { return __WEBPACK_IMPORTED_MODULE_6__publicacion_publicacion__["a"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__producto_producto__ = __webpack_require__(160);
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "t", function() { return __WEBPACK_IMPORTED_MODULE_7__producto_producto__["a"]; });
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "u", function() { return __WEBPACK_IMPORTED_MODULE_7__producto_producto__["a"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__tabs_tabs__ = __webpack_require__(613);
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "y", function() { return __WEBPACK_IMPORTED_MODULE_8__tabs_tabs__["a"]; });
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "z", function() { return __WEBPACK_IMPORTED_MODULE_8__tabs_tabs__["a"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__busqueda_busqueda__ = __webpack_require__(614);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return __WEBPACK_IMPORTED_MODULE_9__busqueda_busqueda__["a"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__registrarse_registrarse__ = __webpack_require__(615);
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "v", function() { return __WEBPACK_IMPORTED_MODULE_10__registrarse_registrarse__["a"]; });
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "w", function() { return __WEBPACK_IMPORTED_MODULE_10__registrarse_registrarse__["a"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__compra_compra__ = __webpack_require__(294);
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "e", function() { return __WEBPACK_IMPORTED_MODULE_11__compra_compra__["a"]; });
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "f", function() { return __WEBPACK_IMPORTED_MODULE_11__compra_compra__["a"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__paypal_paypal__ = __webpack_require__(616);
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "s", function() { return __WEBPACK_IMPORTED_MODULE_12__paypal_paypal__["a"]; });
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "t", function() { return __WEBPACK_IMPORTED_MODULE_12__paypal_paypal__["a"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__tarjeta_tarjeta__ = __webpack_require__(617);
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "z", function() { return __WEBPACK_IMPORTED_MODULE_13__tarjeta_tarjeta__["a"]; });
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "A", function() { return __WEBPACK_IMPORTED_MODULE_13__tarjeta_tarjeta__["a"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__estacionamiento_estacionamiento__ = __webpack_require__(618);
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "j", function() { return __WEBPACK_IMPORTED_MODULE_14__estacionamiento_estacionamiento__["a"]; });
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "k", function() { return __WEBPACK_IMPORTED_MODULE_14__estacionamiento_estacionamiento__["a"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__estacionamiento_detalle_estacionamiento_detalle__ = __webpack_require__(295);
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "i", function() { return __WEBPACK_IMPORTED_MODULE_15__estacionamiento_detalle_estacionamiento_detalle__["a"]; });
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "j", function() { return __WEBPACK_IMPORTED_MODULE_15__estacionamiento_detalle_estacionamiento_detalle__["a"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__espacios_espacios__ = __webpack_require__(296);
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "h", function() { return __WEBPACK_IMPORTED_MODULE_16__espacios_espacios__["a"]; });
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "i", function() { return __WEBPACK_IMPORTED_MODULE_16__espacios_espacios__["a"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__espacios_detalle_espacios_detalle__ = __webpack_require__(297);
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "g", function() { return __WEBPACK_IMPORTED_MODULE_17__espacios_detalle_espacios_detalle__["a"]; });
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "h", function() { return __WEBPACK_IMPORTED_MODULE_17__espacios_detalle_espacios_detalle__["a"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__historial_historial__ = __webpack_require__(619);
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "l", function() { return __WEBPACK_IMPORTED_MODULE_18__historial_historial__["a"]; });
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "m", function() { return __WEBPACK_IMPORTED_MODULE_18__historial_historial__["a"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__reportes_reportes__ = __webpack_require__(620);
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "w", function() { return __WEBPACK_IMPORTED_MODULE_19__reportes_reportes__["a"]; });
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "x", function() { return __WEBPACK_IMPORTED_MODULE_19__reportes_reportes__["a"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__mantenimiento_mantenimiento__ = __webpack_require__(624);
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "o", function() { return __WEBPACK_IMPORTED_MODULE_20__mantenimiento_mantenimiento__["a"]; });
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "p", function() { return __WEBPACK_IMPORTED_MODULE_20__mantenimiento_mantenimiento__["a"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__residuos_residuos__ = __webpack_require__(625);
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "x", function() { return __WEBPACK_IMPORTED_MODULE_21__residuos_residuos__["a"]; });
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "y", function() { return __WEBPACK_IMPORTED_MODULE_21__residuos_residuos__["a"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__volumen_volumen__ = __webpack_require__(626);
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "A", function() { return __WEBPACK_IMPORTED_MODULE_22__volumen_volumen__["a"]; });
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "B", function() { return __WEBPACK_IMPORTED_MODULE_22__volumen_volumen__["a"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__foto_foto__ = __webpack_require__(627);
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "k", function() { return __WEBPACK_IMPORTED_MODULE_23__foto_foto__["a"]; });
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "l", function() { return __WEBPACK_IMPORTED_MODULE_23__foto_foto__["a"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__agregar_reciclaje_agregar_reciclaje__ = __webpack_require__(628);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return __WEBPACK_IMPORTED_MODULE_24__agregar_reciclaje_agregar_reciclaje__["a"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__cantidad_cantidad__ = __webpack_require__(629);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return __WEBPACK_IMPORTED_MODULE_25__cantidad_cantidad__["a"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_26__detalle_reciclaje_detalle_reciclaje__ = __webpack_require__(163);
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "f", function() { return __WEBPACK_IMPORTED_MODULE_26__detalle_reciclaje_detalle_reciclaje__["a"]; });
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "g", function() { return __WEBPACK_IMPORTED_MODULE_26__detalle_reciclaje_detalle_reciclaje__["a"]; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_27__clientes_clientes__ = __webpack_require__(630);
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "e", function() { return __WEBPACK_IMPORTED_MODULE_27__clientes_clientes__["a"]; });
+
 
 
 
@@ -1522,7 +1538,7 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__ = __webpack_require__(47);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(7);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__ = __webpack_require__(279);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ionic_native_status_bar__ = __webpack_require__(281);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__ionic_native_geolocation__ = __webpack_require__(282);
@@ -1536,7 +1552,7 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__app_component__ = __webpack_require__(606);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__pages_home_home__ = __webpack_require__(290);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__ionic_storage__ = __webpack_require__(291);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__providers_index_services__ = __webpack_require__(630);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__providers_index_services__ = __webpack_require__(631);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__pages_index_paginas__ = __webpack_require__(38);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -1583,31 +1599,32 @@ var AppModule = /** @class */ (function () {
                 __WEBPACK_IMPORTED_MODULE_11__app_component__["a" /* MyApp */],
                 __WEBPACK_IMPORTED_MODULE_12__pages_home_home__["a" /* HomePage */],
                 __WEBPACK_IMPORTED_MODULE_15__pages_index_paginas__["d" /* CarritoPage */],
-                __WEBPACK_IMPORTED_MODULE_15__pages_index_paginas__["p" /* MapaPage */],
-                __WEBPACK_IMPORTED_MODULE_15__pages_index_paginas__["n" /* LoginPage */],
-                __WEBPACK_IMPORTED_MODULE_15__pages_index_paginas__["r" /* OrdenesPage */],
-                __WEBPACK_IMPORTED_MODULE_15__pages_index_paginas__["q" /* OrdenesDetallePage */],
-                __WEBPACK_IMPORTED_MODULE_15__pages_index_paginas__["u" /* PublicacionPage */],
-                __WEBPACK_IMPORTED_MODULE_15__pages_index_paginas__["y" /* TabsPage */],
+                __WEBPACK_IMPORTED_MODULE_15__pages_index_paginas__["q" /* MapaPage */],
+                __WEBPACK_IMPORTED_MODULE_15__pages_index_paginas__["o" /* LoginPage */],
+                __WEBPACK_IMPORTED_MODULE_15__pages_index_paginas__["s" /* OrdenesPage */],
+                __WEBPACK_IMPORTED_MODULE_15__pages_index_paginas__["r" /* OrdenesDetallePage */],
+                __WEBPACK_IMPORTED_MODULE_15__pages_index_paginas__["v" /* PublicacionPage */],
+                __WEBPACK_IMPORTED_MODULE_15__pages_index_paginas__["z" /* TabsPage */],
                 __WEBPACK_IMPORTED_MODULE_15__pages_index_paginas__["b" /* BusquedaPage */],
-                __WEBPACK_IMPORTED_MODULE_15__pages_index_paginas__["t" /* ProductoPage */],
-                __WEBPACK_IMPORTED_MODULE_15__pages_index_paginas__["v" /* RegistrarsePage */],
-                __WEBPACK_IMPORTED_MODULE_15__pages_index_paginas__["e" /* CompraPage */],
-                __WEBPACK_IMPORTED_MODULE_15__pages_index_paginas__["z" /* TarjetaPage */],
-                __WEBPACK_IMPORTED_MODULE_15__pages_index_paginas__["s" /* PaypalPage */],
-                __WEBPACK_IMPORTED_MODULE_15__pages_index_paginas__["j" /* EstacionamientoPage */],
-                __WEBPACK_IMPORTED_MODULE_15__pages_index_paginas__["i" /* EstacionamientoDetallePage */],
-                __WEBPACK_IMPORTED_MODULE_15__pages_index_paginas__["h" /* EspaciosPage */],
-                __WEBPACK_IMPORTED_MODULE_15__pages_index_paginas__["g" /* EspaciosDetallePage */],
-                __WEBPACK_IMPORTED_MODULE_15__pages_index_paginas__["l" /* HistorialPage */],
-                __WEBPACK_IMPORTED_MODULE_15__pages_index_paginas__["w" /* ReportesPage */],
-                __WEBPACK_IMPORTED_MODULE_15__pages_index_paginas__["o" /* MantenimientoPage */],
-                __WEBPACK_IMPORTED_MODULE_15__pages_index_paginas__["x" /* ResiduosPage */],
-                __WEBPACK_IMPORTED_MODULE_15__pages_index_paginas__["A" /* VolumenPage */],
-                __WEBPACK_IMPORTED_MODULE_15__pages_index_paginas__["k" /* FotoPage */],
+                __WEBPACK_IMPORTED_MODULE_15__pages_index_paginas__["u" /* ProductoPage */],
+                __WEBPACK_IMPORTED_MODULE_15__pages_index_paginas__["w" /* RegistrarsePage */],
+                __WEBPACK_IMPORTED_MODULE_15__pages_index_paginas__["f" /* CompraPage */],
+                __WEBPACK_IMPORTED_MODULE_15__pages_index_paginas__["A" /* TarjetaPage */],
+                __WEBPACK_IMPORTED_MODULE_15__pages_index_paginas__["t" /* PaypalPage */],
+                __WEBPACK_IMPORTED_MODULE_15__pages_index_paginas__["k" /* EstacionamientoPage */],
+                __WEBPACK_IMPORTED_MODULE_15__pages_index_paginas__["j" /* EstacionamientoDetallePage */],
+                __WEBPACK_IMPORTED_MODULE_15__pages_index_paginas__["i" /* EspaciosPage */],
+                __WEBPACK_IMPORTED_MODULE_15__pages_index_paginas__["h" /* EspaciosDetallePage */],
+                __WEBPACK_IMPORTED_MODULE_15__pages_index_paginas__["m" /* HistorialPage */],
+                __WEBPACK_IMPORTED_MODULE_15__pages_index_paginas__["x" /* ReportesPage */],
+                __WEBPACK_IMPORTED_MODULE_15__pages_index_paginas__["p" /* MantenimientoPage */],
+                __WEBPACK_IMPORTED_MODULE_15__pages_index_paginas__["y" /* ResiduosPage */],
+                __WEBPACK_IMPORTED_MODULE_15__pages_index_paginas__["B" /* VolumenPage */],
+                __WEBPACK_IMPORTED_MODULE_15__pages_index_paginas__["l" /* FotoPage */],
                 __WEBPACK_IMPORTED_MODULE_15__pages_index_paginas__["a" /* AgregarReciclajePage */],
                 __WEBPACK_IMPORTED_MODULE_15__pages_index_paginas__["c" /* CantidadPage */],
-                __WEBPACK_IMPORTED_MODULE_15__pages_index_paginas__["f" /* DetalleReciclajePage */]
+                __WEBPACK_IMPORTED_MODULE_15__pages_index_paginas__["g" /* DetalleReciclajePage */],
+                __WEBPACK_IMPORTED_MODULE_15__pages_index_paginas__["e" /* ClientesPage */]
             ],
             imports: [
                 __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__["a" /* BrowserModule */],
@@ -1624,31 +1641,32 @@ var AppModule = /** @class */ (function () {
                 __WEBPACK_IMPORTED_MODULE_11__app_component__["a" /* MyApp */],
                 __WEBPACK_IMPORTED_MODULE_12__pages_home_home__["a" /* HomePage */],
                 __WEBPACK_IMPORTED_MODULE_15__pages_index_paginas__["d" /* CarritoPage */],
-                __WEBPACK_IMPORTED_MODULE_15__pages_index_paginas__["p" /* MapaPage */],
-                __WEBPACK_IMPORTED_MODULE_15__pages_index_paginas__["n" /* LoginPage */],
-                __WEBPACK_IMPORTED_MODULE_15__pages_index_paginas__["r" /* OrdenesPage */],
-                __WEBPACK_IMPORTED_MODULE_15__pages_index_paginas__["q" /* OrdenesDetallePage */],
-                __WEBPACK_IMPORTED_MODULE_15__pages_index_paginas__["u" /* PublicacionPage */],
-                __WEBPACK_IMPORTED_MODULE_15__pages_index_paginas__["y" /* TabsPage */],
+                __WEBPACK_IMPORTED_MODULE_15__pages_index_paginas__["q" /* MapaPage */],
+                __WEBPACK_IMPORTED_MODULE_15__pages_index_paginas__["o" /* LoginPage */],
+                __WEBPACK_IMPORTED_MODULE_15__pages_index_paginas__["s" /* OrdenesPage */],
+                __WEBPACK_IMPORTED_MODULE_15__pages_index_paginas__["r" /* OrdenesDetallePage */],
+                __WEBPACK_IMPORTED_MODULE_15__pages_index_paginas__["v" /* PublicacionPage */],
+                __WEBPACK_IMPORTED_MODULE_15__pages_index_paginas__["z" /* TabsPage */],
                 __WEBPACK_IMPORTED_MODULE_15__pages_index_paginas__["b" /* BusquedaPage */],
-                __WEBPACK_IMPORTED_MODULE_15__pages_index_paginas__["t" /* ProductoPage */],
-                __WEBPACK_IMPORTED_MODULE_15__pages_index_paginas__["v" /* RegistrarsePage */],
-                __WEBPACK_IMPORTED_MODULE_15__pages_index_paginas__["e" /* CompraPage */],
-                __WEBPACK_IMPORTED_MODULE_15__pages_index_paginas__["z" /* TarjetaPage */],
-                __WEBPACK_IMPORTED_MODULE_15__pages_index_paginas__["s" /* PaypalPage */],
-                __WEBPACK_IMPORTED_MODULE_15__pages_index_paginas__["j" /* EstacionamientoPage */],
-                __WEBPACK_IMPORTED_MODULE_15__pages_index_paginas__["i" /* EstacionamientoDetallePage */],
-                __WEBPACK_IMPORTED_MODULE_15__pages_index_paginas__["h" /* EspaciosPage */],
-                __WEBPACK_IMPORTED_MODULE_15__pages_index_paginas__["g" /* EspaciosDetallePage */],
-                __WEBPACK_IMPORTED_MODULE_15__pages_index_paginas__["l" /* HistorialPage */],
-                __WEBPACK_IMPORTED_MODULE_15__pages_index_paginas__["w" /* ReportesPage */],
-                __WEBPACK_IMPORTED_MODULE_15__pages_index_paginas__["o" /* MantenimientoPage */],
-                __WEBPACK_IMPORTED_MODULE_15__pages_index_paginas__["x" /* ResiduosPage */],
-                __WEBPACK_IMPORTED_MODULE_15__pages_index_paginas__["A" /* VolumenPage */],
-                __WEBPACK_IMPORTED_MODULE_15__pages_index_paginas__["k" /* FotoPage */],
+                __WEBPACK_IMPORTED_MODULE_15__pages_index_paginas__["u" /* ProductoPage */],
+                __WEBPACK_IMPORTED_MODULE_15__pages_index_paginas__["w" /* RegistrarsePage */],
+                __WEBPACK_IMPORTED_MODULE_15__pages_index_paginas__["f" /* CompraPage */],
+                __WEBPACK_IMPORTED_MODULE_15__pages_index_paginas__["A" /* TarjetaPage */],
+                __WEBPACK_IMPORTED_MODULE_15__pages_index_paginas__["t" /* PaypalPage */],
+                __WEBPACK_IMPORTED_MODULE_15__pages_index_paginas__["k" /* EstacionamientoPage */],
+                __WEBPACK_IMPORTED_MODULE_15__pages_index_paginas__["j" /* EstacionamientoDetallePage */],
+                __WEBPACK_IMPORTED_MODULE_15__pages_index_paginas__["i" /* EspaciosPage */],
+                __WEBPACK_IMPORTED_MODULE_15__pages_index_paginas__["h" /* EspaciosDetallePage */],
+                __WEBPACK_IMPORTED_MODULE_15__pages_index_paginas__["m" /* HistorialPage */],
+                __WEBPACK_IMPORTED_MODULE_15__pages_index_paginas__["x" /* ReportesPage */],
+                __WEBPACK_IMPORTED_MODULE_15__pages_index_paginas__["p" /* MantenimientoPage */],
+                __WEBPACK_IMPORTED_MODULE_15__pages_index_paginas__["y" /* ResiduosPage */],
+                __WEBPACK_IMPORTED_MODULE_15__pages_index_paginas__["B" /* VolumenPage */],
+                __WEBPACK_IMPORTED_MODULE_15__pages_index_paginas__["l" /* FotoPage */],
                 __WEBPACK_IMPORTED_MODULE_15__pages_index_paginas__["a" /* AgregarReciclajePage */],
                 __WEBPACK_IMPORTED_MODULE_15__pages_index_paginas__["c" /* CantidadPage */],
-                __WEBPACK_IMPORTED_MODULE_15__pages_index_paginas__["f" /* DetalleReciclajePage */]
+                __WEBPACK_IMPORTED_MODULE_15__pages_index_paginas__["g" /* DetalleReciclajePage */],
+                __WEBPACK_IMPORTED_MODULE_15__pages_index_paginas__["e" /* ClientesPage */]
             ],
             providers: [
                 __WEBPACK_IMPORTED_MODULE_4__ionic_native_status_bar__["a" /* StatusBar */],
@@ -1677,7 +1695,7 @@ var AppModule = /** @class */ (function () {
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MyApp; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(7);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__ = __webpack_require__(281);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__ = __webpack_require__(279);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__pages_index_paginas__ = __webpack_require__(38);
@@ -1698,7 +1716,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 var MyApp = /** @class */ (function () {
     function MyApp(platform, statusBar, splashScreen) {
-        this.rootPage = __WEBPACK_IMPORTED_MODULE_4__pages_index_paginas__["y" /* TabsPage */];
+        this.rootPage = __WEBPACK_IMPORTED_MODULE_4__pages_index_paginas__["z" /* TabsPage */];
         platform.ready().then(function () {
             // Okay, so the platform is ready and our plugins are available.
             // Here you can do any higher level native things you might need.
@@ -1708,7 +1726,7 @@ var MyApp = /** @class */ (function () {
         });
     }
     MyApp = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({template:/*ion-inline-start:"C:\Users\andyu\Desktop\reciclaje\src\app\app.html"*/'<ion-nav [root]="rootPage"></ion-nav>\n'/*ion-inline-end:"C:\Users\andyu\Desktop\reciclaje\src\app\app.html"*/
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({template:/*ion-inline-start:"C:\Users\BCAutomatizacion\Desktop\Reciclaje-y-ciudad-limpia\src\app\app.html"*/'<ion-nav [root]="rootPage"></ion-nav>\n\n'/*ion-inline-end:"C:\Users\BCAutomatizacion\Desktop\Reciclaje-y-ciudad-limpia\src\app\app.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* Platform */], __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__["a" /* StatusBar */], __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__["a" /* SplashScreen */]])
     ], MyApp);
@@ -1725,7 +1743,7 @@ var MyApp = /** @class */ (function () {
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CarritoPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(7);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_carrito_carrito__ = __webpack_require__(13);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -1748,7 +1766,7 @@ var CarritoPage = /** @class */ (function () {
     }
     CarritoPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-carrito',template:/*ion-inline-start:"C:\Users\andyu\Desktop\reciclaje\src\pages\carrito\carrito.html"*/'\n\n<ion-header>\n\n\n\n  <ion-navbar color="dark">\n\n\n\n    <ion-buttons left>\n\n      <button icon-only ion-button\n\n              (click)="viewCtrl.dismiss()">\n\n        <ion-icon name="arrow-round-back"></ion-icon>\n\n      </button>\n\n    </ion-buttons>\n\n\n\n    <ion-title>Carrito de Compras</ion-title>\n\n  </ion-navbar>\n\n\n\n</ion-header>\n\n\n\n\n\n<ion-content padding>\n\n\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\andyu\Desktop\reciclaje\src\pages\carrito\carrito.html"*/,
+            selector: 'page-carrito',template:/*ion-inline-start:"C:\Users\BCAutomatizacion\Desktop\Reciclaje-y-ciudad-limpia\src\pages\carrito\carrito.html"*/'\n\n<ion-header>\n\n\n\n  <ion-navbar color="dark">\n\n\n\n    <ion-buttons left>\n\n      <button icon-only ion-button\n\n              (click)="viewCtrl.dismiss()">\n\n        <ion-icon name="arrow-round-back"></ion-icon>\n\n      </button>\n\n    </ion-buttons>\n\n\n\n    <ion-title>Carrito de Compras</ion-title>\n\n  </ion-navbar>\n\n\n\n</ion-header>\n\n\n\n\n\n<ion-content padding>\n\n\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\BCAutomatizacion\Desktop\Reciclaje-y-ciudad-limpia\src\pages\carrito\carrito.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */],
@@ -1768,7 +1786,7 @@ var CarritoPage = /** @class */ (function () {
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MapaPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(7);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_carrito_carrito__ = __webpack_require__(13);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_usuario_usuario__ = __webpack_require__(14);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_registro_registro__ = __webpack_require__(21);
@@ -1808,7 +1826,7 @@ var MapaPage = /** @class */ (function () {
         this.platform = platform;
         //map: any;
         this.vmapa = true;
-        this.estacionamiento = __WEBPACK_IMPORTED_MODULE_5__index_paginas__["j" /* EstacionamientoPage */];
+        this.estacionamiento = __WEBPACK_IMPORTED_MODULE_5__index_paginas__["k" /* EstacionamientoPage */];
         this.view = new __WEBPACK_IMPORTED_MODULE_6__ionic_native_photo_viewer__["a" /* PhotoViewer */]();
         // this.platform.ready().then(() =>{
         //   var photoUrl = "https://e.rpp-noticias.io/normal/2018/12/06/573857_721892.jpg";
@@ -1891,7 +1909,7 @@ var MapaPage = /** @class */ (function () {
     };
     MapaPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-mapa',template:/*ion-inline-start:"C:\Users\andyu\Desktop\reciclaje\src\pages\mapa\mapa.html"*/'\n\n<ion-header>\n\n\n\n  <ion-navbar color="dark">\n\n\n\n      <ion-buttons start>\n\n          <button ion-button icon-only\n\n                  *ngIf="_us.inactivo()"\n\n                  (click)="_cs.ver_login()">\n\n            <ion-icon name="contact"></ion-icon>\n\n          </button>\n\n        </ion-buttons>\n\n    \n\n    \n\n        <ion-buttons start>\n\n          <button ion-button icon-only\n\n                  *ngIf="_us.activo()">\n\n            {{ _us.usuario }} <ion-icon name="contact"></ion-icon>\n\n          </button>\n\n          <button ion-button icon-only\n\n                  *ngIf="_us.activo()"\n\n                  (click)="_us.cerrar_sesion()">\n\n            <ion-icon name="log-out"></ion-icon>\n\n          </button>\n\n        </ion-buttons>\n\n\n\n    <ion-title>Mapa</ion-title>\n\n    <ion-buttons end>\n\n\n\n        <button ion-button icon-only\n\n                (click)="_cs.ver_incidencia(vmapa, _us.id_usuario)"\n\n                [navPush]="estacionamiento">\n\n          <ion-icon name="md-list-box"></ion-icon>\n\n        </button>\n\n  \n\n        &nbsp;\n\n        &nbsp;\n\n  \n\n      </ion-buttons>\n\n  </ion-navbar>\n\n\n\n</ion-header>\n\n\n\n\n\n<ion-content id="ga" [attr.noScroll]="shouldScroll">\n\n  <div id="map"></div>\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\andyu\Desktop\reciclaje\src\pages\mapa\mapa.html"*/,
+            selector: 'page-mapa',template:/*ion-inline-start:"C:\Users\BCAutomatizacion\Desktop\Reciclaje-y-ciudad-limpia\src\pages\mapa\mapa.html"*/'\n\n<ion-header>\n\n\n\n  <ion-navbar color="dark">\n\n\n\n      <ion-buttons start>\n\n          <button ion-button icon-only\n\n                  *ngIf="_us.inactivo()"\n\n                  (click)="_cs.ver_login()">\n\n            <ion-icon name="contact"></ion-icon>\n\n          </button>\n\n        </ion-buttons>\n\n    \n\n    \n\n        <ion-buttons start>\n\n          <button ion-button icon-only\n\n                  *ngIf="_us.activo()">\n\n            {{ _us.usuario }} <ion-icon name="contact"></ion-icon>\n\n          </button>\n\n          <button ion-button icon-only\n\n                  *ngIf="_us.activo()"\n\n                  (click)="_us.cerrar_sesion()">\n\n            <ion-icon name="log-out"></ion-icon>\n\n          </button>\n\n        </ion-buttons>\n\n\n\n    <ion-title>Mapa</ion-title>\n\n    <ion-buttons end>\n\n\n\n        <button ion-button icon-only\n\n                (click)="_cs.ver_incidencia(vmapa, _us.id_usuario)"\n\n                [navPush]="estacionamiento">\n\n          <ion-icon name="md-list-box"></ion-icon>\n\n        </button>\n\n  \n\n        &nbsp;\n\n        &nbsp;\n\n  \n\n      </ion-buttons>\n\n  </ion-navbar>\n\n\n\n</ion-header>\n\n\n\n\n\n<ion-content id="ga" [attr.noScroll]="shouldScroll">\n\n  <div id="map"></div>\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\BCAutomatizacion\Desktop\Reciclaje-y-ciudad-limpia\src\pages\mapa\mapa.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */],
@@ -1914,7 +1932,7 @@ var MapaPage = /** @class */ (function () {
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return OrdenesPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(7);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__pages_ordenes_detalle_ordenes_detalle__ = __webpack_require__(293);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__pages_login_login__ = __webpack_require__(161);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__index_paginas__ = __webpack_require__(38);
@@ -1946,7 +1964,7 @@ var OrdenesPage = /** @class */ (function () {
         this._us = _us;
         this._cs = _cs;
         this._rs = _rs;
-        this.reciclaje = __WEBPACK_IMPORTED_MODULE_4__index_paginas__["j" /* EstacionamientoPage */];
+        this.reciclaje = __WEBPACK_IMPORTED_MODULE_4__index_paginas__["k" /* EstacionamientoPage */];
         this.vreciclaje = false;
         this.vreciclaje1 = true;
         this.mireciclaje = false;
@@ -2002,7 +2020,7 @@ var OrdenesPage = /** @class */ (function () {
     };
     OrdenesPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-ordenes',template:/*ion-inline-start:"C:\Users\andyu\Desktop\reciclaje\src\pages\ordenes\ordenes.html"*/'<ion-header>\n\n\n\n    <ion-navbar color="dark">\n\n\n\n        <ion-buttons start>\n\n            <button ion-button icon-only *ngIf="_us.inactivo()" [navPush]="login">\n\n            <ion-icon name="contact"></ion-icon>\n\n          </button>\n\n        </ion-buttons>\n\n\n\n\n\n        <ion-buttons start>\n\n            <button ion-button icon-only *ngIf="_us.activo()">\n\n            {{ _us.usuario }} <ion-icon name="contact"></ion-icon>\n\n          </button>\n\n            <button ion-button icon-only *ngIf="_us.activo()" (click)="_us.cerrar_sesion()">\n\n            <ion-icon name="log-out"></ion-icon>\n\n          </button>\n\n        </ion-buttons>\n\n\n\n        <ion-title>Reciclaje</ion-title>\n\n    </ion-navbar>\n\n\n\n</ion-header>\n\n\n\n\n\n<ion-content padding>\n\n    \n\n    <div style="text-align: center">\n\n        <img src="../../assets/imgs/mireciclaje.jpg" style="max-width: 80%; padding-top: 42px">\n\n      </div>\n\n      <br><br>\n\n      <button style="width: 70%; margin-left: 50px;" ion-button block (click)="_us.ver_residuo(vreciclaje1)"\n\n              >\n\n        Reciclar\n\n      </button>\n\n      <br><br>\n\n      <button style="width: 70%; margin-left: 50px;" ion-button block (click)="_cs.ver_incidencia(vreciclaje, _us.id_usuario)"\n\n                                                                        [navPush]="reciclaje"\n\n              >\n\n        Mi reciclaje\n\n      </button>\n\n      <br><br>\n\n\n\n\n\n\n\n    <ion-card *ngIf="reservas && estacionamiento != null && _us.id_usuario != null && _cs.estado_reserva == true && reservas.estado != \'Finalizado\'">\n\n        <ion-item color="primary">\n\n            <ion-icon name="pin" slot="start"></ion-icon>\n\n            <ion-label style="font-weight: bold">Reserva 1</ion-label>\n\n            <ion-label *ngIf="_cs.cronometro" style="font-weight: bold">Tiempo Restante: {{_cs.cronometro}}</ion-label>\n\n        </ion-item>\n\n\n\n        <ion-card-content color="primary">\n\n            <br>\n\n            <div style="text-align: right">\n\n                <button ion-button [navPush]="ordenesDetalle" [navParams]="{usuario : usuario, reserva : reservas, espacio : espacio}">Ver</button>\n\n                <button ion-button color="danger" (click)="eliminarReserva()">Eliminar</button>\n\n                <!-- <button *ngIf="espacio && espacio.estado_ocupacion.stringValue == \'0\'" ion-button color="danger" (click)="eliminarReserva()">Eliminar</button>\n\n                <button *ngIf="espacio && espacio.estado_ocupacion.stringValue == \'1\'" ion-button disabled color="danger" (click)="eliminarReserva()">Eliminar</button> -->\n\n            </div>\n\n            <br>\n\n            <span *ngIf="estacionamiento">{{estacionamiento.nombre.stringValue}} - </span>\n\n            <span *ngIf="espacio">{{espacio.id.stringValue}}</span>\n\n        </ion-card-content>\n\n    </ion-card>\n\n\n\n\n\n</ion-content>\n\n\n\n<!-- <ion-content *ngIf="estacionamiento == null || _us.id_usuario == null || _cs.estado_reserva == false || reservas.estado == \'Finalizado\'">\n\n\n\n    <div text-center class="carrito_vacio">\n\n        <ion-icon name="ios-list-box-outline" class="icon-5x">\n\n        </ion-icon>\n\n        <br> No tienes reciclajes\n\n    </div>\n\n\n\n</ion-content> -->'/*ion-inline-end:"C:\Users\andyu\Desktop\reciclaje\src\pages\ordenes\ordenes.html"*/,
+            selector: 'page-ordenes',template:/*ion-inline-start:"C:\Users\BCAutomatizacion\Desktop\Reciclaje-y-ciudad-limpia\src\pages\ordenes\ordenes.html"*/'<ion-header>\n\n\n\n    <ion-navbar color="dark">\n\n\n\n        <ion-buttons start>\n\n            <button ion-button icon-only *ngIf="_us.inactivo()" [navPush]="login">\n\n            <ion-icon name="contact"></ion-icon>\n\n          </button>\n\n        </ion-buttons>\n\n\n\n\n\n        <ion-buttons start>\n\n            <button ion-button icon-only *ngIf="_us.activo()">\n\n            {{ _us.usuario }} <ion-icon name="contact"></ion-icon>\n\n          </button>\n\n            <button ion-button icon-only *ngIf="_us.activo()" (click)="_us.cerrar_sesion()">\n\n            <ion-icon name="log-out"></ion-icon>\n\n          </button>\n\n        </ion-buttons>\n\n\n\n        <ion-title>Reciclaje</ion-title>\n\n    </ion-navbar>\n\n\n\n</ion-header>\n\n\n\n\n\n<ion-content padding>\n\n    \n\n    <div style="text-align: center">\n\n        <img src="../../assets/imgs/mireciclaje.jpg" style="max-width: 80%; padding-top: 42px">\n\n      </div>\n\n      <br><br>\n\n      <button style="width: 70%; margin-left: 50px;" ion-button block (click)="_us.ver_residuo(vreciclaje1)"\n\n              >\n\n        Reciclar\n\n      </button>\n\n      <br><br>\n\n      <button style="width: 70%; margin-left: 50px;" ion-button block (click)="_cs.ver_incidencia(vreciclaje, _us.id_usuario)"\n\n                                                                        [navPush]="reciclaje"\n\n              >\n\n        Mi reciclaje\n\n      </button>\n\n      <br><br>\n\n\n\n\n\n\n\n    <ion-card *ngIf="reservas && estacionamiento != null && _us.id_usuario != null && _cs.estado_reserva == true && reservas.estado != \'Finalizado\'">\n\n        <ion-item color="primary">\n\n            <ion-icon name="pin" slot="start"></ion-icon>\n\n            <ion-label style="font-weight: bold">Reserva 1</ion-label>\n\n            <ion-label *ngIf="_cs.cronometro" style="font-weight: bold">Tiempo Restante: {{_cs.cronometro}}</ion-label>\n\n        </ion-item>\n\n\n\n        <ion-card-content color="primary">\n\n            <br>\n\n            <div style="text-align: right">\n\n                <button ion-button [navPush]="ordenesDetalle" [navParams]="{usuario : usuario, reserva : reservas, espacio : espacio}">Ver</button>\n\n                <button ion-button color="danger" (click)="eliminarReserva()">Eliminar</button>\n\n                <!-- <button *ngIf="espacio && espacio.estado_ocupacion.stringValue == \'0\'" ion-button color="danger" (click)="eliminarReserva()">Eliminar</button>\n\n                <button *ngIf="espacio && espacio.estado_ocupacion.stringValue == \'1\'" ion-button disabled color="danger" (click)="eliminarReserva()">Eliminar</button> -->\n\n            </div>\n\n            <br>\n\n            <span *ngIf="estacionamiento">{{estacionamiento.nombre.stringValue}} - </span>\n\n            <span *ngIf="espacio">{{espacio.id.stringValue}}</span>\n\n        </ion-card-content>\n\n    </ion-card>\n\n\n\n\n\n</ion-content>\n\n\n\n<!-- <ion-content *ngIf="estacionamiento == null || _us.id_usuario == null || _cs.estado_reserva == false || reservas.estado == \'Finalizado\'">\n\n\n\n    <div text-center class="carrito_vacio">\n\n        <ion-icon name="ios-list-box-outline" class="icon-5x">\n\n        </ion-icon>\n\n        <br> No tienes reciclajes\n\n    </div>\n\n\n\n</ion-content> -->'/*ion-inline-end:"C:\Users\BCAutomatizacion\Desktop\Reciclaje-y-ciudad-limpia\src\pages\ordenes\ordenes.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */],
@@ -2024,7 +2042,7 @@ var OrdenesPage = /** @class */ (function () {
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PublicacionPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(7);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_productos_productos__ = __webpack_require__(162);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__producto_producto__ = __webpack_require__(160);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_carrito_carrito__ = __webpack_require__(13);
@@ -2059,7 +2077,7 @@ var PublicacionPage = /** @class */ (function () {
     }
     PublicacionPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-publicacion',template:/*ion-inline-start:"C:\Users\andyu\Desktop\reciclaje\src\pages\publicacion\publicacion.html"*/'\n\n<ion-header>\n\n  <ion-navbar color="dark">\n\n\n\n    <ion-buttons start>\n\n      <button ion-button icon-only\n\n              *ngIf="_us.inactivo()"\n\n              (click)="_cs.ver_login()">\n\n        Login<ion-icon name="contact"></ion-icon>\n\n      </button>\n\n    </ion-buttons>\n\n\n\n\n\n    <ion-buttons start>\n\n      <button ion-button icon-only\n\n              *ngIf="_us.activo()">\n\n        {{ _us.usuario }} <ion-icon name="contact"></ion-icon>\n\n      </button>\n\n      <button ion-button icon-only\n\n              *ngIf="_us.activo()"\n\n              (click)="_us.cerrar_sesion()">\n\n        <ion-icon name="log-out"></ion-icon>\n\n      </button>\n\n    </ion-buttons>\n\n\n\n\n\n    <ion-title>\n\n      Publicar Incidencia\n\n    </ion-title>\n\n\n\n  </ion-navbar>\n\n</ion-header>\n\n\n\n\n\n\n\n\n\n<ion-content padding>\n\n\n\n  <div style="text-align: center">\n\n    <img src="../../assets/imgs/publicar.jpg" style="max-width: 80%; padding-top: 84px">\n\n  </div>\n\n  <br><br>\n\n  <button id="publicacion" ion-button block (click)="_us.ver_residuo(vpublicacion)"\n\n          >\n\n    Publicar\n\n  </button>\n\n  <!-- <ion-list radio-group>\n\n    <ion-list-header>\n\n      Selecciona el tipo de residuo\n\n    </ion-list-header>\n\n    <ion-item>\n\n      <ion-label>PHP</ion-label>\n\n      <ion-radio checked="true" value="PHP" (click)="cambiar()"></ion-radio>\n\n    </ion-item>\n\n  \n\n    <ion-item>\n\n      <ion-label>Ruby</ion-label>\n\n      <ion-radio value="Ruby"></ion-radio>\n\n    </ion-item>\n\n  \n\n    <ion-item>\n\n      <ion-label>Java</ion-label>\n\n      <ion-radio value="Java"></ion-radio>\n\n    </ion-item>\n\n  </ion-list>\n\n</ion-content>\n\n\n\n<ion-content *ngIf="estado == false" padding>\n\n  <br><br>\n\n    <h1>YAAAA</h1> -->\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\andyu\Desktop\reciclaje\src\pages\publicacion\publicacion.html"*/,
+            selector: 'page-publicacion',template:/*ion-inline-start:"C:\Users\BCAutomatizacion\Desktop\Reciclaje-y-ciudad-limpia\src\pages\publicacion\publicacion.html"*/'\n\n<ion-header>\n\n  <ion-navbar color="dark">\n\n\n\n    <ion-buttons start>\n\n      <button ion-button icon-only\n\n              *ngIf="_us.inactivo()"\n\n              (click)="_cs.ver_login()">\n\n        Login<ion-icon name="contact"></ion-icon>\n\n      </button>\n\n    </ion-buttons>\n\n\n\n\n\n    <ion-buttons start>\n\n      <button ion-button icon-only\n\n              *ngIf="_us.activo()">\n\n        {{ _us.usuario }} <ion-icon name="contact"></ion-icon>\n\n      </button>\n\n      <button ion-button icon-only\n\n              *ngIf="_us.activo()"\n\n              (click)="_us.cerrar_sesion()">\n\n        <ion-icon name="log-out"></ion-icon>\n\n      </button>\n\n    </ion-buttons>\n\n\n\n\n\n    <ion-title>\n\n      Publicar Incidencia\n\n    </ion-title>\n\n\n\n  </ion-navbar>\n\n</ion-header>\n\n\n\n\n\n\n\n\n\n<ion-content padding>\n\n\n\n  <div style="text-align: center">\n\n    <img src="../../assets/imgs/publicar.jpg" style="max-width: 80%; padding-top: 84px">\n\n  </div>\n\n  <br><br>\n\n  <button id="publicacion" ion-button block (click)="_us.ver_residuo(vpublicacion)"\n\n          >\n\n    Publicar\n\n  </button>\n\n  <!-- <ion-list radio-group>\n\n    <ion-list-header>\n\n      Selecciona el tipo de residuo\n\n    </ion-list-header>\n\n    <ion-item>\n\n      <ion-label>PHP</ion-label>\n\n      <ion-radio checked="true" value="PHP" (click)="cambiar()"></ion-radio>\n\n    </ion-item>\n\n  \n\n    <ion-item>\n\n      <ion-label>Ruby</ion-label>\n\n      <ion-radio value="Ruby"></ion-radio>\n\n    </ion-item>\n\n  \n\n    <ion-item>\n\n      <ion-label>Java</ion-label>\n\n      <ion-radio value="Java"></ion-radio>\n\n    </ion-item>\n\n  </ion-list>\n\n</ion-content>\n\n\n\n<ion-content *ngIf="estado == false" padding>\n\n  <br><br>\n\n    <h1>YAAAA</h1> -->\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\BCAutomatizacion\Desktop\Reciclaje-y-ciudad-limpia\src\pages\publicacion\publicacion.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */],
@@ -2098,17 +2116,18 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var TabsPage = /** @class */ (function () {
     function TabsPage(_us) {
         this._us = _us;
-        this.tab1 = __WEBPACK_IMPORTED_MODULE_2__index_paginas__["m" /* HomePage */];
-        this.tab2 = __WEBPACK_IMPORTED_MODULE_2__index_paginas__["u" /* PublicacionPage */];
-        this.tab3 = __WEBPACK_IMPORTED_MODULE_2__index_paginas__["p" /* MapaPage */];
-        this.tab4 = __WEBPACK_IMPORTED_MODULE_2__index_paginas__["r" /* OrdenesPage */];
-        this.tab5 = __WEBPACK_IMPORTED_MODULE_2__index_paginas__["l" /* HistorialPage */];
-        this.tab6 = __WEBPACK_IMPORTED_MODULE_2__index_paginas__["w" /* ReportesPage */];
-        this.tab7 = __WEBPACK_IMPORTED_MODULE_2__index_paginas__["o" /* MantenimientoPage */];
+        this.tab1 = __WEBPACK_IMPORTED_MODULE_2__index_paginas__["n" /* HomePage */];
+        this.tab2 = __WEBPACK_IMPORTED_MODULE_2__index_paginas__["v" /* PublicacionPage */];
+        this.tab3 = __WEBPACK_IMPORTED_MODULE_2__index_paginas__["q" /* MapaPage */];
+        this.tab4 = __WEBPACK_IMPORTED_MODULE_2__index_paginas__["s" /* OrdenesPage */];
+        this.tab5 = __WEBPACK_IMPORTED_MODULE_2__index_paginas__["m" /* HistorialPage */];
+        this.tab6 = __WEBPACK_IMPORTED_MODULE_2__index_paginas__["x" /* ReportesPage */];
+        this.tab7 = __WEBPACK_IMPORTED_MODULE_2__index_paginas__["p" /* MantenimientoPage */];
+        this.tab8 = __WEBPACK_IMPORTED_MODULE_2__index_paginas__["e" /* ClientesPage */];
     }
     TabsPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-tabs',template:/*ion-inline-start:"C:\Users\andyu\Desktop\reciclaje\src\pages\tabs\tabs.html"*/'\n\n<ion-tabs *ngIf="_us.id_usuario == null || _us.id_usuario != \'75012728\'" color="dark">\n\n  <ion-tab tabIcon="home" tabTitle="Inicio" [root]="tab1"></ion-tab>\n  <ion-tab tabIcon="add" tabTitle="Incidencia" [root]="tab2"></ion-tab>\n  <ion-tab tabIcon="pin" tabTitle="Mapa" [root]="tab3"></ion-tab>\n  <ion-tab tabIcon="ios-trash-outline" tabTitle="Reciclaje" [root]="tab4"></ion-tab>\n  <!-- <ion-tab tabIcon="ios-list-box-outline" tabTitle="Historial" [root]="tab4"></ion-tab> -->\n\n\n</ion-tabs>\n\n<ion-tabs *ngIf="_us.id_usuario == \'75012728\'" color="dark">\n\n  <ion-tab tabIcon="home" tabTitle="Inicio" [root]="tab1"></ion-tab>\n  <ion-tab tabIcon="md-clipboard" tabTitle="Historial" [root]="tab5"></ion-tab>\n  <ion-tab tabIcon="pin" tabTitle="Mapa" [root]="tab3"></ion-tab>\n  <ion-tab tabIcon="md-construct" tabTitle="Reportes" [root]="tab6"></ion-tab>\n\n\n</ion-tabs>\n'/*ion-inline-end:"C:\Users\andyu\Desktop\reciclaje\src\pages\tabs\tabs.html"*/,
+            selector: 'page-tabs',template:/*ion-inline-start:"C:\Users\BCAutomatizacion\Desktop\Reciclaje-y-ciudad-limpia\src\pages\tabs\tabs.html"*/'\n\n\n\n<ion-tabs *ngIf="_us.id_usuario == null || _us.id_usuario != \'75012728\'" color="dark">\n\n\n\n  <ion-tab tabIcon="home" tabTitle="Inicio" [root]="tab1"></ion-tab>\n\n  <ion-tab tabIcon="add" tabTitle="Incidencia" [root]="tab2"></ion-tab>\n\n  <ion-tab tabIcon="pin" tabTitle="Mapa" [root]="tab3"></ion-tab>\n\n  <ion-tab tabIcon="ios-trash-outline" tabTitle="Reciclaje" [root]="tab4"></ion-tab>\n\n  <!-- <ion-tab tabIcon="ios-list-box-outline" tabTitle="Historial" [root]="tab4"></ion-tab> -->\n\n\n\n\n\n</ion-tabs>\n\n\n\n<ion-tabs *ngIf="_us.id_usuario == \'75012728\'" color="dark">\n\n\n\n  <ion-tab tabIcon="home" tabTitle="Inicio" [root]="tab1"></ion-tab>\n\n  <ion-tab tabIcon="md-people" tabTitle="Clientes" [root]="tab8"></ion-tab>\n\n  <ion-tab tabIcon="md-clipboard" tabTitle="Historial" [root]="tab5"></ion-tab>\n\n  <ion-tab tabIcon="pin" tabTitle="Mapa" [root]="tab3"></ion-tab>\n\n  <ion-tab tabIcon="md-construct" tabTitle="Reportes" [root]="tab6"></ion-tab>\n\n\n\n\n\n</ion-tabs>\n\n'/*ion-inline-end:"C:\Users\BCAutomatizacion\Desktop\Reciclaje-y-ciudad-limpia\src\pages\tabs\tabs.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__providers_usuario_usuario__["a" /* UsuarioProvider */]])
     ], TabsPage);
@@ -2125,7 +2144,7 @@ var TabsPage = /** @class */ (function () {
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return BusquedaPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(7);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_productos_productos__ = __webpack_require__(162);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__index_paginas__ = __webpack_require__(38);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -2146,11 +2165,11 @@ var BusquedaPage = /** @class */ (function () {
         this.navCtrl = navCtrl;
         this.navParams = navParams;
         this._ps = _ps;
-        this.productoPage = __WEBPACK_IMPORTED_MODULE_3__index_paginas__["t" /* ProductoPage */];
+        this.productoPage = __WEBPACK_IMPORTED_MODULE_3__index_paginas__["u" /* ProductoPage */];
     }
     BusquedaPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-busqueda',template:/*ion-inline-start:"C:\Users\andyu\Desktop\reciclaje\src\pages\busqueda\busqueda.html"*/'\n\n<ion-header>\n\n\n\n  <ion-navbar color="dark">\n\n    <ion-title text-center>Historial</ion-title>\n\n  </ion-navbar>\n\n\n\n</ion-header>\n\n\n\n\n\n<ion-content>\n\n\n\n\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\andyu\Desktop\reciclaje\src\pages\busqueda\busqueda.html"*/,
+            selector: 'page-busqueda',template:/*ion-inline-start:"C:\Users\BCAutomatizacion\Desktop\Reciclaje-y-ciudad-limpia\src\pages\busqueda\busqueda.html"*/'\n\n<ion-header>\n\n\n\n  <ion-navbar color="dark">\n\n    <ion-title text-center>Historial</ion-title>\n\n  </ion-navbar>\n\n\n\n</ion-header>\n\n\n\n\n\n<ion-content>\n\n\n\n\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\BCAutomatizacion\Desktop\Reciclaje-y-ciudad-limpia\src\pages\busqueda\busqueda.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */],
@@ -2169,7 +2188,7 @@ var BusquedaPage = /** @class */ (function () {
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return RegistrarsePage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(7);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_registro_registro__ = __webpack_require__(21);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_carrito_carrito__ = __webpack_require__(13);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_usuario_usuario__ = __webpack_require__(14);
@@ -2238,7 +2257,7 @@ var RegistrarsePage = /** @class */ (function () {
     };
     RegistrarsePage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-registrarse',template:/*ion-inline-start:"C:\Users\andyu\Desktop\reciclaje\src\pages\registrarse\registrarse.html"*/'<!--\n\n  Generated template for the RegistrarsePage page.\n\n\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n\n  Ionic pages and navigation.\n\n-->\n\n<ion-header>\n\n\n\n  <ion-navbar color="dark">\n\n\n\n    <ion-buttons left>\n\n      <button icon-only ion-button\n\n              (click)="viewCtrl.dismiss()">\n\n        <ion-icon name="arrow-round-back"></ion-icon>\n\n      </button>\n\n    </ion-buttons>\n\n\n\n    <ion-title>Registrarse</ion-title>\n\n  </ion-navbar>\n\n\n\n</ion-header>\n\n\n\n\n\n<ion-content padding>\n\n\n\n  <ion-list>\n\n\n\n  <ion-item>\n\n      <ion-label floating>DNI</ion-label>\n\n        <ion-input [(ngModel)]="dni"></ion-input>\n\n  </ion-item>\n\n\n\n  <ion-item>\n\n    <ion-label floating>Nombres</ion-label>\n\n     <ion-input [(ngModel)]="nombres"></ion-input>\n\n  </ion-item>\n\n\n\n  <ion-item>\n\n    <ion-label floating>Apellidos</ion-label>\n\n     <ion-input [(ngModel)]="apellidos"></ion-input>\n\n  </ion-item>\n\n\n\n  <ion-item>\n\n    <ion-label floating>Correo</ion-label>\n\n    <ion-input type="email" [(ngModel)]="correo"></ion-input>\n\n  </ion-item>\n\n\n\n  <ion-item>\n\n    <ion-label floating>Celular</ion-label>\n\n    <ion-input type="number" [(ngModel)]="celular"></ion-input>\n\n  </ion-item>\n\n\n\n  <ion-item>\n\n    <ion-label floating>Usuario</ion-label>\n\n     <ion-input [(ngModel)]="usuario"></ion-input>\n\n  </ion-item>\n\n\n\n  <ion-item>\n\n    <ion-label floating>Contraseña</ion-label>\n\n    <ion-input type="password" [(ngModel)]="contrasena"></ion-input>\n\n  </ion-item>\n\n\n\n  </ion-list>\n\n\n\n  <br>\n\n\n\n  <button ion-button block\n\n          [disabled]=" usuario.length < 5 || contrasena.length < 5 "\n\n          (click)="guardarUsuario()">\n\n    Registrar\n\n\n\n  </button>\n\n  <br><br>\n\n\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\andyu\Desktop\reciclaje\src\pages\registrarse\registrarse.html"*/,
+            selector: 'page-registrarse',template:/*ion-inline-start:"C:\Users\BCAutomatizacion\Desktop\Reciclaje-y-ciudad-limpia\src\pages\registrarse\registrarse.html"*/'<!--\n\n  Generated template for the RegistrarsePage page.\n\n\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n\n  Ionic pages and navigation.\n\n-->\n\n<ion-header>\n\n\n\n  <ion-navbar color="dark">\n\n\n\n    <ion-buttons left>\n\n      <button icon-only ion-button\n\n              (click)="viewCtrl.dismiss()">\n\n        <ion-icon name="arrow-round-back"></ion-icon>\n\n      </button>\n\n    </ion-buttons>\n\n\n\n    <ion-title>Registrarse</ion-title>\n\n  </ion-navbar>\n\n\n\n</ion-header>\n\n\n\n\n\n<ion-content padding>\n\n\n\n  <ion-list>\n\n\n\n  <ion-item>\n\n      <ion-label floating>DNI</ion-label>\n\n        <ion-input [(ngModel)]="dni"></ion-input>\n\n  </ion-item>\n\n\n\n  <ion-item>\n\n    <ion-label floating>Nombres</ion-label>\n\n     <ion-input [(ngModel)]="nombres"></ion-input>\n\n  </ion-item>\n\n\n\n  <ion-item>\n\n    <ion-label floating>Apellidos</ion-label>\n\n     <ion-input [(ngModel)]="apellidos"></ion-input>\n\n  </ion-item>\n\n\n\n  <ion-item>\n\n    <ion-label floating>Correo</ion-label>\n\n    <ion-input type="email" [(ngModel)]="correo"></ion-input>\n\n  </ion-item>\n\n\n\n  <ion-item>\n\n    <ion-label floating>Celular</ion-label>\n\n    <ion-input type="number" [(ngModel)]="celular"></ion-input>\n\n  </ion-item>\n\n\n\n  <ion-item>\n\n    <ion-label floating>Usuario</ion-label>\n\n     <ion-input [(ngModel)]="usuario"></ion-input>\n\n  </ion-item>\n\n\n\n  <ion-item>\n\n    <ion-label floating>Contraseña</ion-label>\n\n    <ion-input type="password" [(ngModel)]="contrasena"></ion-input>\n\n  </ion-item>\n\n\n\n  </ion-list>\n\n\n\n  <br>\n\n\n\n  <button ion-button block\n\n          [disabled]=" usuario.length < 5 || contrasena.length < 5 "\n\n          (click)="guardarUsuario()">\n\n    Registrar\n\n\n\n  </button>\n\n  <br><br>\n\n\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\BCAutomatizacion\Desktop\Reciclaje-y-ciudad-limpia\src\pages\registrarse\registrarse.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */],
@@ -2261,7 +2280,7 @@ var RegistrarsePage = /** @class */ (function () {
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PaypalPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(7);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_carrito_carrito__ = __webpack_require__(13);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_usuario_usuario__ = __webpack_require__(14);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -2295,7 +2314,7 @@ var PaypalPage = /** @class */ (function () {
     }
     PaypalPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-paypal',template:/*ion-inline-start:"C:\Users\andyu\Desktop\reciclaje\src\pages\paypal\paypal.html"*/'<!--\n\n  Generated template for the PaypalPage page.\n\n\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n\n  Ionic pages and navigation.\n\n-->\n\n<ion-header>\n\n\n\n  <ion-navbar  color="dark">\n\n\n\n    <ion-buttons left>\n\n      <button icon-only ion-button\n\n              (click)="viewCtrl.dismiss()">\n\n        <ion-icon name="arrow-round-back"></ion-icon>\n\n      </button>\n\n    </ion-buttons>\n\n\n\n    <ion-title>Confirmación de Compra</ion-title>\n\n  </ion-navbar>\n\n\n\n</ion-header>\n\n\n\n\n\n<ion-content padding>\n\n  <div align="center">\n\n  <img src="../../assets/imgs/paypal2.png" height="65" width="168">\n\n  </div>\n\n  <br>\n\n  <h5>Pagar con Paypal</h5>\n\n  <br>\n\n\n\n  <ion-list>\n\n\n\n  <ion-item>\n\n    <ion-label floating>Correo electrónico</ion-label>\n\n    <ion-input type="email" [(ngModel)]="correo"></ion-input>\n\n  </ion-item>\n\n\n\n  <ion-item>\n\n    <ion-label floating>Contraseña</ion-label>\n\n    <ion-input type="password" [(ngModel)]="contrasena"></ion-input>\n\n  </ion-item>\n\n\n\n  </ion-list>\n\n  \n\n  <br>\n\n  <div style="text-align: center">\n\n    <button ion-button\n\n            [disabled]=" correo.length < 5 || contrasena.length < 5 "\n\n            >\n\n      Iniciar Sesión\n\n    </button>\n\n  </div>\n\n  <h6 text-center style="color:rgba(0,0,0,0.5)">¿Ha olvidado su correo electrónico o contraseña?</h6>\n\n  <br>\n\n  <br>\n\n\n\n  <h6 text-center>¿Aún no tienes cuenta?</h6>\n\n\n\n  <br>\n\n  <br>\n\n  <div style="text-align: center">\n\n    <button ion-button\n\n            >\n\n      Crear una Cuenta\n\n    </button>\n\n  </div>\n\n  <br><br>\n\n\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\andyu\Desktop\reciclaje\src\pages\paypal\paypal.html"*/,
+            selector: 'page-paypal',template:/*ion-inline-start:"C:\Users\BCAutomatizacion\Desktop\Reciclaje-y-ciudad-limpia\src\pages\paypal\paypal.html"*/'<!--\n\n  Generated template for the PaypalPage page.\n\n\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n\n  Ionic pages and navigation.\n\n-->\n\n<ion-header>\n\n\n\n  <ion-navbar  color="dark">\n\n\n\n    <ion-buttons left>\n\n      <button icon-only ion-button\n\n              (click)="viewCtrl.dismiss()">\n\n        <ion-icon name="arrow-round-back"></ion-icon>\n\n      </button>\n\n    </ion-buttons>\n\n\n\n    <ion-title>Confirmación de Compra</ion-title>\n\n  </ion-navbar>\n\n\n\n</ion-header>\n\n\n\n\n\n<ion-content padding>\n\n  <div align="center">\n\n  <img src="../../assets/imgs/paypal2.png" height="65" width="168">\n\n  </div>\n\n  <br>\n\n  <h5>Pagar con Paypal</h5>\n\n  <br>\n\n\n\n  <ion-list>\n\n\n\n  <ion-item>\n\n    <ion-label floating>Correo electrónico</ion-label>\n\n    <ion-input type="email" [(ngModel)]="correo"></ion-input>\n\n  </ion-item>\n\n\n\n  <ion-item>\n\n    <ion-label floating>Contraseña</ion-label>\n\n    <ion-input type="password" [(ngModel)]="contrasena"></ion-input>\n\n  </ion-item>\n\n\n\n  </ion-list>\n\n  \n\n  <br>\n\n  <div style="text-align: center">\n\n    <button ion-button\n\n            [disabled]=" correo.length < 5 || contrasena.length < 5 "\n\n            >\n\n      Iniciar Sesión\n\n    </button>\n\n  </div>\n\n  <h6 text-center style="color:rgba(0,0,0,0.5)">¿Ha olvidado su correo electrónico o contraseña?</h6>\n\n  <br>\n\n  <br>\n\n\n\n  <h6 text-center>¿Aún no tienes cuenta?</h6>\n\n\n\n  <br>\n\n  <br>\n\n  <div style="text-align: center">\n\n    <button ion-button\n\n            >\n\n      Crear una Cuenta\n\n    </button>\n\n  </div>\n\n  <br><br>\n\n\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\BCAutomatizacion\Desktop\Reciclaje-y-ciudad-limpia\src\pages\paypal\paypal.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */],
@@ -2316,7 +2335,7 @@ var PaypalPage = /** @class */ (function () {
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return TarjetaPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(7);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_carrito_carrito__ = __webpack_require__(13);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_usuario_usuario__ = __webpack_require__(14);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_registro_registro__ = __webpack_require__(21);
@@ -2348,33 +2367,27 @@ var TarjetaPage = /** @class */ (function () {
         this.cvv = "";
     }
     TarjetaPage.prototype.realizar_compra = function () {
-        var _this = this;
-        this._cs.estado_pago = false;
-        this._rs.getReserva(this._cs.fecha_reserva).subscribe(function (res) {
-            if (res != null)
-                _this._rs.updateReservaEstado(res.fecha);
-        });
+        // this._cs.estado_pago = false;
+        // this._rs.getReserva(this._cs.fecha_reserva).subscribe(res => {
+        //   if(res != null)
+        //     this._rs.updateReservaEstado(res.fecha);
+        // });
         this.alertCtrl.create({
             title: "Pago Realizado",
-            subTitle: "Pago realizado correctamente de la reserva",
+            subTitle: "Pago realizado correctamente del reciclaje",
             buttons: ["OK"]
         }).present();
-        this._cs.estado_pago = true;
+        // this._cs.estado_pago = true;
         this.navCtrl.popToRoot();
     };
     TarjetaPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-tarjeta',template:/*ion-inline-start:"C:\Users\andyu\Desktop\reciclaje\src\pages\tarjeta\tarjeta.html"*/'\n\n<ion-header>\n\n\n\n  <ion-navbar color="dark">\n\n\n\n    <ion-buttons left>\n\n      <button icon-only ion-button\n\n              (click)="viewCtrl.dismiss()">\n\n        <ion-icon name="arrow-round-back"></ion-icon>\n\n      </button>\n\n    </ion-buttons>\n\n\n\n    <ion-title>Confirmación de Compra</ion-title>\n\n  </ion-navbar>\n\n\n\n</ion-header>\n\n\n\n\n\n<ion-content padding>\n\n  <h3>Total: {{ _cs.total  | currency:\'S/. \':symbol }}</h3>\n\n  <br>\n\n  <br>\n\n  <ion-list>\n\n      <ion-label><ion-icon name="ios-card"></ion-icon>  Pagar con tarjeta            <img src="../../assets/imgs/visa.png" height="20" width="32"> <img src="../../assets/imgs/mastercard.png" height="28" width="28"></ion-label>\n\n  <ion-item>\n\n    <ion-label floating>Número de tarjeta (16 Dígitos)</ion-label>\n\n    <ion-input type="tel" maxlength="16" [(ngModel)]="numero"></ion-input>\n\n  </ion-item>\n\n\n\n  <ion-item>\n\n    <ion-label floating>Fecha de expiración (DD/MM/YYYY)</ion-label>\n\n    <ion-datetime displayFormat="DD/MM/YYYY" [(ngModel)]="myDate"></ion-datetime>\n\n  </ion-item>\n\n\n\n  <ion-item>\n\n    <ion-label floating>CVV (3 o 4 Dígitos)</ion-label>\n\n    <ion-input type="tel" maxlength="4" [(ngModel)]="cvv"></ion-input>\n\n  </ion-item>\n\n\n\n  </ion-list>\n\n\n\n  <br>\n\n\n\n  <div style="text-align: center">\n\n    <button ion-button\n\n            [disabled]=" numero.length < 16 || myDate.length == 0 || cvv.length < 3 "\n\n            (click)="realizar_compra()">\n\n      Completar Compra\n\n    </button>\n\n  </div>\n\n\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\andyu\Desktop\reciclaje\src\pages\tarjeta\tarjeta.html"*/,
+            selector: 'page-tarjeta',template:/*ion-inline-start:"C:\Users\BCAutomatizacion\Desktop\Reciclaje-y-ciudad-limpia\src\pages\tarjeta\tarjeta.html"*/'\n\n<ion-header>\n\n\n\n  <ion-navbar color="dark">\n\n\n\n    <ion-buttons left>\n\n      <button icon-only ion-button\n\n              (click)="viewCtrl.dismiss()">\n\n        <ion-icon name="arrow-round-back"></ion-icon>\n\n      </button>\n\n    </ion-buttons>\n\n\n\n    <ion-title>Confirmación de Pago</ion-title>\n\n  </ion-navbar>\n\n\n\n</ion-header>\n\n\n\n\n\n<ion-content padding>\n\n  <h3>Total: {{ _cs.totalreciclaje  | currency:\'S/. \':symbol }}</h3>\n\n  <br>\n\n  <br>\n\n  <ion-list>\n\n      <ion-label><ion-icon name="ios-card"></ion-icon>  Pagar con tarjeta            <img src="../../assets/imgs/visa.png" height="20" width="32"> <img src="../../assets/imgs/mastercard.png" height="28" width="28"></ion-label>\n\n  <ion-item>\n\n    <ion-label floating>Número de tarjeta (16 Dígitos)</ion-label>\n\n    <ion-input type="tel" maxlength="16" [(ngModel)]="numero"></ion-input>\n\n  </ion-item>\n\n\n\n  <ion-item>\n\n    <ion-label floating>Fecha de expiración (DD/MM/YYYY)</ion-label>\n\n    <ion-datetime displayFormat="DD/MM/YYYY" [(ngModel)]="myDate"></ion-datetime>\n\n  </ion-item>\n\n\n\n  <ion-item>\n\n    <ion-label floating>CVV (3 o 4 Dígitos)</ion-label>\n\n    <ion-input type="tel" maxlength="4" [(ngModel)]="cvv"></ion-input>\n\n  </ion-item>\n\n\n\n  </ion-list>\n\n\n\n  <br>\n\n\n\n  <div style="text-align: center">\n\n    <button ion-button\n\n            [disabled]=" numero.length < 16 || myDate.length == 0 || cvv.length < 3 "\n\n            (click)="realizar_compra()">\n\n      Completar Pago\n\n    </button>\n\n  </div>\n\n\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\BCAutomatizacion\Desktop\Reciclaje-y-ciudad-limpia\src\pages\tarjeta\tarjeta.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* ViewController */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */],
-            __WEBPACK_IMPORTED_MODULE_2__providers_carrito_carrito__["a" /* CarritoProvider */],
-            __WEBPACK_IMPORTED_MODULE_3__providers_usuario_usuario__["a" /* UsuarioProvider */],
-            __WEBPACK_IMPORTED_MODULE_4__providers_registro_registro__["a" /* RegistroProvider */]])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* ViewController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* ViewController */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_2__providers_carrito_carrito__["a" /* CarritoProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__providers_carrito_carrito__["a" /* CarritoProvider */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_3__providers_usuario_usuario__["a" /* UsuarioProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__providers_usuario_usuario__["a" /* UsuarioProvider */]) === "function" && _f || Object, typeof (_g = typeof __WEBPACK_IMPORTED_MODULE_4__providers_registro_registro__["a" /* RegistroProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__providers_registro_registro__["a" /* RegistroProvider */]) === "function" && _g || Object])
     ], TarjetaPage);
     return TarjetaPage;
+    var _a, _b, _c, _d, _e, _f, _g;
 }());
 
 //# sourceMappingURL=tarjeta.js.map
@@ -2387,7 +2400,7 @@ var TarjetaPage = /** @class */ (function () {
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return EstacionamientoPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(7);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_carrito_carrito__ = __webpack_require__(13);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_usuario_usuario__ = __webpack_require__(14);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__pages_estacionamiento_detalle_estacionamiento_detalle__ = __webpack_require__(295);
@@ -2428,7 +2441,7 @@ var EstacionamientoPage = /** @class */ (function () {
     };
     EstacionamientoPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-estacionamiento',template:/*ion-inline-start:"C:\Users\andyu\Desktop\reciclaje\src\pages\estacionamiento\estacionamiento.html"*/'<ion-header>\n\n\n\n  <ion-navbar color="dark">\n\n\n\n        <ion-buttons start>\n\n            <button ion-button icon-only\n\n                    *ngIf="_us.inactivo()"\n\n                    (click)="_cs.ver_login()">\n\n              <ion-icon name="contact"></ion-icon>\n\n            </button>\n\n          </ion-buttons>\n\n      \n\n      \n\n          <ion-buttons start>\n\n            <button ion-button icon-only\n\n                    *ngIf="_us.activo()">\n\n              {{ _us.usuario }} <ion-icon name="contact"></ion-icon>\n\n            </button>\n\n            <button ion-button icon-only\n\n                    *ngIf="_us.activo()"\n\n                    (click)="_us.cerrar_sesion()">\n\n              <ion-icon name="log-out"></ion-icon>\n\n            </button>\n\n          </ion-buttons>\n\n\n\n    <ion-title *ngIf="_cs.listado == true">Incidencias</ion-title>\n\n    <ion-title *ngIf="_cs.listado == false">Mi Reciclaje</ion-title>\n\n  </ion-navbar>\n\n\n\n</ion-header>\n\n\n\n\n\n<ion-content *ngIf="_cs.listado == true">\n\n  <h6 padding>Escoja la incidencia más cercano a usted:</h6>\n\n    <ion-list>\n\n        <button ion-item\n\n                *ngFor="let incidencia of _cs.incidencias"\n\n                [navPush]="estacionamientoDetalle"\n\n                [navParams]="{ incidencia: incidencia }"\n\n                style="background: aliceblue"\n\n                >\n\n    \n\n          <ion-icon name="ios-arrow-forward"></ion-icon>\n\n            {{ incidencia.titulo }}\n\n        </button>\n\n        <!-- <button ion-item>\n\n          <ion-icon name="ios-arrow-forward"></ion-icon>\n\n              Puerta 1 UNMSM\n\n          </button>\n\n        <button ion-item>\n\n        <ion-icon name="ios-arrow-forward"></ion-icon>\n\n            Puerta 2 UNMSM\n\n        </button>\n\n        <button ion-item>\n\n          <ion-icon name="ios-arrow-forward"></ion-icon>\n\n              Puerta 3 UNMSM\n\n          </button>\n\n          <button ion-item>\n\n            <ion-icon name="ios-arrow-forward"></ion-icon>\n\n                Puerta 7 UNMSM\n\n            </button> -->\n\n      </ion-list>\n\n\n\n</ion-content>\n\n\n\n<ion-content *ngIf="_cs.listado == false && (_us.id_usuario != null && _cs.noreciclaje != false)">\n\n\n\n  <h6 padding>Mis reciclajes:</h6>\n\n    <ion-list>\n\n        <button ion-item\n\n                *ngFor="let reciclaje of _cs.reciclajes"\n\n                [navPush]="detalleReciclaje"\n\n                [navParams]="{ reciclaje: reciclaje }"\n\n                style="background: aliceblue"\n\n                >\n\n    \n\n          <ion-icon name="ios-arrow-forward"></ion-icon>\n\n            {{ reciclaje.fecha }}     {{ reciclaje.hora }}     <span *ngIf="reciclaje.estado==\'false\'" style="color: red;">NO RECOGIGO</span><span *ngIf="reciclaje.estado==\'true\'" style="color: blue;">RECOGIDO</span>\n\n        </button>\n\n      </ion-list>\n\n\n\n</ion-content>\n\n\n\n<ion-content *ngIf="_cs.listado == false && (_us.id_usuario == null || _cs.noreciclaje == false)">\n\n\n\n    <div text-center class="carrito_vacio">\n\n        <ion-icon name="ios-list-box-outline" class="icon-5x">\n\n        </ion-icon>\n\n        <br> No tienes reciclajes\n\n    </div>\n\n\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\andyu\Desktop\reciclaje\src\pages\estacionamiento\estacionamiento.html"*/,
+            selector: 'page-estacionamiento',template:/*ion-inline-start:"C:\Users\BCAutomatizacion\Desktop\Reciclaje-y-ciudad-limpia\src\pages\estacionamiento\estacionamiento.html"*/'<ion-header>\n\n\n\n  <ion-navbar color="dark">\n\n\n\n        <ion-buttons start>\n\n            <button ion-button icon-only\n\n                    *ngIf="_us.inactivo()"\n\n                    (click)="_cs.ver_login()">\n\n              <ion-icon name="contact"></ion-icon>\n\n            </button>\n\n          </ion-buttons>\n\n      \n\n      \n\n          <ion-buttons start>\n\n            <button ion-button icon-only\n\n                    *ngIf="_us.activo()">\n\n              {{ _us.usuario }} <ion-icon name="contact"></ion-icon>\n\n            </button>\n\n            <button ion-button icon-only\n\n                    *ngIf="_us.activo()"\n\n                    (click)="_us.cerrar_sesion()">\n\n              <ion-icon name="log-out"></ion-icon>\n\n            </button>\n\n          </ion-buttons>\n\n\n\n    <ion-title *ngIf="_cs.listado == true">Incidencias</ion-title>\n\n    <ion-title *ngIf="_cs.listado == false">Mi Reciclaje</ion-title>\n\n  </ion-navbar>\n\n\n\n</ion-header>\n\n\n\n\n\n<ion-content *ngIf="_cs.listado == true">\n\n  <h6 padding>Escoja la incidencia más cercano a usted:</h6>\n\n    <ion-list>\n\n        <button ion-item\n\n                *ngFor="let incidencia of _cs.incidencias"\n\n                [navPush]="estacionamientoDetalle"\n\n                [navParams]="{ incidencia: incidencia }"\n\n                style="background: aliceblue"\n\n                >\n\n    \n\n          <ion-icon name="ios-arrow-forward"></ion-icon>\n\n            {{ incidencia.titulo }}\n\n        </button>\n\n        <!-- <button ion-item>\n\n          <ion-icon name="ios-arrow-forward"></ion-icon>\n\n              Puerta 1 UNMSM\n\n          </button>\n\n        <button ion-item>\n\n        <ion-icon name="ios-arrow-forward"></ion-icon>\n\n            Puerta 2 UNMSM\n\n        </button>\n\n        <button ion-item>\n\n          <ion-icon name="ios-arrow-forward"></ion-icon>\n\n              Puerta 3 UNMSM\n\n          </button>\n\n          <button ion-item>\n\n            <ion-icon name="ios-arrow-forward"></ion-icon>\n\n                Puerta 7 UNMSM\n\n            </button> -->\n\n      </ion-list>\n\n\n\n</ion-content>\n\n\n\n<ion-content *ngIf="_cs.listado == false && (_us.id_usuario != null && _cs.noreciclaje != false)">\n\n\n\n  <h6 padding>Mis reciclajes:</h6>\n\n    <ion-list>\n\n        <button ion-item\n\n                *ngFor="let reciclaje of _cs.reciclajes"\n\n                [navPush]="detalleReciclaje"\n\n                [navParams]="{ reciclaje: reciclaje }"\n\n                style="background: aliceblue"\n\n                >\n\n    \n\n          <ion-icon name="ios-arrow-forward"></ion-icon>\n\n            {{ reciclaje.fecha }}     {{ reciclaje.hora }}     <span *ngIf="reciclaje.estado==\'false\'" style="color: red;">NO RECOGIGO</span><span *ngIf="reciclaje.estado==\'true\'" style="color: blue;">RECOGIDO</span>\n\n        </button>\n\n      </ion-list>\n\n\n\n</ion-content>\n\n\n\n<ion-content *ngIf="_cs.listado == false && (_us.id_usuario == null || _cs.noreciclaje == false)">\n\n\n\n    <div text-center class="carrito_vacio">\n\n        <ion-icon name="ios-list-box-outline" class="icon-5x">\n\n        </ion-icon>\n\n        <br> No tienes reciclajes\n\n    </div>\n\n\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\BCAutomatizacion\Desktop\Reciclaje-y-ciudad-limpia\src\pages\estacionamiento\estacionamiento.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */],
@@ -2450,7 +2463,7 @@ var EstacionamientoPage = /** @class */ (function () {
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return HistorialPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(7);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_registro_registro__ = __webpack_require__(21);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_usuario_usuario__ = __webpack_require__(14);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_carrito_carrito__ = __webpack_require__(13);
@@ -2505,12 +2518,15 @@ var HistorialPage = /** @class */ (function () {
     };
     HistorialPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-historial',template:/*ion-inline-start:"C:\Users\andyu\Desktop\reciclaje\src\pages\historial\historial.html"*/'<ion-header>\n\n\n\n  <ion-navbar color="dark">\n\n\n\n    <ion-buttons start>\n\n      <button ion-button icon-only *ngIf="_us.inactivo()" (click)="_cs.ver_login()">\n\n        <ion-icon name="contact"></ion-icon>\n\n      </button>\n\n    </ion-buttons>\n\n\n\n\n\n    <ion-buttons start>\n\n      <button ion-button icon-only *ngIf="_us.activo()">\n\n        {{ _us.usuario }} <ion-icon name="contact"></ion-icon>\n\n      </button>\n\n      <button ion-button icon-only *ngIf="_us.activo()" (click)="_us.cerrar_sesion()">\n\n        <ion-icon name="log-out"></ion-icon>\n\n      </button>\n\n    </ion-buttons>\n\n\n\n    <ion-title>Historial</ion-title>\n\n  </ion-navbar>\n\n\n\n</ion-header>\n\n\n\n\n\n<ion-content padding>\n\n    <h6 padding>Reciclajes no recogidos:</h6>\n\n    <ion-list>\n\n      <button ion-item *ngFor="let reciclaje of _cs.norecogidos" [navPush]="detalleReciclaje"\n\n        [navParams]="{ reciclaje: reciclaje }" style="background: aliceblue">\n\n\n\n        <ion-icon name="ios-arrow-forward"></ion-icon>\n\n          {{reciclaje.id_usuario}}     {{ reciclaje.fecha }}     {{ reciclaje.hora }}     \n\n        <!-- <span *ngIf="reciclaje.estado==\'false\'"\n\n          style="color: red;">NO RECOGIGO</span><span *ngIf="reciclaje.estado==\'true\'"\n\n          style="color: blue;">RECOGIDO</span> -->\n\n      </button>\n\n    </ion-list>\n\n\n\n    <h6 style="text-align: center; color:red">Total: S/.{{_cs.totalnorecogidos}}</h6>\n\n    <br>\n\n    <h6 padding>Reciclajes recogidos:</h6>\n\n    <ion-list>\n\n      <button ion-item *ngFor="let reciclaje of _cs.recogidos" [navPush]="detalleReciclaje"\n\n        [navParams]="{ reciclaje: reciclaje }" style="background: aliceblue">\n\n\n\n        <ion-icon name="ios-arrow-forward"></ion-icon>\n\n          {{reciclaje.id_usuario}}     {{ reciclaje.fecha }}     {{ reciclaje.hora }}     \n\n        <!-- <span *ngIf="reciclaje.estado==\'false\'"\n\n          style="color: red;">NO RECOGIGO</span><span *ngIf="reciclaje.estado==\'true\'"\n\n          style="color: blue;">RECOGIDO</span> -->\n\n      </button>\n\n    </ion-list>\n\n\n\n    <h6 style="text-align: center; color: blue;">Total: S/.{{_cs.totalrecogidos}}</h6>\n\n    <br><br>\n\n    <h4 style="text-align: center;font-weight: bold;color: green;">Total: S/.{{_cs.total}}</h4>\n\n  <!-- <h5 style="color: blue; text-align: center">Nro |      Fecha y Hora     | Horas |  Pago</h5>\n\n  <hr>\n\n  <h6 *ngFor="let reserva of reservas">      {{reservas.indexOf(reserva)+1}}      {{reserva.fecha}}        {{reserva.horas}}          S/. {{reserva.total}}</h6> -->\n\n\n\n</ion-content>'/*ion-inline-end:"C:\Users\andyu\Desktop\reciclaje\src\pages\historial\historial.html"*/,
+            selector: 'page-historial',template:/*ion-inline-start:"C:\Users\BCAutomatizacion\Desktop\Reciclaje-y-ciudad-limpia\src\pages\historial\historial.html"*/'<ion-header>\n\n\n\n  <ion-navbar color="dark">\n\n\n\n    <ion-buttons start>\n\n      <button ion-button icon-only *ngIf="_us.inactivo()" (click)="_cs.ver_login()">\n\n        <ion-icon name="contact"></ion-icon>\n\n      </button>\n\n    </ion-buttons>\n\n\n\n\n\n    <ion-buttons start>\n\n      <button ion-button icon-only *ngIf="_us.activo()">\n\n        {{ _us.usuario }} <ion-icon name="contact"></ion-icon>\n\n      </button>\n\n      <button ion-button icon-only *ngIf="_us.activo()" (click)="_us.cerrar_sesion()">\n\n        <ion-icon name="log-out"></ion-icon>\n\n      </button>\n\n    </ion-buttons>\n\n\n\n    <ion-title>Historial</ion-title>\n\n  </ion-navbar>\n\n\n\n</ion-header>\n\n\n\n\n\n<ion-content padding>\n\n    <h6 padding>Reciclajes no recogidos:</h6>\n\n    <ion-list>\n\n      <button ion-item *ngFor="let reciclaje of _cs.norecogidos" [navPush]="detalleReciclaje"\n\n        [navParams]="{ reciclaje: reciclaje }" style="background: aliceblue">\n\n\n\n        <ion-icon name="ios-arrow-forward"></ion-icon>\n\n          {{reciclaje.id_usuario}}     {{ reciclaje.fecha }}     {{ reciclaje.hora }}     \n\n        <!-- <span *ngIf="reciclaje.estado==\'false\'"\n\n          style="color: red;">NO RECOGIGO</span><span *ngIf="reciclaje.estado==\'true\'"\n\n          style="color: blue;">RECOGIDO</span> -->\n\n      </button>\n\n    </ion-list>\n\n\n\n    <h6 style="text-align: center; color:red">Total: S/.{{_cs.totalnorecogidos}}</h6>\n\n    <br>\n\n    <h6 padding>Reciclajes recogidos:</h6>\n\n    <ion-list>\n\n      <button ion-item *ngFor="let reciclaje of _cs.recogidos" [navPush]="detalleReciclaje"\n\n        [navParams]="{ reciclaje: reciclaje }" style="background: aliceblue">\n\n\n\n        <ion-icon name="ios-arrow-forward"></ion-icon>\n\n          {{reciclaje.id_usuario}}     {{ reciclaje.fecha }}     {{ reciclaje.hora }}     \n\n        <!-- <span *ngIf="reciclaje.estado==\'false\'"\n\n          style="color: red;">NO RECOGIGO</span><span *ngIf="reciclaje.estado==\'true\'"\n\n          style="color: blue;">RECOGIDO</span> -->\n\n      </button>\n\n    </ion-list>\n\n\n\n    <h6 style="text-align: center; color: blue;">Total: S/.{{_cs.totalrecogidos}}</h6>\n\n    <br><br>\n\n    <h4 style="text-align: center;font-weight: bold;color: green;">Total: S/.{{_cs.total}}</h4>\n\n  <!-- <h5 style="color: blue; text-align: center">Nro |      Fecha y Hora     | Horas |  Pago</h5>\n\n  <hr>\n\n  <h6 *ngFor="let reserva of reservas">      {{reservas.indexOf(reserva)+1}}      {{reserva.fecha}}        {{reserva.horas}}          S/. {{reserva.total}}</h6> -->\n\n\n\n</ion-content>'/*ion-inline-end:"C:\Users\BCAutomatizacion\Desktop\Reciclaje-y-ciudad-limpia\src\pages\historial\historial.html"*/,
         }),
-        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3__providers_usuario_usuario__["a" /* UsuarioProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__providers_usuario_usuario__["a" /* UsuarioProvider */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_4__providers_carrito_carrito__["a" /* CarritoProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__providers_carrito_carrito__["a" /* CarritoProvider */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_2__providers_registro_registro__["a" /* RegistroProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__providers_registro_registro__["a" /* RegistroProvider */]) === "function" && _e || Object])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */],
+            __WEBPACK_IMPORTED_MODULE_3__providers_usuario_usuario__["a" /* UsuarioProvider */],
+            __WEBPACK_IMPORTED_MODULE_4__providers_carrito_carrito__["a" /* CarritoProvider */],
+            __WEBPACK_IMPORTED_MODULE_2__providers_registro_registro__["a" /* RegistroProvider */]])
     ], HistorialPage);
     return HistorialPage;
-    var _a, _b, _c, _d, _e;
 }());
 
 //# sourceMappingURL=historial.js.map
@@ -2523,7 +2539,7 @@ var HistorialPage = /** @class */ (function () {
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ReportesPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(7);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_usuario_usuario__ = __webpack_require__(14);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_registro_registro__ = __webpack_require__(21);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_chart_js__ = __webpack_require__(621);
@@ -2911,12 +2927,14 @@ var ReportesPage = /** @class */ (function () {
     ], ReportesPage.prototype, "doughnutCanvas", void 0);
     ReportesPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-reportes',template:/*ion-inline-start:"C:\Users\andyu\Desktop\reciclaje\src\pages\reportes\reportes.html"*/'<ion-header>\n\n  <ion-navbar color="dark">\n      <ion-buttons start>\n          <button ion-button icon-only *ngIf="_us.inactivo()" [navPush]="login">\n          <ion-icon name="contact"></ion-icon>\n        </button>\n      </ion-buttons>\n\n\n      <ion-buttons start>\n          <button ion-button icon-only *ngIf="_us.activo()">\n          {{ _us.usuario }} <ion-icon name="contact"></ion-icon>\n        </button>\n          <button ion-button icon-only *ngIf="_us.activo()" (click)="_us.cerrar_sesion()">\n          <ion-icon name="log-out"></ion-icon>\n        </button>\n      </ion-buttons>\n    <ion-title>Reportes</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content>\n  <ion-card>\n    <ion-card-header style="color: white; background: darkblue; font-weight: bold;">\n      Costos totales por tipo de residuo\n    </ion-card-header>\n    <ion-card-content>\n      <br>\n      <canvas #barCanvas></canvas>\n    </ion-card-content>\n  </ion-card>\n  <ion-card>\n    <ion-card-header style="color: white; background: darkblue; font-weight: bold;">\n      Costos totales diarios\n    </ion-card-header>\n    <ion-card-content>\n      <br>\n      <canvas #barCanvas2></canvas>\n    </ion-card-content>\n  </ion-card>\n  <!-- <ion-card>\n    <ion-card-header style="background-color: whitesmoke">\n        Promedio de tiempos de reservas\n    </ion-card-header>\n    <ion-card-content>\n      <br>\n      <canvas #lineCanvas></canvas>\n    </ion-card-content>\n  </ion-card> -->\n  <ion-card>\n    <ion-card-header style="color: white; background: darkblue; font-weight: bold;">\n      Totales por tipo de residuo\n    </ion-card-header>\n    <ion-card-content>\n      <br>\n      <canvas #pieCanvas></canvas>\n    </ion-card-content>\n  </ion-card>\n  <ion-card>\n    <ion-card-header style="color: white; background: darkblue; font-weight: bold;">\n      Cantidades en Kg por tipo de residuo\n    </ion-card-header>\n    <ion-card-content>\n      <br>\n      <canvas #doughnutCanvas></canvas>\n    </ion-card-content>\n  </ion-card>\n</ion-content>\n'/*ion-inline-end:"C:\Users\andyu\Desktop\reciclaje\src\pages\reportes\reportes.html"*/,
+            selector: 'page-reportes',template:/*ion-inline-start:"C:\Users\BCAutomatizacion\Desktop\Reciclaje-y-ciudad-limpia\src\pages\reportes\reportes.html"*/'<ion-header>\n\n\n\n  <ion-navbar color="dark">\n\n      <ion-buttons start>\n\n          <button ion-button icon-only *ngIf="_us.inactivo()" [navPush]="login">\n\n          <ion-icon name="contact"></ion-icon>\n\n        </button>\n\n      </ion-buttons>\n\n\n\n\n\n      <ion-buttons start>\n\n          <button ion-button icon-only *ngIf="_us.activo()">\n\n          {{ _us.usuario }} <ion-icon name="contact"></ion-icon>\n\n        </button>\n\n          <button ion-button icon-only *ngIf="_us.activo()" (click)="_us.cerrar_sesion()">\n\n          <ion-icon name="log-out"></ion-icon>\n\n        </button>\n\n      </ion-buttons>\n\n    <ion-title>Reportes</ion-title>\n\n  </ion-navbar>\n\n\n\n</ion-header>\n\n\n\n\n\n<ion-content>\n\n  <ion-card>\n\n    <ion-card-header style="color: white; background: darkblue; font-weight: bold;">\n\n      Costos totales por tipo de residuo\n\n    </ion-card-header>\n\n    <ion-card-content>\n\n      <br>\n\n      <canvas #barCanvas></canvas>\n\n    </ion-card-content>\n\n  </ion-card>\n\n  <ion-card>\n\n    <ion-card-header style="color: white; background: darkblue; font-weight: bold;">\n\n      Costos totales diarios\n\n    </ion-card-header>\n\n    <ion-card-content>\n\n      <br>\n\n      <canvas #barCanvas2></canvas>\n\n    </ion-card-content>\n\n  </ion-card>\n\n  <!-- <ion-card>\n\n    <ion-card-header style="background-color: whitesmoke">\n\n        Promedio de tiempos de reservas\n\n    </ion-card-header>\n\n    <ion-card-content>\n\n      <br>\n\n      <canvas #lineCanvas></canvas>\n\n    </ion-card-content>\n\n  </ion-card> -->\n\n  <ion-card>\n\n    <ion-card-header style="color: white; background: darkblue; font-weight: bold;">\n\n      Totales por tipo de residuo\n\n    </ion-card-header>\n\n    <ion-card-content>\n\n      <br>\n\n      <canvas #pieCanvas></canvas>\n\n    </ion-card-content>\n\n  </ion-card>\n\n  <ion-card>\n\n    <ion-card-header style="color: white; background: darkblue; font-weight: bold;">\n\n      Cantidades en Kg por tipo de residuo\n\n    </ion-card-header>\n\n    <ion-card-content>\n\n      <br>\n\n      <canvas #doughnutCanvas></canvas>\n\n    </ion-card-content>\n\n  </ion-card>\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\BCAutomatizacion\Desktop\Reciclaje-y-ciudad-limpia\src\pages\reportes\reportes.html"*/,
         }),
-        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2__providers_usuario_usuario__["a" /* UsuarioProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__providers_usuario_usuario__["a" /* UsuarioProvider */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_3__providers_registro_registro__["a" /* RegistroProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__providers_registro_registro__["a" /* RegistroProvider */]) === "function" && _d || Object])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */],
+            __WEBPACK_IMPORTED_MODULE_2__providers_usuario_usuario__["a" /* UsuarioProvider */],
+            __WEBPACK_IMPORTED_MODULE_3__providers_registro_registro__["a" /* RegistroProvider */]])
     ], ReportesPage);
     return ReportesPage;
-    var _a, _b, _c, _d;
 }());
 
 //# sourceMappingURL=reportes.js.map
@@ -3206,7 +3224,7 @@ webpackContext.id = 623;
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MantenimientoPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(7);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_usuario_usuario__ = __webpack_require__(14);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_registro_registro__ = __webpack_require__(21);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -3279,7 +3297,7 @@ var MantenimientoPage = /** @class */ (function () {
     };
     MantenimientoPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-mantenimiento',template:/*ion-inline-start:"C:\Users\andyu\Desktop\reciclaje\src\pages\mantenimiento\mantenimiento.html"*/'\n<ion-header>\n\n  <ion-navbar color="dark">\n      <ion-buttons start>\n          <button ion-button icon-only *ngIf="_us.inactivo()" [navPush]="login">\n          <ion-icon name="contact"></ion-icon>\n        </button>\n      </ion-buttons>\n\n\n      <ion-buttons start>\n          <button ion-button icon-only *ngIf="_us.activo()">\n          {{ _us.usuario }} <ion-icon name="contact"></ion-icon>\n        </button>\n          <button ion-button icon-only *ngIf="_us.activo()" (click)="_us.cerrar_sesion()">\n          <ion-icon name="log-out"></ion-icon>\n        </button>\n      </ion-buttons>\n    <ion-title>Mantenimiento</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content>\n  <br>\n    <ion-card> \n        <ion-card-header style="background-color: #488aff; color: white; font-weight: bold">\n          Uso del Sensor Ultrasonido\n        </ion-card-header>\n        <ion-card-content color="primary">\n          <br>\n          E.Javier Prado (JP1) :              {{contador1}}/5 <br>\n          E.Metro Alf. Ugarte (JP2) :      {{contador2}}/5 <br>\n          E.Mega Plaza <br>\n          E.Plaza San Miguel \n        </ion-card-content>\n      </ion-card>\n</ion-content>\n'/*ion-inline-end:"C:\Users\andyu\Desktop\reciclaje\src\pages\mantenimiento\mantenimiento.html"*/,
+            selector: 'page-mantenimiento',template:/*ion-inline-start:"C:\Users\BCAutomatizacion\Desktop\Reciclaje-y-ciudad-limpia\src\pages\mantenimiento\mantenimiento.html"*/'\n\n<ion-header>\n\n\n\n  <ion-navbar color="dark">\n\n      <ion-buttons start>\n\n          <button ion-button icon-only *ngIf="_us.inactivo()" [navPush]="login">\n\n          <ion-icon name="contact"></ion-icon>\n\n        </button>\n\n      </ion-buttons>\n\n\n\n\n\n      <ion-buttons start>\n\n          <button ion-button icon-only *ngIf="_us.activo()">\n\n          {{ _us.usuario }} <ion-icon name="contact"></ion-icon>\n\n        </button>\n\n          <button ion-button icon-only *ngIf="_us.activo()" (click)="_us.cerrar_sesion()">\n\n          <ion-icon name="log-out"></ion-icon>\n\n        </button>\n\n      </ion-buttons>\n\n    <ion-title>Mantenimiento</ion-title>\n\n  </ion-navbar>\n\n\n\n</ion-header>\n\n\n\n\n\n<ion-content>\n\n  <br>\n\n    <ion-card> \n\n        <ion-card-header style="background-color: #488aff; color: white; font-weight: bold">\n\n          Uso del Sensor Ultrasonido\n\n        </ion-card-header>\n\n        <ion-card-content color="primary">\n\n          <br>\n\n          E.Javier Prado (JP1) :              {{contador1}}/5 <br>\n\n          E.Metro Alf. Ugarte (JP2) :      {{contador2}}/5 <br>\n\n          E.Mega Plaza <br>\n\n          E.Plaza San Miguel \n\n        </ion-card-content>\n\n      </ion-card>\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\BCAutomatizacion\Desktop\Reciclaje-y-ciudad-limpia\src\pages\mantenimiento\mantenimiento.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */],
@@ -3299,7 +3317,7 @@ var MantenimientoPage = /** @class */ (function () {
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ResiduosPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(7);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_carrito_carrito__ = __webpack_require__(13);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_usuario_usuario__ = __webpack_require__(14);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__index_paginas__ = __webpack_require__(38);
@@ -3342,7 +3360,7 @@ var ResiduosPage = /** @class */ (function () {
     };
     ResiduosPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-residuos',template:/*ion-inline-start:"C:\Users\andyu\Desktop\reciclaje\src\pages\residuos\residuos.html"*/'<ion-header>\n\n\n\n  <ion-navbar color="dark">\n\n\n\n    <ion-buttons left>\n\n      <button icon-only ion-button\n\n              (click)="viewCtrl.dismiss()">\n\n        <ion-icon name="arrow-round-back"></ion-icon>\n\n      </button>\n\n    </ion-buttons>\n\n\n\n    <ion-title *ngIf="_us.ventana==false">Publicar Incidencia</ion-title>\n\n    <ion-title *ngIf="_us.ventana==true">Reciclar</ion-title>\n\n  </ion-navbar>\n\n\n\n</ion-header>\n\n\n\n\n\n<ion-content padding>\n\n\n\n  <ion-list radio-group [(ngModel)]="_cs.id_residuo">\n\n    <ion-list-header>\n\n      Selecciona el tipo de residuo\n\n    </ion-list-header>\n\n\n\n     <!-- <button ion-item\n\n                *ngFor="let estacionamiento of _cs.estacionamientos"\n\n                [navPush]="estacionamientoDetalle"\n\n                [navParams]="{ estacionamiento: estacionamiento }"\n\n                >\n\n    \n\n          <ion-icon name="ios-arrow-forward"></ion-icon>\n\n            {{ estacionamiento.nombre }}\n\n        </button> -->\n\n    \n\n    <div *ngIf="_us.ventana==false">\n\n      <ion-item *ngFor="let residuo of _cs.residuos">\n\n        <ion-label><img src={{residuo.img}} alt=""/>   {{residuo.tipo}}</ion-label>\n\n        <ion-radio *ngIf="residuo.id==\'1\'" checked="true"  value={{residuo.id}} (click)="_cs.ver_volumen()"></ion-radio>\n\n        <ion-radio *ngIf="residuo.id!=\'1\'" value={{residuo.id}} (click)="_cs.ver_volumen()"></ion-radio>\n\n      </ion-item>\n\n    </div>\n\n    \n\n    <ion-item *ngIf="_us.ventana==true">\n\n      <ion-label><img src="../../assets/imgs/Iconos/TipoResiduo/plastico.png" alt="">   Plásticos</ion-label>\n\n      <ion-radio checked="true" value="6" (click)="abrirModal()"></ion-radio>\n\n    </ion-item>\n\n    \n\n    <ion-item *ngIf="_us.ventana==true">\n\n      <ion-label><img src="../../assets/imgs/Iconos/TipoResiduo/carton.png" alt="">   Cartón</ion-label>\n\n      <ion-radio value="11" (click)="abrirModal()"></ion-radio>\n\n    </ion-item>\n\n    \n\n    <ion-item *ngIf="_us.ventana==true">\n\n      <ion-label><img src="../../assets/imgs/Iconos/TipoResiduo/vidrio.png" alt="">   Vidrios</ion-label>\n\n      <ion-radio value="10" (click)="abrirModal()"></ion-radio>\n\n    </ion-item>\n\n\n\n    <ion-item *ngIf="_us.ventana==true">\n\n      <ion-label><img src="../../assets/imgs/Iconos/TipoResiduo/papel.png" alt="">   Papel blanco</ion-label>\n\n      <ion-radio value="12" (click)="abrirModal()"></ion-radio>\n\n    </ion-item>\n\n\n\n    <ion-item *ngIf="_us.ventana==true">\n\n      <ion-label><img src="../../assets/imgs/Iconos/TipoResiduo/pila.png" alt="">   Baterías/Pilas</ion-label>\n\n      <ion-radio value="5" (click)="abrirModal()"></ion-radio>\n\n    </ion-item>\n\n\n\n    <br><br>\n\n\n\n    <button *ngIf="_us.ventana==true" id="registrarse" ion-button block color="primary" \n\n    (click)="_cs.ver_agregar_reciclaje1()"\n\n    >\n\n    Continuar\n\n    </button>\n\n\n\n  </ion-list>\n\n\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\andyu\Desktop\reciclaje\src\pages\residuos\residuos.html"*/,
+            selector: 'page-residuos',template:/*ion-inline-start:"C:\Users\BCAutomatizacion\Desktop\Reciclaje-y-ciudad-limpia\src\pages\residuos\residuos.html"*/'<ion-header>\n\n\n\n  <ion-navbar color="dark">\n\n\n\n    <ion-buttons left>\n\n      <button icon-only ion-button\n\n              (click)="viewCtrl.dismiss()">\n\n        <ion-icon name="arrow-round-back"></ion-icon>\n\n      </button>\n\n    </ion-buttons>\n\n\n\n    <ion-title *ngIf="_us.ventana==false">Publicar Incidencia</ion-title>\n\n    <ion-title *ngIf="_us.ventana==true">Reciclar</ion-title>\n\n  </ion-navbar>\n\n\n\n</ion-header>\n\n\n\n\n\n<ion-content padding>\n\n\n\n  <ion-list radio-group [(ngModel)]="_cs.id_residuo">\n\n    <ion-list-header>\n\n      Selecciona el tipo de residuo\n\n    </ion-list-header>\n\n\n\n     <!-- <button ion-item\n\n                *ngFor="let estacionamiento of _cs.estacionamientos"\n\n                [navPush]="estacionamientoDetalle"\n\n                [navParams]="{ estacionamiento: estacionamiento }"\n\n                >\n\n    \n\n          <ion-icon name="ios-arrow-forward"></ion-icon>\n\n            {{ estacionamiento.nombre }}\n\n        </button> -->\n\n    \n\n    <div *ngIf="_us.ventana==false">\n\n      <ion-item *ngFor="let residuo of _cs.residuos">\n\n        <ion-label><img src={{residuo.img}} alt=""/>   {{residuo.tipo}}</ion-label>\n\n        <ion-radio *ngIf="residuo.id==\'1\'" checked="true"  value={{residuo.id}} (click)="_cs.ver_volumen()"></ion-radio>\n\n        <ion-radio *ngIf="residuo.id!=\'1\'" value={{residuo.id}} (click)="_cs.ver_volumen()"></ion-radio>\n\n      </ion-item>\n\n    </div>\n\n    \n\n    <ion-item *ngIf="_us.ventana==true">\n\n      <ion-label><img src="../../assets/imgs/Iconos/TipoResiduo/plastico.png" alt="">   Plásticos</ion-label>\n\n      <ion-radio checked="true" value="6" (click)="abrirModal()"></ion-radio>\n\n    </ion-item>\n\n    \n\n    <ion-item *ngIf="_us.ventana==true">\n\n      <ion-label><img src="../../assets/imgs/Iconos/TipoResiduo/carton.png" alt="">   Cartón</ion-label>\n\n      <ion-radio value="11" (click)="abrirModal()"></ion-radio>\n\n    </ion-item>\n\n    \n\n    <ion-item *ngIf="_us.ventana==true">\n\n      <ion-label><img src="../../assets/imgs/Iconos/TipoResiduo/vidrio.png" alt="">   Vidrios</ion-label>\n\n      <ion-radio value="10" (click)="abrirModal()"></ion-radio>\n\n    </ion-item>\n\n\n\n    <ion-item *ngIf="_us.ventana==true">\n\n      <ion-label><img src="../../assets/imgs/Iconos/TipoResiduo/papel.png" alt="">   Papel blanco</ion-label>\n\n      <ion-radio value="12" (click)="abrirModal()"></ion-radio>\n\n    </ion-item>\n\n\n\n    <ion-item *ngIf="_us.ventana==true">\n\n      <ion-label><img src="../../assets/imgs/Iconos/TipoResiduo/pila.png" alt="">   Baterías/Pilas</ion-label>\n\n      <ion-radio value="5" (click)="abrirModal()"></ion-radio>\n\n    </ion-item>\n\n\n\n    <br><br>\n\n\n\n    <button *ngIf="_us.ventana==true" id="registrarse" ion-button block color="primary" \n\n    (click)="_cs.ver_agregar_reciclaje1()"\n\n    >\n\n    Continuar\n\n    </button>\n\n\n\n  </ion-list>\n\n\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\BCAutomatizacion\Desktop\Reciclaje-y-ciudad-limpia\src\pages\residuos\residuos.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */],
@@ -3364,7 +3382,7 @@ var ResiduosPage = /** @class */ (function () {
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return VolumenPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(7);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_carrito_carrito__ = __webpack_require__(13);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -3387,7 +3405,7 @@ var VolumenPage = /** @class */ (function () {
     }
     VolumenPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-volumen',template:/*ion-inline-start:"C:\Users\andyu\Desktop\reciclaje\src\pages\volumen\volumen.html"*/'<ion-header>\n\n  <ion-navbar color="dark">\n\n    <ion-buttons left>\n      <button icon-only ion-button\n              (click)="viewCtrl.dismiss()">\n        <ion-icon name="arrow-round-back"></ion-icon>\n      </button>\n    </ion-buttons>\n\n    <ion-title>Publicar Incidencia</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n\n  <ion-list radio-group [(ngModel)]="_cs.id_volumen">\n    <ion-list-header>\n      Selecciona el volumen del residuo\n    </ion-list-header>\n\n    <ion-item *ngFor="let volumen of _cs.volumenes">\n      <ion-label><img src={{volumen.img}} alt=""/>   {{volumen.tipo}}</ion-label>\n      <ion-radio *ngIf="volumen.id==\'1\'" checked="true"  value={{volumen.id}} (click)="_cs.ver_foto()"></ion-radio>\n      <ion-radio *ngIf="volumen.id!=\'1\'" value={{volumen.id}} (click)="_cs.ver_foto()"></ion-radio>\n    </ion-item>\n\n    <!-- <ion-item>\n      <ion-label><ion-img src="../../assets/imgs/Iconos/Volumen/cabe_mano.png" alt=""></ion-img>   Cabe en una mano</ion-label>\n      <ion-radio checked="true" value="mano" (click)="_cs.ver_foto()"></ion-radio>\n    </ion-item>\n  \n    <ion-item>\n      <ion-label><ion-img src="../../assets/imgs/Iconos/Volumen/cabe_mochila.png" alt=""></ion-img>   Cabe en una mochila</ion-label>\n      <ion-radio value="mochila" (click)="_cs.ver_foto()"></ion-radio>\n    </ion-item>\n  \n    <ion-item>\n      <ion-label><ion-img src="../../assets/imgs/Iconos/Volumen/cabe_maletero.png" alt=""></ion-img>   Cabe en un maletero</ion-label>\n      <ion-radio value="maletero" (click)="_cs.ver_foto()"></ion-radio>\n    </ion-item>\n\n    <ion-item>\n      <ion-label><ion-img src="../../assets/imgs/Iconos/Volumen/cabe_contenedor.png" alt=""></ion-img>   Cabe en un contenedor</ion-label>\n      <ion-radio value="contenedor" (click)="_cs.ver_foto()"></ion-radio>\n    </ion-item>\n    \n    <ion-item>\n      <ion-label><ion-img src="../../assets/imgs/Iconos/Volumen/cabe_camion.png" alt=""></ion-img>   Cabe en un camión</ion-label>\n      <ion-radio value="camion" (click)="_cs.ver_foto()"></ion-radio>\n    </ion-item>\n\n    <ion-item>\n      <ion-label><ion-img src="../../assets/imgs/Iconos/Volumen/mas_grande.png" alt=""></ion-img>   Más grande</ion-label>\n      <ion-radio value="grande" (click)="_cs.ver_foto()"></ion-radio>\n    </ion-item> -->\n  </ion-list>\n\n</ion-content>\n'/*ion-inline-end:"C:\Users\andyu\Desktop\reciclaje\src\pages\volumen\volumen.html"*/,
+            selector: 'page-volumen',template:/*ion-inline-start:"C:\Users\BCAutomatizacion\Desktop\Reciclaje-y-ciudad-limpia\src\pages\volumen\volumen.html"*/'<ion-header>\n\n\n\n  <ion-navbar color="dark">\n\n\n\n    <ion-buttons left>\n\n      <button icon-only ion-button\n\n              (click)="viewCtrl.dismiss()">\n\n        <ion-icon name="arrow-round-back"></ion-icon>\n\n      </button>\n\n    </ion-buttons>\n\n\n\n    <ion-title>Publicar Incidencia</ion-title>\n\n  </ion-navbar>\n\n\n\n</ion-header>\n\n\n\n\n\n<ion-content padding>\n\n\n\n  <ion-list radio-group [(ngModel)]="_cs.id_volumen">\n\n    <ion-list-header>\n\n      Selecciona el volumen del residuo\n\n    </ion-list-header>\n\n\n\n    <ion-item *ngFor="let volumen of _cs.volumenes">\n\n      <ion-label><img src={{volumen.img}} alt=""/>   {{volumen.tipo}}</ion-label>\n\n      <ion-radio *ngIf="volumen.id==\'1\'" checked="true"  value={{volumen.id}} (click)="_cs.ver_foto()"></ion-radio>\n\n      <ion-radio *ngIf="volumen.id!=\'1\'" value={{volumen.id}} (click)="_cs.ver_foto()"></ion-radio>\n\n    </ion-item>\n\n\n\n    <!-- <ion-item>\n\n      <ion-label><ion-img src="../../assets/imgs/Iconos/Volumen/cabe_mano.png" alt=""></ion-img>   Cabe en una mano</ion-label>\n\n      <ion-radio checked="true" value="mano" (click)="_cs.ver_foto()"></ion-radio>\n\n    </ion-item>\n\n  \n\n    <ion-item>\n\n      <ion-label><ion-img src="../../assets/imgs/Iconos/Volumen/cabe_mochila.png" alt=""></ion-img>   Cabe en una mochila</ion-label>\n\n      <ion-radio value="mochila" (click)="_cs.ver_foto()"></ion-radio>\n\n    </ion-item>\n\n  \n\n    <ion-item>\n\n      <ion-label><ion-img src="../../assets/imgs/Iconos/Volumen/cabe_maletero.png" alt=""></ion-img>   Cabe en un maletero</ion-label>\n\n      <ion-radio value="maletero" (click)="_cs.ver_foto()"></ion-radio>\n\n    </ion-item>\n\n\n\n    <ion-item>\n\n      <ion-label><ion-img src="../../assets/imgs/Iconos/Volumen/cabe_contenedor.png" alt=""></ion-img>   Cabe en un contenedor</ion-label>\n\n      <ion-radio value="contenedor" (click)="_cs.ver_foto()"></ion-radio>\n\n    </ion-item>\n\n    \n\n    <ion-item>\n\n      <ion-label><ion-img src="../../assets/imgs/Iconos/Volumen/cabe_camion.png" alt=""></ion-img>   Cabe en un camión</ion-label>\n\n      <ion-radio value="camion" (click)="_cs.ver_foto()"></ion-radio>\n\n    </ion-item>\n\n\n\n    <ion-item>\n\n      <ion-label><ion-img src="../../assets/imgs/Iconos/Volumen/mas_grande.png" alt=""></ion-img>   Más grande</ion-label>\n\n      <ion-radio value="grande" (click)="_cs.ver_foto()"></ion-radio>\n\n    </ion-item> -->\n\n  </ion-list>\n\n\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\BCAutomatizacion\Desktop\Reciclaje-y-ciudad-limpia\src\pages\volumen\volumen.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */],
@@ -3407,7 +3425,7 @@ var VolumenPage = /** @class */ (function () {
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return FotoPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(7);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_angularfire2_firestore__ = __webpack_require__(93);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_angularfire2_firestore___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_angularfire2_firestore__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_camera__ = __webpack_require__(289);
@@ -3501,7 +3519,7 @@ var FotoPage = /** @class */ (function () {
     };
     FotoPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-foto',template:/*ion-inline-start:"C:\Users\andyu\Desktop\reciclaje\src\pages\foto\foto.html"*/'<ion-header>\n\n  <ion-navbar color="dark">\n\n    <ion-buttons left>\n      <button icon-only ion-button\n              (click)="viewCtrl.dismiss()">\n        <ion-icon name="arrow-round-back"></ion-icon>\n      </button>\n    </ion-buttons>\n\n    <ion-title>Publicar Incidencia</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n  <!-- <button ion-button block (click)="getPicture()">Toma una foto</button>\n    <img [src]="image" *ngIf="image" /> -->\n  <br>\n\n  <ion-item>\n    <ion-label floating>Título</ion-label>\n     <ion-input [(ngModel)]="titulo"></ion-input>\n  </ion-item>\n\n  <ion-item>\n    <ion-label floating>Ubicación</ion-label>\n     <ion-input [(ngModel)]="ubicacion"></ion-input>\n  </ion-item>\n  <br>\n  <ion-card>\n      <ion-item color="primary">\n          <ion-icon name="pin" slot="start"></ion-icon>\n          <ion-label style="font-weight: bold;">Descripción</ion-label>\n      </ion-item>\n\n      <ion-card-content color="primary">\n        <ion-input type="text" [(ngModel)]="descripcion"></ion-input>\n        <br><br><br>\n      </ion-card-content>\n  </ion-card>\n\n  <br><br>\n  <!-- <ion-card>\n      <ion-item color="primary">\n          <ion-icon name="pin" slot="start"></ion-icon>\n          <ion-label style="font-weight: bold;">Subir Foto</ion-label>\n      </ion-item>\n\n      <ion-card-content color="primary">\n        \n        <br><br><br>\n      </ion-card-content>\n  </ion-card> -->\n\n  <!-- <button ion-button id="registrar" block>Subir foto</button> -->\n  <ion-card>\n    <ion-card-content>\n      <button ion-button color="danger" icon-right block (click)="takePicture();">\n        Tomar Foto\n        <ion-icon name="camera">\n\n        </ion-icon>\n      </button>\n      <br>\n      <img *ngIf="base64Image" [src]="base64Image" [(ngModel)]="base64Image">\n    </ion-card-content>\n  </ion-card>\n  <!-- <img src=\'/assets/imgs/Pta3.png\' alt=\'\' style=\'max-width:100%;width:auto;height:auto;\' onclick=\'\'>" -->\n  <br><br>\n\n  <button id="registrar" ion-button block (click)="publicar()"\n          >\n    Registrar\n  </button>\n  <br><br>\n</ion-content>\n'/*ion-inline-end:"C:\Users\andyu\Desktop\reciclaje\src\pages\foto\foto.html"*/,
+            selector: 'page-foto',template:/*ion-inline-start:"C:\Users\BCAutomatizacion\Desktop\Reciclaje-y-ciudad-limpia\src\pages\foto\foto.html"*/'<ion-header>\n\n\n\n  <ion-navbar color="dark">\n\n\n\n    <ion-buttons left>\n\n      <button icon-only ion-button\n\n              (click)="viewCtrl.dismiss()">\n\n        <ion-icon name="arrow-round-back"></ion-icon>\n\n      </button>\n\n    </ion-buttons>\n\n\n\n    <ion-title>Publicar Incidencia</ion-title>\n\n  </ion-navbar>\n\n\n\n</ion-header>\n\n\n\n\n\n<ion-content padding>\n\n  <!-- <button ion-button block (click)="getPicture()">Toma una foto</button>\n\n    <img [src]="image" *ngIf="image" /> -->\n\n  <br>\n\n\n\n  <ion-item>\n\n    <ion-label floating>Título</ion-label>\n\n     <ion-input [(ngModel)]="titulo"></ion-input>\n\n  </ion-item>\n\n\n\n  <ion-item>\n\n    <ion-label floating>Ubicación</ion-label>\n\n     <ion-input [(ngModel)]="ubicacion"></ion-input>\n\n  </ion-item>\n\n  <br>\n\n  <ion-card>\n\n      <ion-item color="primary">\n\n          <ion-icon name="pin" slot="start"></ion-icon>\n\n          <ion-label style="font-weight: bold;">Descripción</ion-label>\n\n      </ion-item>\n\n\n\n      <ion-card-content color="primary">\n\n        <ion-input type="text" [(ngModel)]="descripcion"></ion-input>\n\n        <br><br><br>\n\n      </ion-card-content>\n\n  </ion-card>\n\n\n\n  <br><br>\n\n  <!-- <ion-card>\n\n      <ion-item color="primary">\n\n          <ion-icon name="pin" slot="start"></ion-icon>\n\n          <ion-label style="font-weight: bold;">Subir Foto</ion-label>\n\n      </ion-item>\n\n\n\n      <ion-card-content color="primary">\n\n        \n\n        <br><br><br>\n\n      </ion-card-content>\n\n  </ion-card> -->\n\n\n\n  <!-- <button ion-button id="registrar" block>Subir foto</button> -->\n\n  <ion-card>\n\n    <ion-card-content>\n\n      <button ion-button color="danger" icon-right block (click)="takePicture();">\n\n        Tomar Foto\n\n        <ion-icon name="camera">\n\n\n\n        </ion-icon>\n\n      </button>\n\n      <br>\n\n      <img *ngIf="base64Image" [src]="base64Image" [(ngModel)]="base64Image">\n\n    </ion-card-content>\n\n  </ion-card>\n\n  <!-- <img src=\'/assets/imgs/Pta3.png\' alt=\'\' style=\'max-width:100%;width:auto;height:auto;\' onclick=\'\'>" -->\n\n  <br><br>\n\n\n\n  <button id="registrar" ion-button block (click)="publicar()"\n\n          >\n\n    Registrar\n\n  </button>\n\n  <br><br>\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\BCAutomatizacion\Desktop\Reciclaje-y-ciudad-limpia\src\pages\foto\foto.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */],
@@ -3527,7 +3545,7 @@ var FotoPage = /** @class */ (function () {
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AgregarReciclajePage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(7);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_carrito_carrito__ = __webpack_require__(13);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_usuario_usuario__ = __webpack_require__(14);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_registro_registro__ = __webpack_require__(21);
@@ -3613,7 +3631,7 @@ var AgregarReciclajePage = /** @class */ (function () {
     };
     AgregarReciclajePage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-agregar-reciclaje',template:/*ion-inline-start:"C:\Users\andyu\Desktop\reciclaje\src\pages\agregar-reciclaje\agregar-reciclaje.html"*/'<ion-header>\n\n\n\n  <ion-navbar color="dark">\n\n\n\n    <ion-buttons left>\n\n      <button icon-only ion-button\n\n              (click)="viewCtrl.dismiss()">\n\n        <ion-icon name="arrow-round-back"></ion-icon>\n\n      </button>\n\n    </ion-buttons>\n\n\n\n    <ion-title>Mi Reciclaje</ion-title>\n\n  </ion-navbar>\n\n\n\n</ion-header>\n\n\n\n\n\n<ion-content padding>\n\n  <div *ngIf="reciclaje.length!=0">\n\n  <ion-card *ngFor="let item of reciclaje">\n\n    <ion-item color="primary">\n\n        <ion-label style="font-weight: bold">{{item.tipo}}   <ion-img src={{item.img}} alt=""></ion-img></ion-label>\n\n    </ion-item>\n\n\n\n    <ion-card-content color="primary">\n\n        <br>\n\n        <!-- <h4 *ngIf="residuo">Tipo: {{residuo.tipo}}  <ion-img src={{residuo.img}} alt=""></ion-img></h4> -->\n\n        <h4>Precio x kg: S/. {{item.precio}}</h4>\n\n        <h4>Cantidad: {{item.cantidad}} Kg</h4>\n\n        <h4 style="font-weight: bold">Subtotal: {{item.subtotal}}</h4>\n\n    </ion-card-content>\n\n  </ion-card>\n\n  </div>\n\n\n\n  <ion-card *ngIf="residuo">\n\n    <ion-item color="primary" style="background: mediumpurple;">\n\n      <ion-label *ngIf="residuo" style="font-weight: bold">{{residuo.tipo}}   <ion-img src={{residuo.img}} alt=""></ion-img></ion-label>\n\n    </ion-item>\n\n\n\n    <ion-card-content color="primary">\n\n      <br>\n\n      <!-- <h4 *ngIf="residuo">Tipo: {{residuo.tipo}}  <ion-img src={{residuo.img}} alt=""></ion-img></h4> -->\n\n      <h4 *ngIf="residuo">Precio x kg: S/. {{residuo.precio}}</h4>\n\n      <h4 *ngIf="residuo">Cantidad: {{_cs.cantidad}} Kg</h4>\n\n      <h4 *ngIf="residuo" style="font-weight: bold">Subtotal: {{subtotal}}</h4>\n\n    </ion-card-content>\n\n  </ion-card>\n\n\n\n  <br><br>\n\n\n\n  <h3 style="font-weight: bold; text-align:center">Total: S/. {{total}}</h3>\n\n\n\n  <br><br>\n\n\n\n  <ion-item>\n\n    <ion-label floating>Dirección</ion-label>\n\n    <ion-input type="text" [(ngModel)]="direccion"></ion-input>\n\n  </ion-item>\n\n\n\n  <br><br>\n\n\n\n  <div>\n\n  <button *ngIf="total !=0 && _cs.estado==true" id="registrarse" ion-button block \n\n          (click)="agregarReciclaje()"\n\n          >\n\n    Agregar\n\n  </button>\n\n\n\n  <button *ngIf="total ==0 || _cs.estado==false" disabled id="registrarse" ion-button block \n\n          (click)="agregarReciclaje()"\n\n          >\n\n    Agregar\n\n  </button>\n\n\n\n  </div>\n\n\n\n  <br><br>\n\n\n\n  <div>\n\n  <button *ngIf="total !=0" id="registrarse" style="background: red;" ion-button block color="red"\n\n          [disabled]=" direccion.length < 5 "\n\n          (click)="registrarReciclaje()"\n\n          >\n\n    Registrar\n\n  </button>\n\n\n\n  <button *ngIf="total ==0" id="registrarse" disabled style="background: red;" ion-button block color="red" \n\n          (click)="registrarReciclaje()"\n\n          >\n\n    Registrar\n\n  </button>\n\n  \n\n  \n\n  </div>\n\n\n\n  <br><br>\n\n\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\andyu\Desktop\reciclaje\src\pages\agregar-reciclaje\agregar-reciclaje.html"*/,
+            selector: 'page-agregar-reciclaje',template:/*ion-inline-start:"C:\Users\BCAutomatizacion\Desktop\Reciclaje-y-ciudad-limpia\src\pages\agregar-reciclaje\agregar-reciclaje.html"*/'<ion-header>\n\n\n\n  <ion-navbar color="dark">\n\n\n\n    <ion-buttons left>\n\n      <button icon-only ion-button\n\n              (click)="viewCtrl.dismiss()">\n\n        <ion-icon name="arrow-round-back"></ion-icon>\n\n      </button>\n\n    </ion-buttons>\n\n\n\n    <ion-title>Mi Reciclaje</ion-title>\n\n  </ion-navbar>\n\n\n\n</ion-header>\n\n\n\n\n\n<ion-content padding>\n\n  <div *ngIf="reciclaje.length!=0">\n\n  <ion-card *ngFor="let item of reciclaje">\n\n    <ion-item color="primary">\n\n        <ion-label style="font-weight: bold">{{item.tipo}}   <ion-img src={{item.img}} alt=""></ion-img></ion-label>\n\n    </ion-item>\n\n\n\n    <ion-card-content color="primary">\n\n        <br>\n\n        <!-- <h4 *ngIf="residuo">Tipo: {{residuo.tipo}}  <ion-img src={{residuo.img}} alt=""></ion-img></h4> -->\n\n        <h4>Precio x kg: S/. {{item.precio}}</h4>\n\n        <h4>Cantidad: {{item.cantidad}} Kg</h4>\n\n        <h4 style="font-weight: bold">Subtotal: {{item.subtotal}}</h4>\n\n    </ion-card-content>\n\n  </ion-card>\n\n  </div>\n\n\n\n  <ion-card *ngIf="residuo">\n\n    <ion-item color="primary" style="background: mediumpurple;">\n\n      <ion-label *ngIf="residuo" style="font-weight: bold">{{residuo.tipo}}   <ion-img src={{residuo.img}} alt=""></ion-img></ion-label>\n\n    </ion-item>\n\n\n\n    <ion-card-content color="primary">\n\n      <br>\n\n      <!-- <h4 *ngIf="residuo">Tipo: {{residuo.tipo}}  <ion-img src={{residuo.img}} alt=""></ion-img></h4> -->\n\n      <h4 *ngIf="residuo">Precio x kg: S/. {{residuo.precio}}</h4>\n\n      <h4 *ngIf="residuo">Cantidad: {{_cs.cantidad}} Kg</h4>\n\n      <h4 *ngIf="residuo" style="font-weight: bold">Subtotal: {{subtotal}}</h4>\n\n    </ion-card-content>\n\n  </ion-card>\n\n\n\n  <br><br>\n\n\n\n  <h3 style="font-weight: bold; text-align:center">Total: S/. {{total}}</h3>\n\n\n\n  <br><br>\n\n\n\n  <ion-item>\n\n    <ion-label floating>Dirección</ion-label>\n\n    <ion-input type="text" [(ngModel)]="direccion"></ion-input>\n\n  </ion-item>\n\n\n\n  <br><br>\n\n\n\n  <div>\n\n  <button *ngIf="total !=0 && _cs.estado==true" id="registrarse" ion-button block \n\n          (click)="agregarReciclaje()"\n\n          >\n\n    Agregar\n\n  </button>\n\n\n\n  <button *ngIf="total ==0 || _cs.estado==false" disabled id="registrarse" ion-button block \n\n          (click)="agregarReciclaje()"\n\n          >\n\n    Agregar\n\n  </button>\n\n\n\n  </div>\n\n\n\n  <br><br>\n\n\n\n  <div>\n\n  <button *ngIf="total !=0" id="registrarse" style="background: red;" ion-button block color="red"\n\n          [disabled]=" direccion.length < 5 "\n\n          (click)="registrarReciclaje()"\n\n          >\n\n    Registrar\n\n  </button>\n\n\n\n  <button *ngIf="total ==0" id="registrarse" disabled style="background: red;" ion-button block color="red" \n\n          (click)="registrarReciclaje()"\n\n          >\n\n    Registrar\n\n  </button>\n\n  \n\n  \n\n  </div>\n\n\n\n  <br><br>\n\n\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\BCAutomatizacion\Desktop\Reciclaje-y-ciudad-limpia\src\pages\agregar-reciclaje\agregar-reciclaje.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */],
@@ -3636,7 +3654,7 @@ var AgregarReciclajePage = /** @class */ (function () {
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CantidadPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(7);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_carrito_carrito__ = __webpack_require__(13);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -3674,7 +3692,7 @@ var CantidadPage = /** @class */ (function () {
     };
     CantidadPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-cantidad',template:/*ion-inline-start:"C:\Users\andyu\Desktop\reciclaje\src\pages\cantidad\cantidad.html"*/'\n\n<ion-header>\n\n\n\n  <ion-navbar color="primary">\n\n    <ion-title>Ingresar cantidad</ion-title>\n\n    <ion-buttons end>\n\n      <button ion-button (click)="closeModal()">Cerrar</button>\n\n    </ion-buttons>\n\n  </ion-navbar>\n\n\n\n</ion-header>\n\n\n\n\n\n<ion-content padding>\n\n\n\n  <ion-list>\n\n\n\n    <ion-item>\n\n      <ion-label floating>Cantidad (Kg)</ion-label>\n\n      <ion-input type="number" [(ngModel)]="cantidad"></ion-input>\n\n    </ion-item>\n\n  \n\n  </ion-list>\n\n\n\n  <br><br>\n\n\n\n  <button id="registrarse" ion-button block \n\n  [disabled]=" cantidad.length == 0 " (click)="closeModal1()"\n\n          >\n\n    Aceptar\n\n  </button>\n\n\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\andyu\Desktop\reciclaje\src\pages\cantidad\cantidad.html"*/,
+            selector: 'page-cantidad',template:/*ion-inline-start:"C:\Users\BCAutomatizacion\Desktop\Reciclaje-y-ciudad-limpia\src\pages\cantidad\cantidad.html"*/'\n<ion-header>\n\n  <ion-navbar color="primary">\n    <ion-title>Ingresar cantidad</ion-title>\n    <ion-buttons end>\n      <button ion-button (click)="closeModal()">Cerrar</button>\n    </ion-buttons>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n\n  <ion-list>\n\n    <ion-item>\n      <ion-label floating>Cantidad (Kg)</ion-label>\n      <ion-input type="number" [(ngModel)]="cantidad"></ion-input>\n    </ion-item>\n  \n  </ion-list>\n\n  <br><br>\n\n  <button id="registrarse" ion-button block \n  [disabled]=" cantidad.length == 0 " (click)="closeModal1()"\n          >\n    Aceptar\n  </button>\n\n</ion-content>\n'/*ion-inline-end:"C:\Users\BCAutomatizacion\Desktop\Reciclaje-y-ciudad-limpia\src\pages\cantidad\cantidad.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */],
@@ -3689,6 +3707,75 @@ var CantidadPage = /** @class */ (function () {
 /***/ }),
 
 /***/ 630:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ClientesPage; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_carrito_carrito__ = __webpack_require__(13);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_usuario_usuario__ = __webpack_require__(14);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_registro_registro__ = __webpack_require__(21);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+
+var ClientesPage = /** @class */ (function () {
+    function ClientesPage(navCtrl, navParams, _cs, _us, _rs) {
+        var _this = this;
+        this.navCtrl = navCtrl;
+        this.navParams = navParams;
+        this._cs = _cs;
+        this._us = _us;
+        this._rs = _rs;
+        this.clientes = [];
+        this._rs.getUsuarios().subscribe(function (res) {
+            _this.clientes = res;
+        });
+        //     this._rs.getUsuarios().subscribe(res => {
+        //       this.arreglos = res;
+        //       for(var i=0; i < res.length; i++){
+        //         this._rs.getReciclajeUsuario(res[i].id).subscribe(response => {
+        //           this.subtotal = 0;
+        //           for(var j=0; j < response.length; j++){
+        //             this.subtotal = this.subtotal + response[j].total;
+        //           }
+        //          this.item = {apellidos: this.arreglos[i].apellidos, celular: this.arreglos[i].celular, contraseña: this.arreglos[i].contraseña, correo: this.arreglos[i].correo, id: this.arreglos[i].id, nombres: this.arreglos[i].nombres, usuario: this.arreglos[i].usuario, total: this.subtotal }
+        //         this.total = this.total + this.subtotal; 
+        //         this.clientes.push(this.item);  
+        //           //this.total_usuario.push(this.subtotal);
+        //         })   
+        //       }
+        //  })
+    }
+    ClientesPage = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
+            selector: 'page-clientes',template:/*ion-inline-start:"C:\Users\BCAutomatizacion\Desktop\Reciclaje-y-ciudad-limpia\src\pages\clientes\clientes.html"*/'\n<ion-header>\n\n  <ion-navbar color="dark">\n\n    <ion-buttons start>\n      <button ion-button icon-only\n              *ngIf="_us.activo()">\n        {{ _us.usuario }} <ion-icon name="contact"></ion-icon>\n      </button>\n      <button ion-button icon-only\n              *ngIf="_us.activo()"\n              (click)="_us.cerrar_sesion()">\n        <ion-icon name="log-out"></ion-icon>\n      </button>\n    </ion-buttons>\n\n\n    <ion-title>\n      Clientes\n    </ion-title>\n\n  </ion-navbar>\n\n</ion-header>\n\n<ion-content padding>\n\n  <ion-list>\n    <button ion-item *ngFor="let cliente of clientes;" [navPush]="detalleReciclaje"\n      [navParams]="{ cliente: cliente }">\n\n      <ion-icon name="ios-arrow-forward"></ion-icon>\n        {{cliente.id}}     {{ cliente.nombres.split(" ")[0] }}   {{cliente.apellidos.split(" ")[0]}}\n      <!-- <span *ngIf="reciclaje.estado==\'false\'"\n        style="color: red;">NO RECOGIGO</span><span *ngIf="reciclaje.estado==\'true\'"\n        style="color: blue;">RECOGIDO</span> -->\n    </button>\n  </ion-list>\n\n</ion-content>\n'/*ion-inline-end:"C:\Users\BCAutomatizacion\Desktop\Reciclaje-y-ciudad-limpia\src\pages\clientes\clientes.html"*/,
+        }),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */],
+            __WEBPACK_IMPORTED_MODULE_2__providers_carrito_carrito__["a" /* CarritoProvider */],
+            __WEBPACK_IMPORTED_MODULE_3__providers_usuario_usuario__["a" /* UsuarioProvider */],
+            __WEBPACK_IMPORTED_MODULE_4__providers_registro_registro__["a" /* RegistroProvider */]])
+    ], ClientesPage);
+    return ClientesPage;
+}());
+
+//# sourceMappingURL=clientes.js.map
+
+/***/ }),
+
+/***/ 631:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";

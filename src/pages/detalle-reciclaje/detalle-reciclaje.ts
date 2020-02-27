@@ -12,6 +12,7 @@ export class DetalleReciclajePage {
 
   reciclaje:any = {};
   estado: string="false";
+  usuario: any = {};
 
   constructor(public navCtrl: NavController, 
               public navParams: NavParams,
@@ -22,6 +23,9 @@ export class DetalleReciclajePage {
               private _rs: RegistroProvider) {
         
         this.reciclaje = this.navParams.get("reciclaje");
+        this._rs.getUsuario1(this.reciclaje.id_usuario).subscribe(res => {
+            this.usuario = res;
+        })
         if(this.reciclaje.estado == "true")
                 this.estado = "true";
         //console.log(this.reciclaje);
